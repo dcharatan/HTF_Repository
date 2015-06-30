@@ -11,7 +11,7 @@ import UIKit
 class AnalysisTools: NSObject {
     static func pcc(data: [(Double, Double)]) -> Double {
         // This function determines Pearson's correlation coefficient for a given data set.
-        
+        // lol
         // This determines the average data values for x and y.
         var totalX: Double = 0.0
         var totalY: Double = 0.0
