@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HealthTrendFinder/CardViewController.swift"
-            timestampString = "457379690.895359"
+            timestampString = "457398336.819637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
             landmarkName = "repositionRemainingCards(_:)"
             landmarkType = "5">
          </BreakpointContent>

@@ -9,34 +9,64 @@
 import UIKit
 import Foundation
 
-class CardViewController: UIViewController, UIGestureRecognizerDelegate {
+class CardViewController: UIViewController, UIGestureRecognizerDelegate, UIScrollViewDelegate {
     
-    let swipeOutAnimationDuration = 0.33 // The duration of the swiping away CardView animation
-    let verticalAnimationDuration = 0.25 // The duration of the vertical CardView animation
-    let verticalAnimationDelay = 0.05 // The delay between each CardView's animation after another CardView is deleted
-    let deletionThreshold: CGFloat = 50.0 // The distance you have to drag to delete a CardView
-    let margin: CGFloat = 8.0 // This is needed for a few calculations, so it's kept here.
+    private let swipeOutAnimationDuration = 0.33 // The duration of the swiping away CardView animation
+    private let verticalAnimationDuration = 0.25 // The duration of the vertical CardView animation
+    private let verticalAnimationDelay = 0.05 // The delay between each CardView's animation after another CardView is deleted
+    private let scrollThreshold: CGFloat = 10.0 // The distance you have to scroll to be locked into scrolling
+    private let movementThreshold: CGFloat = 10.0 // The distance you have to drag to be locked into dragging
+    private let deletionThreshold: CGFloat = 50.0 // The distance you have to drag to delete a CardView
+    private let margin: CGFloat = 8.0 // This is needed for a few calculations, so it's kept here.
     
     private var cardArray: [CardView] = []
+    private lazy var cardRefreshControl:UIRefreshControl = UIRefreshControl() // This is the variable that stores the UIRefreshControl for cardScrollView.
+    private var originalScrollPosition: CGFloat = 0.0 // This is used to track whether you've scrolled far enough to be locked into scrolling.
+    private var scrollingLocked: Bool = false // This is used to track whether you're locked into scrolling.
     
     // This is a temporary button used to add cards.
     @IBAction func plusButtonPressed(sender: AnyObject) {
         addCard()
     }
     
-    // This is the outlet for the UIScrollView the CardView instances are placed in.
-    @IBOutlet weak var cardScrollView: UIScrollView!
+    @IBOutlet weak var cardScrollView: UIScrollView! // This is the outlet for the UIScrollView the CardView instances are placed in.
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let data = [(0.0, 4.0),
-            (2.0, 5.0),
-            (3.0, 7.0),
-            (4.0, 8.0),
-            (7.0, 9.0)]
-        println("data = \(data)")
-        println("r = \(AnalysisTools.pcc(data))")
+        // This configures the UIRefreshControl which is a lazy var found above.
+        cardRefreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        cardRefreshControl.addTarget(self, action: "refreshCards:", forControlEvents: UIControlEvents.ValueChanged)
+        cardScrollView.addSubview(cardRefreshControl)
+        
+        // This allows tracking scrolling.
+        cardScrollView.delegate = self
+    }
+    
+    // This is called when cardScrollView begins to scroll.
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        // Later, the originalScrollPosition is compared with the current scroll position to determine offset.
+        originalScrollPosition = scrollView.contentOffset.y
+    }
+    
+    // This is called when cardScrollView scrolls.
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        // If you're refreshing, it locks you into scrolling.
+        if(cardRefreshControl.bounds.height > 0) {
+            scrollingLocked = true
+        }
+        
+        if(abs(originalScrollPosition - scrollView.contentOffset.y) > scrollThreshold) {
+            scrollingLocked = true
+        }
+    }
+    
+    // scrollingLocked is disabled when scrolling ends due to deceleration or the cessation of dragging.
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        scrollingLocked = false
+    }
+    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        scrollingLocked = false
     }
     
     // This is used to allow the UIPanGestureRecognizers to work together with the UIScrollView's scrolling.
@@ -44,6 +74,12 @@ class CardViewController: UIViewController, UIGestureRecognizerDelegate {
         return true
     }
     
+    // This is called when you refresh.
+    func refreshCards(sender: AnyObject) {
+        cardRefreshControl.endRefreshing()
+    }
+    
+    // This adds a card.
     private func addCard() {
         let cardIndex = cardArray.count
         let width: CGFloat = self.view.bounds.width - 2 * margin
@@ -73,11 +109,14 @@ class CardViewController: UIViewController, UIGestureRecognizerDelegate {
         
         // This adjusts the UIScrollView to accomodate the new card.
         adjustCardScrollView(0.0)
+        
+        // Makes sure scrolling doesn't get locked into because of change in scroll window size.
+        scrollingLocked = false
     }
     
     func detectPan(recognizer: UIPanGestureRecognizer) {
         for i in 0..<cardArray.count {
-            if(recognizer.view != nil && recognizer.view == cardArray[i]) {
+            if recognizer.view != nil && recognizer.view == cardArray[i] {
                 // This prepares the CardView for dragging.
                 if recognizer.state == .Began {
                     cardArray[i].lastLocation = cardArray[i].center
@@ -85,10 +124,24 @@ class CardViewController: UIViewController, UIGestureRecognizerDelegate {
                 
                 // This moves the CardView when you drag.
                 var translation = recognizer.translationInView(self.cardArray[i].superview!)
-                cardArray[i].center = CGPointMake(cardArray[i].lastLocation.x + translation.x, cardArray[i].lastLocation.y)
+                
+                // This is done once the CardView has passed the threshold but not yet been marked as swiped. (Note that scrolling must not be happening)
+                if CGFloat(abs(Int32(translation.x))) >= movementThreshold && cardScrollView.scrollEnabled && !scrollingLocked {
+                        // This is the point where swiping has just begun, so to prevent a horizontal jump that's exactly minDistance units long, you add translation.x to cardArray[i].lastLocation.
+                        cardArray[i].lastLocation.x -= translation.x
+                        
+                        // Now that swiping is happening, scrolling is disabled.
+                        cardScrollView.scrollEnabled = false
+                }
+                
+                // This is where the cardArray is actually moved.
+                if !cardScrollView.scrollEnabled {
+                    cardArray[i].center = CGPointMake(cardArray[i].lastLocation.x + translation.x, cardArray[i].lastLocation.y)
+                }
                 
                 // This detects the end of drag gestures.
                 if recognizer.state == .Ended {
+                    cardScrollView.scrollEnabled = true
                     if cardArray[i].center.x < cardArray[i].originalLocation.x - deletionThreshold {
                         // This removes the CardView if you've moved it far enough to the left.
                         removeCardAtIndex(i)
@@ -140,8 +193,14 @@ class CardViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     private func adjustCardScrollView(animationDelay: NSTimeInterval) {
+        var newHeight: CGFloat = self.cardHeightsAndMarginsUpToButNotIncludingIndex(self.cardArray.count)
+        var minHeight: CGFloat = self.view.bounds.height - cardRefreshControl.bounds.height
+        if(newHeight < minHeight) {
+            newHeight = minHeight
+        }
+        
         UIView.animateWithDuration(verticalAnimationDuration, delay: animationDelay, options: UIViewAnimationOptions.CurveEaseInOut, animations: {
-            self.cardScrollView.contentSize = CGSizeMake(self.view.bounds.width, self.cardHeightsAndMarginsUpToButNotIncludingIndex(self.cardArray.count))
+            self.cardScrollView.contentSize = CGSizeMake(self.view.bounds.width, newHeight)
             }, completion: nil)
     }
     
