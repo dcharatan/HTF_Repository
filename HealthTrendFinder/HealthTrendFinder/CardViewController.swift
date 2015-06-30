@@ -39,6 +39,9 @@ class CardViewController: UIViewController, UIGestureRecognizerDelegate, UIScrol
         cardRefreshControl.addTarget(self, action: "refreshCards:", forControlEvents: UIControlEvents.ValueChanged)
         cardScrollView.addSubview(cardRefreshControl)
         
+        // This must be done to allow a refresh to happen when cardScrollView does not fill its parent's height.
+        cardScrollView.alwaysBounceVertical = true
+        
         // This allows tracking scrolling.
         cardScrollView.delegate = self
     }
@@ -126,7 +129,7 @@ class CardViewController: UIViewController, UIGestureRecognizerDelegate, UIScrol
                 var translation = recognizer.translationInView(self.cardArray[i].superview!)
                 
                 // This is done once the CardView has passed the threshold but not yet been marked as swiped. (Note that scrolling must not be happening)
-                if CGFloat(abs(Int32(translation.x))) >= movementThreshold && cardScrollView.scrollEnabled && !scrollingLocked {
+                if abs(translation.x) >= movementThreshold && cardScrollView.scrollEnabled && !scrollingLocked {
                         // This is the point where swiping has just begun, so to prevent a horizontal jump that's exactly minDistance units long, you add translation.x to cardArray[i].lastLocation.
                         cardArray[i].lastLocation.x -= translation.x
                         
@@ -194,10 +197,6 @@ class CardViewController: UIViewController, UIGestureRecognizerDelegate, UIScrol
     
     private func adjustCardScrollView(animationDelay: NSTimeInterval) {
         var newHeight: CGFloat = self.cardHeightsAndMarginsUpToButNotIncludingIndex(self.cardArray.count)
-        var minHeight: CGFloat = self.view.bounds.height - cardRefreshControl.bounds.height
-        if(newHeight < minHeight) {
-            newHeight = minHeight
-        }
         
         UIView.animateWithDuration(verticalAnimationDuration, delay: animationDelay, options: UIViewAnimationOptions.CurveEaseInOut, animations: {
             self.cardScrollView.contentSize = CGSizeMake(self.view.bounds.width, newHeight)
