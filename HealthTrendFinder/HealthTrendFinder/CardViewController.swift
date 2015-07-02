@@ -200,7 +200,9 @@ class CardViewController: UIViewController, UIGestureRecognizerDelegate, UIScrol
         
         UIView.animateWithDuration(verticalAnimationDuration, delay: animationDelay, options: UIViewAnimationOptions.CurveEaseInOut, animations: {
             self.cardScrollView.contentSize = CGSizeMake(self.view.bounds.width, newHeight)
-            }, completion: nil)
+            }, completion: {(value: Bool) in
+                self.scrollingLocked = false
+        })
     }
     
     private func cardHeightsAndMarginsUpToButNotIncludingIndex(i: Int) -> CGFloat {
