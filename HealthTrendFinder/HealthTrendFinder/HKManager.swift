@@ -22,6 +22,7 @@ class HKManager {
             HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierBiologicalSex),
             HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass),
             HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeight),
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount),
             HKObjectType.workoutType()
         ]
         let healthKitTypesToWrite = [
@@ -79,8 +80,85 @@ class HKManager {
         if error != nil {
             println("Error reading Blood type: \(error)")
         }
-
         // 4. Return the information read in a tuple
         return(age, biologicalSex, bloodType)
+    }
+    
+    func readMostRecentSample(sampleType:HKSampleType , completion: ((HKSample!, NSError!) -> Void)!) {
+        
+        // 1. Build the Predicate
+        let past = NSDate.distantPast() as! NSDate
+        let now = NSDate()
+        let mostRecentPredicate = HKQuery.predicateForSamplesWithStartDate(past, endDate:now, options: .None)
+        
+        // 2. Build the sort descriptor to return the samples in descending order
+        let sortDescriptor = NSSortDescriptor(key:HKSampleSortIdentifierStartDate, ascending: false)
+        
+        // 3. Limit the number of samples returned by the query to just 1 (most recent)
+        let limit = 1
+        
+        // 4. Build samples query
+        let sampleQuery = HKSampleQuery(sampleType: sampleType, predicate: mostRecentPredicate, limit: limit, sortDescriptors: [sortDescriptor])
+            { (sampleQuery, results, error) -> Void in
+                
+                if let queryError = error {
+                    completion(nil,error)
+                    return;
+                }
+                
+                // Get First Sample
+                let mostRecentSample = results.first as? HKQuantitySample
+                
+                //Execute the completion closure
+                if completion != nil {
+                    completion(mostRecentSample,nil)
+                }
+        }
+        
+        // 5. Execute the Query
+        self.healthKitStore.executeQuery(sampleQuery)
+    }
+    
+    func recentSteps(completion: (Double, NSError?) -> () )
+    {
+        // The type of data we are requesting (this is redundant and could probably be an enumeration
+        let type = HKSampleType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)
+        
+        // Our search predicate which will fetch data from now until a day ago
+        // (Note, 1.day comes from an extension
+        // You'll want to change that to your own NSDate
+        let predicate = HKQuery.predicateForSamplesWithStartDate(NSDate.distantPast() as! NSDate, endDate: NSDate(), options: .None)
+        
+        // The actual HealthKit Query which will fetch all of the steps and sub them up for us.
+        let query = HKSampleQuery(sampleType: type, predicate: predicate, limit: 0, sortDescriptors: nil) { query, results, error in
+            var steps: Double = 0
+            
+            if results?.count > 0
+            {
+                for result in results as! [HKQuantitySample]
+                {
+                    steps += result.quantity.doubleValueForUnit(HKUnit.countUnit())
+                }
+            }
+            
+            completion(steps, error)
+        }
+        
+        self.healthKitStore.executeQuery(query)
+    }
+    func saveBMISample(bmi:Double, date:NSDate ) {
+        // 1. Create a BMI Sample
+        let bmiType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMassIndex)
+        let bmiQuantity = HKQuantity(unit: HKUnit.countUnit(), doubleValue: bmi)
+        let bmiSample = HKQuantitySample(type: bmiType, quantity: bmiQuantity, startDate: date, endDate: date)
+        
+        // 2. Save the sample in the store
+        healthKitStore.saveObject(bmiSample, withCompletion: { (success, error) -> Void in
+            if( error != nil ) {
+                println("Error saving BMI sample: \(error.localizedDescription)")
+            } else {
+                println("BMI sample saved successfully!")
+            }
+        })
     }
 }
