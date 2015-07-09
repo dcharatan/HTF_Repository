@@ -18,6 +18,7 @@
 		2BDCACA61B41A80A002A7F28 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDCACA51B41A80A002A7F28 /* CardViewController.swift */; };
 		71542AB41B4AE90500E6A112 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71542AB31B4AE90500E6A112 /* HealthKit.framework */; };
 		71542AB61B4AED1100E6A112 /* HKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71542AB51B4AED1100E6A112 /* HKManager.swift */; };
+		71DF26381B4EE6990027D480 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF26371B4EE6990027D480 /* WeatherView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		71542AB21B4AE90400E6A112 /* HealthTrendFinder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HealthTrendFinder.entitlements; sourceTree = "<group>"; };
 		71542AB31B4AE90500E6A112 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		71542AB51B4AED1100E6A112 /* HKManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HKManager.swift; sourceTree = "<group>"; };
+		71DF26371B4EE6990027D480 /* WeatherView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				2BDCAC831B41A625002A7F28 /* AppDelegate.swift */,
 				71542AB51B4AED1100E6A112 /* HKManager.swift */,
 				2BDCAC851B41A625002A7F28 /* ViewController.swift */,
+				71DF26371B4EE6990027D480 /* WeatherView.swift */,
 				2BDCAC871B41A625002A7F28 /* Main.storyboard */,
 				2BDCACA31B41A7CC002A7F28 /* CardView.swift */,
 				2BDCACA51B41A80A002A7F28 /* CardViewController.swift */,
@@ -248,6 +251,7 @@
 				71542AB61B4AED1100E6A112 /* HKManager.swift in Sources */,
 				2BDCAC861B41A625002A7F28 /* ViewController.swift in Sources */,
 				2BDCACA41B41A7CC002A7F28 /* CardView.swift in Sources */,
+				71DF26381B4EE6990027D480 /* WeatherView.swift in Sources */,
 				2BDCAC841B41A625002A7F28 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

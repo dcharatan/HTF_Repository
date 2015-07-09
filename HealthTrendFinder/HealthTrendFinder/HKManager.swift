@@ -8,6 +8,7 @@
 
 import HealthKit
 import Foundation
+import UIKit
 
 class HKManager {
     
@@ -145,6 +146,7 @@ class HKManager {
         }
         
         self.healthKitStore.executeQuery(query)
+        println(query)
     }
     func saveBMISample(bmi:Double, date:NSDate ) {
         // 1. Create a BMI Sample
@@ -161,4 +163,5 @@ class HKManager {
             }
         })
     }
+
 }
