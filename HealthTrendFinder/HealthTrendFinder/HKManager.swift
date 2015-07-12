@@ -122,12 +122,10 @@ class HKManager {
     
     func recentSteps(completion: (Double, NSError?) -> () )
     {
-        // The type of data we are requesting (this is redundant and could probably be an enumeration
+        // The type of data we are requesting
         let type = HKSampleType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)
         
         // Our search predicate which will fetch data from now until a day ago
-        // (Note, 1.day comes from an extension
-        // You'll want to change that to your own NSDate
         let predicate = HKQuery.predicateForSamplesWithStartDate(NSDate.distantPast() as! NSDate, endDate: NSDate(), options: .None)
         
         // The actual HealthKit Query which will fetch all of the steps and sub them up for us.

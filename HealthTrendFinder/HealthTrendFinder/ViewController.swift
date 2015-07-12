@@ -12,7 +12,6 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        getWeatherData("api.openweathermap.org/data/2.5/weather?q=London,uk")
         // Do any additional setup after loading the view, typically from a nib.
     }
 
