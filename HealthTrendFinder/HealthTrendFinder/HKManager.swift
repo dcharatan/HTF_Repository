@@ -23,7 +23,6 @@ class HKManager {
             HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierBiologicalSex),
             HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass),
             HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeight),
-            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount),
             HKObjectType.workoutType()
         ]
         let healthKitTypesToWrite = [
