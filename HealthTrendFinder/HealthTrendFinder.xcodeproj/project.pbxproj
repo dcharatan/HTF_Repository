@@ -17,6 +17,7 @@
 		2BDCACA41B41A7CC002A7F28 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDCACA31B41A7CC002A7F28 /* CardView.swift */; };
 		2BDCACA61B41A80A002A7F28 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDCACA51B41A80A002A7F28 /* CardViewController.swift */; };
 <<<<<<< HEAD
+<<<<<<< HEAD
 		710756B61B581A0500658461 /* HKAuthorizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710756B51B581A0500658461 /* HKAuthorizeViewController.swift */; };
 =======
 		7112612B1B54202400CF39A8 /* ActivityDataCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 711261221B54202400CF39A8 /* ActivityDataCollector.m */; };
@@ -27,9 +28,13 @@
 		7112613A1B5420D700CF39A8 /* ActivityDataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 711261371B5420D700CF39A8 /* ActivityDataItem.m */; };
 		7112613B1B5420D700CF39A8 /* ActivityDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 711261391B5420D700CF39A8 /* ActivityDataSet.m */; };
 >>>>>>> parent of 2698a1d... The Blessing of the Watican (Change to Swift)
+=======
+>>>>>>> parent of 2ce75c9... To Be Removed
 		71542AB61B4AED1100E6A112 /* HKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71542AB51B4AED1100E6A112 /* HKManager.swift */; };
 		71DF26381B4EE6990027D480 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF26371B4EE6990027D480 /* WeatherView.swift */; };
 		71E1F4131B5370130065D4EB /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71E1F4121B5370130065D4EB /* HealthKit.framework */; };
+		71F2BB391B545820009C08BC /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F2BB381B545820009C08BC /* AnalysisViewController.swift */; };
+		71F5F4E91B5703AB00E5D7CD /* EnableHealthKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F5F4E81B5703AB00E5D7CD /* EnableHealthKitViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +62,7 @@
 		2BDCACA31B41A7CC002A7F28 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		2BDCACA51B41A80A002A7F28 /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 <<<<<<< HEAD
+<<<<<<< HEAD
 		710756B51B581A0500658461 /* HKAuthorizeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HKAuthorizeViewController.swift; sourceTree = "<group>"; };
 =======
 		711261211B54202400CF39A8 /* ActivityDataCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDataCollector.h; sourceTree = "<group>"; };
@@ -74,10 +80,14 @@
 		711261381B5420D700CF39A8 /* ActivityDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDataSet.h; sourceTree = "<group>"; };
 		711261391B5420D700CF39A8 /* ActivityDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDataSet.m; sourceTree = "<group>"; };
 >>>>>>> parent of 2698a1d... The Blessing of the Watican (Change to Swift)
+=======
+>>>>>>> parent of 2ce75c9... To Be Removed
 		71542AB21B4AE90400E6A112 /* HealthTrendFinder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HealthTrendFinder.entitlements; sourceTree = "<group>"; };
 		71542AB51B4AED1100E6A112 /* HKManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HKManager.swift; sourceTree = "<group>"; };
 		71DF26371B4EE6990027D480 /* WeatherView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		71E1F4121B5370130065D4EB /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		71F2BB381B545820009C08BC /* AnalysisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
+		71F5F4E81B5703AB00E5D7CD /* EnableHealthKitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnableHealthKitViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,7 +185,12 @@
 				2BDCAC851B41A625002A7F28 /* ViewController.swift */,
 				2BDCAC871B41A625002A7F28 /* Main.storyboard */,
 <<<<<<< HEAD
+<<<<<<< HEAD
 				710756B51B581A0500658461 /* HKAuthorizeViewController.swift */,
+=======
+				71F2BB381B545820009C08BC /* AnalysisViewController.swift */,
+				71F5F4E81B5703AB00E5D7CD /* EnableHealthKitViewController.swift */,
+>>>>>>> parent of 2ce75c9... To Be Removed
 				71542AB51B4AED1100E6A112 /* HKManager.swift */,
 =======
 >>>>>>> parent of 2698a1d... The Blessing of the Watican (Change to Swift)
@@ -321,23 +336,31 @@
 			files = (
 				7112612B1B54202400CF39A8 /* ActivityDataCollector.m in Sources */,
 				2BDCACA61B41A80A002A7F28 /* CardViewController.swift in Sources */,
+				71F5F4E91B5703AB00E5D7CD /* EnableHealthKitViewController.swift in Sources */,
 				2B9488871B43060E0028B70B /* AnalysisTools.swift in Sources */,
+<<<<<<< HEAD
 <<<<<<< HEAD
 				710756B61B581A0500658461 /* HKAuthorizeViewController.swift in Sources */,
 =======
 				7112613A1B5420D700CF39A8 /* ActivityDataItem.m in Sources */,
 				7112612C1B54202400CF39A8 /* DataCollectorManager.m in Sources */,
 >>>>>>> parent of 2698a1d... The Blessing of the Watican (Change to Swift)
+=======
+>>>>>>> parent of 2ce75c9... To Be Removed
 				71542AB61B4AED1100E6A112 /* HKManager.swift in Sources */,
 				2BDCAC861B41A625002A7F28 /* ViewController.swift in Sources */,
 				7112613B1B5420D700CF39A8 /* ActivityDataSet.m in Sources */,
 				2BDCACA41B41A7CC002A7F28 /* CardView.swift in Sources */,
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 				7112612F1B54202400CF39A8 /* WeatherDataCollector.m in Sources */,
 				71DF26381B4EE6990027D480 /* WeatherView.swift in Sources */,
 				7112612D1B54202400CF39A8 /* HealthKitDataCollector.m in Sources */,
 >>>>>>> parent of 2698a1d... The Blessing of the Watican (Change to Swift)
+=======
+				71F2BB391B545820009C08BC /* AnalysisViewController.swift in Sources */,
+>>>>>>> parent of 2ce75c9... To Be Removed
 				2BDCAC841B41A625002A7F28 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
