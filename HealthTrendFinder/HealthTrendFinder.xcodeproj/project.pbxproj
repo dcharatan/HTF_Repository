@@ -16,16 +16,10 @@
 		2BDCAC9A1B41A625002A7F28 /* HealthTrendFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDCAC991B41A625002A7F28 /* HealthTrendFinderTests.swift */; };
 		2BDCACA41B41A7CC002A7F28 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDCACA31B41A7CC002A7F28 /* CardView.swift */; };
 		2BDCACA61B41A80A002A7F28 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDCACA51B41A80A002A7F28 /* CardViewController.swift */; };
-		7112612B1B54202400CF39A8 /* ActivityDataCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 711261221B54202400CF39A8 /* ActivityDataCollector.m */; };
-		7112612C1B54202400CF39A8 /* DataCollectorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 711261241B54202400CF39A8 /* DataCollectorManager.m */; };
-		7112612D1B54202400CF39A8 /* HealthKitDataCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 711261261B54202400CF39A8 /* HealthKitDataCollector.m */; };
-		7112612E1B54202400CF39A8 /* HealthTrendFinder-Bridging-Header.h alias in Resources */ = {isa = PBXBuildFile; fileRef = 711261281B54202400CF39A8 /* HealthTrendFinder-Bridging-Header.h alias */; };
-		7112612F1B54202400CF39A8 /* WeatherDataCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 7112612A1B54202400CF39A8 /* WeatherDataCollector.m */; };
-		7112613A1B5420D700CF39A8 /* ActivityDataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 711261371B5420D700CF39A8 /* ActivityDataItem.m */; };
-		7112613B1B5420D700CF39A8 /* ActivityDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 711261391B5420D700CF39A8 /* ActivityDataSet.m */; };
 		71542AB61B4AED1100E6A112 /* HKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71542AB51B4AED1100E6A112 /* HKManager.swift */; };
-		71DF26381B4EE6990027D480 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DF26371B4EE6990027D480 /* WeatherView.swift */; };
 		71E1F4131B5370130065D4EB /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71E1F4121B5370130065D4EB /* HealthKit.framework */; };
+		71F2BB391B545820009C08BC /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F2BB381B545820009C08BC /* AnalysisViewController.swift */; };
+		71F5F4E91B5703AB00E5D7CD /* EnableHealthKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F5F4E81B5703AB00E5D7CD /* EnableHealthKitViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,24 +46,11 @@
 		2BDCAC991B41A625002A7F28 /* HealthTrendFinderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTrendFinderTests.swift; sourceTree = "<group>"; };
 		2BDCACA31B41A7CC002A7F28 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		2BDCACA51B41A80A002A7F28 /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
-		711261211B54202400CF39A8 /* ActivityDataCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDataCollector.h; sourceTree = "<group>"; };
-		711261221B54202400CF39A8 /* ActivityDataCollector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDataCollector.m; sourceTree = "<group>"; };
-		711261231B54202400CF39A8 /* DataCollectorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataCollectorManager.h; sourceTree = "<group>"; };
-		711261241B54202400CF39A8 /* DataCollectorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataCollectorManager.m; sourceTree = "<group>"; };
-		711261251B54202400CF39A8 /* HealthKitDataCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthKitDataCollector.h; sourceTree = "<group>"; };
-		711261261B54202400CF39A8 /* HealthKitDataCollector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthKitDataCollector.m; sourceTree = "<group>"; };
-		711261271B54202400CF39A8 /* HealthTrendFinder-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HealthTrendFinder-Bridging-Header.h"; sourceTree = "<group>"; };
-		711261281B54202400CF39A8 /* HealthTrendFinder-Bridging-Header.h alias */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HealthTrendFinder-Bridging-Header.h alias"; sourceTree = "<group>"; };
-		711261291B54202400CF39A8 /* WeatherDataCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherDataCollector.h; sourceTree = "<group>"; };
-		7112612A1B54202400CF39A8 /* WeatherDataCollector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherDataCollector.m; sourceTree = "<group>"; };
-		711261361B5420D700CF39A8 /* ActivityDataItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDataItem.h; sourceTree = "<group>"; };
-		711261371B5420D700CF39A8 /* ActivityDataItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDataItem.m; sourceTree = "<group>"; };
-		711261381B5420D700CF39A8 /* ActivityDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDataSet.h; sourceTree = "<group>"; };
-		711261391B5420D700CF39A8 /* ActivityDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityDataSet.m; sourceTree = "<group>"; };
 		71542AB21B4AE90400E6A112 /* HealthTrendFinder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HealthTrendFinder.entitlements; sourceTree = "<group>"; };
 		71542AB51B4AED1100E6A112 /* HKManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HKManager.swift; sourceTree = "<group>"; };
-		71DF26371B4EE6990027D480 /* WeatherView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		71E1F4121B5370130065D4EB /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		71F2BB381B545820009C08BC /* AnalysisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
+		71F5F4E81B5703AB00E5D7CD /* EnableHealthKitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnableHealthKitViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,45 +80,6 @@
 			name = Analysis;
 			sourceTree = "<group>";
 		};
-		2BAF2BC01B5419BF0020D82E /* HealthKit */ = {
-			isa = PBXGroup;
-			children = (
-				711261211B54202400CF39A8 /* ActivityDataCollector.h */,
-				711261221B54202400CF39A8 /* ActivityDataCollector.m */,
-				711261231B54202400CF39A8 /* DataCollectorManager.h */,
-				711261241B54202400CF39A8 /* DataCollectorManager.m */,
-				711261251B54202400CF39A8 /* HealthKitDataCollector.h */,
-				711261261B54202400CF39A8 /* HealthKitDataCollector.m */,
-				711261271B54202400CF39A8 /* HealthTrendFinder-Bridging-Header.h */,
-				711261281B54202400CF39A8 /* HealthTrendFinder-Bridging-Header.h alias */,
-				711261291B54202400CF39A8 /* WeatherDataCollector.h */,
-				7112612A1B54202400CF39A8 /* WeatherDataCollector.m */,
-				71542AB51B4AED1100E6A112 /* HKManager.swift */,
-			);
-			name = HealthKit;
-			sourceTree = "<group>";
-		};
-		2BAF2BC11B5419D60020D82E /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				711261361B5420D700CF39A8 /* ActivityDataItem.h */,
-				711261371B5420D700CF39A8 /* ActivityDataItem.m */,
-				711261381B5420D700CF39A8 /* ActivityDataSet.h */,
-				711261391B5420D700CF39A8 /* ActivityDataSet.m */,
-				2BAF2BC21B5419EB0020D82E /* Weather */,
-				2BAF2BC01B5419BF0020D82E /* HealthKit */,
-			);
-			name = Data;
-			sourceTree = "<group>";
-		};
-		2BAF2BC21B5419EB0020D82E /* Weather */ = {
-			isa = PBXGroup;
-			children = (
-				71DF26371B4EE6990027D480 /* WeatherView.swift */,
-			);
-			name = Weather;
-			sourceTree = "<group>";
-		};
 		2BDCAC751B41A625002A7F28 = {
 			isa = PBXGroup;
 			children = (
@@ -163,9 +105,11 @@
 				71542AB21B4AE90400E6A112 /* HealthTrendFinder.entitlements */,
 				2B9488851B4305710028B70B /* Analysis */,
 				2BDCAC831B41A625002A7F28 /* AppDelegate.swift */,
-				2BAF2BC11B5419D60020D82E /* Data */,
 				2BDCAC851B41A625002A7F28 /* ViewController.swift */,
 				2BDCAC871B41A625002A7F28 /* Main.storyboard */,
+				71F2BB381B545820009C08BC /* AnalysisViewController.swift */,
+				71F5F4E81B5703AB00E5D7CD /* EnableHealthKitViewController.swift */,
+				71542AB51B4AED1100E6A112 /* HKManager.swift */,
 				2BDCACA31B41A7CC002A7F28 /* CardView.swift */,
 				2BDCACA51B41A80A002A7F28 /* CardViewController.swift */,
 				2BDCAC8A1B41A625002A7F28 /* Images.xcassets */,
@@ -286,7 +230,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BDCAC891B41A625002A7F28 /* Main.storyboard in Resources */,
-				7112612E1B54202400CF39A8 /* HealthTrendFinder-Bridging-Header.h alias in Resources */,
 				2BDCAC8E1B41A625002A7F28 /* LaunchScreen.xib in Resources */,
 				2BDCAC8B1B41A625002A7F28 /* Images.xcassets in Resources */,
 			);
@@ -306,18 +249,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7112612B1B54202400CF39A8 /* ActivityDataCollector.m in Sources */,
 				2BDCACA61B41A80A002A7F28 /* CardViewController.swift in Sources */,
+				71F5F4E91B5703AB00E5D7CD /* EnableHealthKitViewController.swift in Sources */,
 				2B9488871B43060E0028B70B /* AnalysisTools.swift in Sources */,
-				7112613A1B5420D700CF39A8 /* ActivityDataItem.m in Sources */,
-				7112612C1B54202400CF39A8 /* DataCollectorManager.m in Sources */,
 				71542AB61B4AED1100E6A112 /* HKManager.swift in Sources */,
 				2BDCAC861B41A625002A7F28 /* ViewController.swift in Sources */,
-				7112613B1B5420D700CF39A8 /* ActivityDataSet.m in Sources */,
 				2BDCACA41B41A7CC002A7F28 /* CardView.swift in Sources */,
-				7112612F1B54202400CF39A8 /* WeatherDataCollector.m in Sources */,
-				71DF26381B4EE6990027D480 /* WeatherView.swift in Sources */,
-				7112612D1B54202400CF39A8 /* HealthKitDataCollector.m in Sources */,
+				71F2BB391B545820009C08BC /* AnalysisViewController.swift in Sources */,
 				2BDCAC841B41A625002A7F28 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

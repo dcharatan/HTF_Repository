@@ -34,7 +34,6 @@ class CardViewController: UIViewController, UIGestureRecognizerDelegate, UIScrol
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        println("lol")
         
         // This configures the UIRefreshControl which is a lazy var found above.
         cardRefreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
