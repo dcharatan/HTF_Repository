@@ -51,23 +51,6 @@
                         <sections>
                             <tableViewSection id="ADS-ib-5HY">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="T1s-LD-Ba6" style="IBUITableViewCellStyleDefault" id="WQd-8W-gjq">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WQd-8W-gjq" id="l59-j8-Xu5">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="T1s-LD-Ba6">
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="Cvq-AR-7C3" kind="show" id="mxM-TB-W6L"/>
-                                        </connections>
-                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="G7e-HQ-kFb" style="IBUITableViewCellStyleDefault" id="RCr-OR-nt0">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
@@ -83,8 +66,22 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="kEN-0K-zXr" kind="show" id="42h-lZ-n3K"/>
+                                            <segue destination="kEN-0K-zXr" kind="show" id="45j-i6-AHQ"/>
                                         </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="T1s-LD-Ba6" style="IBUITableViewCellStyleDefault" id="WQd-8W-gjq">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WQd-8W-gjq" id="l59-j8-Xu5">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="TBD" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="T1s-LD-Ba6">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -100,49 +97,6 @@
             </objects>
             <point key="canvasLocation" x="3454" y="-244"/>
         </scene>
-        <!--Location-->
-        <scene sceneID="61I-Qo-fG1">
-            <objects>
-                <viewController id="jLl-gg-vr2" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="7kG-Xt-5gz"/>
-                        <viewControllerLayoutGuide type="bottom" id="2AM-jw-0ic"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="5an-eE-0I6">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Enter your current location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qdP-SU-OC4">
-                                <rect key="frame" x="16" y="116" width="568" height="46"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="46" id="vbR-ib-jR3"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sh6-fo-Hh0">
-                                <rect key="frame" x="16" y="187" width="568" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="qdP-SU-OC4" firstAttribute="trailing" secondItem="5an-eE-0I6" secondAttribute="trailingMargin" id="77Q-mJ-SL8"/>
-                            <constraint firstItem="Sh6-fo-Hh0" firstAttribute="leading" secondItem="5an-eE-0I6" secondAttribute="leadingMargin" id="9CA-eh-HHM"/>
-                            <constraint firstItem="Sh6-fo-Hh0" firstAttribute="top" secondItem="qdP-SU-OC4" secondAttribute="bottom" constant="23" id="Utc-uY-Clq"/>
-                            <constraint firstItem="qdP-SU-OC4" firstAttribute="trailing" secondItem="Sh6-fo-Hh0" secondAttribute="trailing" id="dl5-tQ-mXk"/>
-                            <constraint firstItem="qdP-SU-OC4" firstAttribute="leading" secondItem="Sh6-fo-Hh0" secondAttribute="leading" id="h5K-jF-p8W"/>
-                            <constraint firstItem="qdP-SU-OC4" firstAttribute="top" secondItem="7kG-Xt-5gz" secondAttribute="bottom" constant="54" id="wsJ-ZV-e6z"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Location" id="Z6M-P2-FTl"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ncn-px-rv2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4871" y="-244"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="8DY-37-Vfe">
             <objects>
@@ -152,66 +106,49 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="499-z1-wo7" kind="relationship" relationship="rootViewController" id="12d-Ha-A8E"/>
+                        <segue destination="44t-CV-CE8" kind="relationship" relationship="rootViewController" id="Rdh-eO-csV"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QJf-ZB-M6f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4152" y="-987"/>
         </scene>
-        <!--Enable Health Kit View Controller-->
-        <scene sceneID="CWr-S6-7UX">
+        <!--Authorize View Controller-->
+        <scene sceneID="DVC-kg-zH1">
             <objects>
-                <viewController id="499-z1-wo7" customClass="EnableHealthKitViewController" customModule="HealthTrendFinder" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="44t-CV-CE8" customClass="HKAuthorizeViewController" customModule="HealthTrendFinder" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="qWE-OR-0Lb"/>
-                        <viewControllerLayoutGuide type="bottom" id="UEq-yr-a3X"/>
+                        <viewControllerLayoutGuide type="top" id="lBz-ad-wqe"/>
+                        <viewControllerLayoutGuide type="bottom" id="qRz-p7-y3s"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="MAu-Kn-1bq">
+                    <view key="view" contentMode="scaleToFill" id="Us5-c3-8nM">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enabling HealthKit will allow you to use the features of this app." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3bc-Hj-sAs">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enable HealthKit to use the features of this app" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ovh-zJ-bBl">
                                 <rect key="frame" x="16" y="93" width="568" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CCg-aS-Mcd">
-                                <rect key="frame" x="16" y="172" width="568" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Authorize HealthKit">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cpi-bd-n7b">
+                                <rect key="frame" x="200" y="205" width="200" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="Enable HealthKit">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="EnableButton:" destination="499-z1-wo7" eventType="touchUpInside" id="OPc-IW-RTb"/>
-                                    <action selector="authorizeButton:" destination="499-z1-wo7" eventType="touchUpInside" id="lQ4-Cw-6I3"/>
+                                    <action selector="authorizationButton:" destination="44t-CV-CE8" eventType="touchUpInside" id="0t9-B2-uAQ"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="LQ6-KP-7xw"/>
+                    <navigationItem key="navigationItem" id="f39-EX-dqH"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mu3-Jl-bJj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b2Y-fZ-1Rs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4871" y="-987"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="DDs-3e-6N0">
-            <objects>
-                <navigationController id="Cvq-AR-7C3" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gyq-Q3-gMu">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="jLl-gg-vr2" kind="relationship" relationship="rootViewController" id="lcA-QC-Gna"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BuT-R9-Jd3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4144" y="-244"/>
+            <point key="canvasLocation" x="4913" y="-987"/>
         </scene>
         <!--Trend Cards-->
         <scene sceneID="NhE-ly-wNh">

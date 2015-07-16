@@ -16,10 +16,9 @@
 		2BDCAC9A1B41A625002A7F28 /* HealthTrendFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDCAC991B41A625002A7F28 /* HealthTrendFinderTests.swift */; };
 		2BDCACA41B41A7CC002A7F28 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDCACA31B41A7CC002A7F28 /* CardView.swift */; };
 		2BDCACA61B41A80A002A7F28 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDCACA51B41A80A002A7F28 /* CardViewController.swift */; };
+		710756B61B581A0500658461 /* HKAuthorizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710756B51B581A0500658461 /* HKAuthorizeViewController.swift */; };
 		71542AB61B4AED1100E6A112 /* HKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71542AB51B4AED1100E6A112 /* HKManager.swift */; };
 		71E1F4131B5370130065D4EB /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71E1F4121B5370130065D4EB /* HealthKit.framework */; };
-		71F2BB391B545820009C08BC /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F2BB381B545820009C08BC /* AnalysisViewController.swift */; };
-		71F5F4E91B5703AB00E5D7CD /* EnableHealthKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F5F4E81B5703AB00E5D7CD /* EnableHealthKitViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,11 +45,10 @@
 		2BDCAC991B41A625002A7F28 /* HealthTrendFinderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTrendFinderTests.swift; sourceTree = "<group>"; };
 		2BDCACA31B41A7CC002A7F28 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		2BDCACA51B41A80A002A7F28 /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
+		710756B51B581A0500658461 /* HKAuthorizeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HKAuthorizeViewController.swift; sourceTree = "<group>"; };
 		71542AB21B4AE90400E6A112 /* HealthTrendFinder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HealthTrendFinder.entitlements; sourceTree = "<group>"; };
 		71542AB51B4AED1100E6A112 /* HKManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HKManager.swift; sourceTree = "<group>"; };
 		71E1F4121B5370130065D4EB /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
-		71F2BB381B545820009C08BC /* AnalysisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
-		71F5F4E81B5703AB00E5D7CD /* EnableHealthKitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnableHealthKitViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,8 +105,7 @@
 				2BDCAC831B41A625002A7F28 /* AppDelegate.swift */,
 				2BDCAC851B41A625002A7F28 /* ViewController.swift */,
 				2BDCAC871B41A625002A7F28 /* Main.storyboard */,
-				71F2BB381B545820009C08BC /* AnalysisViewController.swift */,
-				71F5F4E81B5703AB00E5D7CD /* EnableHealthKitViewController.swift */,
+				710756B51B581A0500658461 /* HKAuthorizeViewController.swift */,
 				71542AB51B4AED1100E6A112 /* HKManager.swift */,
 				2BDCACA31B41A7CC002A7F28 /* CardView.swift */,
 				2BDCACA51B41A80A002A7F28 /* CardViewController.swift */,
@@ -250,12 +247,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BDCACA61B41A80A002A7F28 /* CardViewController.swift in Sources */,
-				71F5F4E91B5703AB00E5D7CD /* EnableHealthKitViewController.swift in Sources */,
 				2B9488871B43060E0028B70B /* AnalysisTools.swift in Sources */,
+				710756B61B581A0500658461 /* HKAuthorizeViewController.swift in Sources */,
 				71542AB61B4AED1100E6A112 /* HKManager.swift in Sources */,
 				2BDCAC861B41A625002A7F28 /* ViewController.swift in Sources */,
 				2BDCACA41B41A7CC002A7F28 /* CardView.swift in Sources */,
-				71F2BB391B545820009C08BC /* AnalysisViewController.swift in Sources */,
 				2BDCAC841B41A625002A7F28 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
