@@ -19,7 +19,6 @@
 		7112612B1B54202400CF39A8 /* ActivityDataCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 711261221B54202400CF39A8 /* ActivityDataCollector.m */; };
 		7112612C1B54202400CF39A8 /* DataCollectorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 711261241B54202400CF39A8 /* DataCollectorManager.m */; };
 		7112612D1B54202400CF39A8 /* HealthKitDataCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 711261261B54202400CF39A8 /* HealthKitDataCollector.m */; };
-		7112612E1B54202400CF39A8 /* HealthTrendFinder-Bridging-Header.h alias in Resources */ = {isa = PBXBuildFile; fileRef = 711261281B54202400CF39A8 /* HealthTrendFinder-Bridging-Header.h alias */; };
 		7112612F1B54202400CF39A8 /* WeatherDataCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 7112612A1B54202400CF39A8 /* WeatherDataCollector.m */; };
 		7112613A1B5420D700CF39A8 /* ActivityDataItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 711261371B5420D700CF39A8 /* ActivityDataItem.m */; };
 		7112613B1B5420D700CF39A8 /* ActivityDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 711261391B5420D700CF39A8 /* ActivityDataSet.m */; };
@@ -59,7 +58,6 @@
 		711261251B54202400CF39A8 /* HealthKitDataCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthKitDataCollector.h; sourceTree = "<group>"; };
 		711261261B54202400CF39A8 /* HealthKitDataCollector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthKitDataCollector.m; sourceTree = "<group>"; };
 		711261271B54202400CF39A8 /* HealthTrendFinder-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HealthTrendFinder-Bridging-Header.h"; sourceTree = "<group>"; };
-		711261281B54202400CF39A8 /* HealthTrendFinder-Bridging-Header.h alias */ = {isa = PBXFileReference; lastKnownFileType = file; path = "HealthTrendFinder-Bridging-Header.h alias"; sourceTree = "<group>"; };
 		711261291B54202400CF39A8 /* WeatherDataCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherDataCollector.h; sourceTree = "<group>"; };
 		7112612A1B54202400CF39A8 /* WeatherDataCollector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherDataCollector.m; sourceTree = "<group>"; };
 		711261361B5420D700CF39A8 /* ActivityDataItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityDataItem.h; sourceTree = "<group>"; };
@@ -109,7 +107,6 @@
 				711261251B54202400CF39A8 /* HealthKitDataCollector.h */,
 				711261261B54202400CF39A8 /* HealthKitDataCollector.m */,
 				711261271B54202400CF39A8 /* HealthTrendFinder-Bridging-Header.h */,
-				711261281B54202400CF39A8 /* HealthTrendFinder-Bridging-Header.h alias */,
 				711261291B54202400CF39A8 /* WeatherDataCollector.h */,
 				7112612A1B54202400CF39A8 /* WeatherDataCollector.m */,
 				71542AB51B4AED1100E6A112 /* HKManager.swift */,
@@ -286,7 +283,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BDCAC891B41A625002A7F28 /* Main.storyboard in Resources */,
-				7112612E1B54202400CF39A8 /* HealthTrendFinder-Bridging-Header.h alias in Resources */,
 				2BDCAC8E1B41A625002A7F28 /* LaunchScreen.xib in Resources */,
 				2BDCAC8B1B41A625002A7F28 /* Images.xcassets in Resources */,
 			);
