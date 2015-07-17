@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Foundation
+import HealthKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +17,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        let UnknownString = "Unknown"
+        
+        var healthManager = HKManager()
+        
+        // Read basic data
+        var readProfile = healthManager.readProfile()
+        healthManager.readProfile()
+        println("Profile Read successfully")
+        var basicInfo = [String]()
+        println(readProfile.age == nil ? UnknownString : String(readProfile.age!))
+        basicInfo.append(readProfile.age == nil ? UnknownString : String(readProfile.age!))
+        // Save sex and blood type to array here
+        
+        
+        
         // Override point for customization after application launch.
         return true
     }
