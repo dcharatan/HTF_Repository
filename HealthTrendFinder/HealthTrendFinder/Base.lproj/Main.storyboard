@@ -85,7 +85,7 @@
         <!--HealthKit-->
         <scene sceneID="61I-Qo-fG1">
             <objects>
-                <viewController id="jLl-gg-vr2" sceneMemberID="viewController">
+                <viewController id="jLl-gg-vr2" customClass="EnableHealthKitViewController" customModule="HealthTrendFinder" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7kG-Xt-5gz"/>
                         <viewControllerLayoutGuide type="bottom" id="2AM-jw-0ic"/>
@@ -94,15 +94,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sh6-fo-Hh0">
-                                <rect key="frame" x="16" y="187" width="568" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Enable HealthKit to use the features of this app" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qdP-SU-OC4">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xyl-Uu-s60">
+                                <rect key="frame" x="200" y="200" width="200" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Authorize HealthKit">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="authorizationButton:" destination="jLl-gg-vr2" eventType="touchUpInside" id="8Vq-wd-qD1"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable HealthKit to use this app" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qdP-SU-OC4">
                                 <rect key="frame" x="16" y="116" width="568" height="46"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="46" id="vbR-ib-jR3"/>
+                                    <constraint firstAttribute="height" constant="46" id="49B-cQ-K75"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -111,19 +116,21 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="qdP-SU-OC4" firstAttribute="trailing" secondItem="5an-eE-0I6" secondAttribute="trailingMargin" id="77Q-mJ-SL8"/>
-                            <constraint firstItem="Sh6-fo-Hh0" firstAttribute="leading" secondItem="5an-eE-0I6" secondAttribute="leadingMargin" id="9CA-eh-HHM"/>
-                            <constraint firstItem="Sh6-fo-Hh0" firstAttribute="top" secondItem="qdP-SU-OC4" secondAttribute="bottom" constant="23" id="Utc-uY-Clq"/>
-                            <constraint firstItem="qdP-SU-OC4" firstAttribute="trailing" secondItem="Sh6-fo-Hh0" secondAttribute="trailing" id="dl5-tQ-mXk"/>
-                            <constraint firstItem="qdP-SU-OC4" firstAttribute="leading" secondItem="Sh6-fo-Hh0" secondAttribute="leading" id="h5K-jF-p8W"/>
-                            <constraint firstItem="qdP-SU-OC4" firstAttribute="top" secondItem="7kG-Xt-5gz" secondAttribute="bottom" constant="54" id="wsJ-ZV-e6z"/>
+                            <constraint firstItem="qdP-SU-OC4" firstAttribute="top" secondItem="7kG-Xt-5gz" secondAttribute="bottom" constant="52" id="GPR-lH-E02"/>
+                            <constraint firstItem="xyl-Uu-s60" firstAttribute="top" secondItem="qdP-SU-OC4" secondAttribute="bottom" constant="38" id="UbA-ho-yew"/>
+                            <constraint firstItem="qdP-SU-OC4" firstAttribute="centerX" secondItem="xyl-Uu-s60" secondAttribute="centerX" id="e25-tp-hy3"/>
+                            <constraint firstItem="qdP-SU-OC4" firstAttribute="trailing" secondItem="5an-eE-0I6" secondAttribute="trailingMargin" id="gtc-iJ-KxQ"/>
+                            <constraint firstItem="qdP-SU-OC4" firstAttribute="leading" secondItem="5an-eE-0I6" secondAttribute="leadingMargin" id="jUU-7F-f44"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="HealthKit" id="Z6M-P2-FTl"/>
+                    <connections>
+                        <outlet property="textLabel" destination="qdP-SU-OC4" id="oMZ-OU-B2I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ncn-px-rv2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4871" y="-244"/>
+            <point key="canvasLocation" x="4877" y="-928"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DDs-3e-6N0">
@@ -139,7 +146,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BuT-R9-Jd3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4144" y="-244"/>
+            <point key="canvasLocation" x="4169" y="-928"/>
         </scene>
         <!--Trend Cards-->
         <scene sceneID="NhE-ly-wNh">
@@ -258,7 +265,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pRq-AS-Nyw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2662" y="-244"/>
+            <point key="canvasLocation" x="2670" y="-244"/>
         </scene>
     </scenes>
     <resources>
