@@ -9,12 +9,7 @@
 import UIKit
 
 class InfoViewController: UITableViewController {
-    
-    
-    
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
