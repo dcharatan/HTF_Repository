@@ -46,6 +46,7 @@ class CardViewController: UIViewController, UIGestureRecognizerDelegate, UIScrol
         cardScrollView.delegate = self
         
         
+        
         let formatter = NSDateFormatter()
         formatter.dateStyle = .LongStyle
         formatter.timeStyle = .MediumStyle
@@ -55,7 +56,7 @@ class CardViewController: UIViewController, UIGestureRecognizerDelegate, UIScrol
         let UnknownString = "Unknown"
         
         var healthManager = HKManager()
-
+        
         // Read basic data
         
         var readProfile = healthManager.readProfile()
@@ -65,7 +66,6 @@ class CardViewController: UIViewController, UIGestureRecognizerDelegate, UIScrol
         println(readProfile.age == nil ? UnknownString : String(readProfile.age!))
         basicInfo.append(readProfile.age == nil ? UnknownString : String(readProfile.age!))
         println(readProfile.bloodtype)
->>>>>>> parent of 34ea507... Added function for most HealthKit services (all HKQuantityTypes)
         // Save sex and blood type to array here
         var stepData = [Double]()
         healthManager.stepsInPastWeek({Double, NSError in
@@ -77,12 +77,6 @@ class CardViewController: UIViewController, UIGestureRecognizerDelegate, UIScrol
         healthManager.stepsAllTime({Double, NSError in
             println("finished")
         })
-<<<<<<< HEAD
->>>>>>> origin/master
-=======
->>>>>>> parent of 34ea507... Added function for most HealthKit services (all HKQuantityTypes)
-=======
->>>>>>> parent of 977bf33... Merge remote-tracking branch 'origin/master'
     }
     
     // This is called when cardScrollView begins to scroll.
