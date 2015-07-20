@@ -81,6 +81,32 @@ class HKManager {
         if error != nil {
             println("Error reading Blood type: \(error)")
         }
+        enum HKBloodType : Int {
+            case NotSet
+            case APositive
+            case ANegative
+            case BPositive
+            case BNegative
+            case ABPositive
+            case ABNegative
+            case OPositive
+            case ONegative
+            
+            var description : String {
+                switch self {
+                    // Use Internationalization, as appropriate.
+                case .APositive: return "APositive";
+                case .ANegative: return "ANegative";
+                case .BPositive: return "BPositive";
+                case .BNegative: return "BNegative";
+                case .ABPositive: return "ABPositive";
+                case .ABNegative: return "ABNegative";
+                case .OPositive: return "OPositive";
+                case .ONegative: return "ONegative";
+                default: return "";
+                }
+            }
+        }
         // 4. Return the information read in a tuple
         return(age, biologicalSex, bloodType)
     }
@@ -122,32 +148,135 @@ class HKManager {
         self.healthKitStore.executeQuery(sampleQuery)
     }
     
-    func recentSteps(completion: (Double, NSError?) -> () )
+    func stepsInPastWeek(completion: (Double, NSError?) -> () )
     {
-        // The type of data we are requesting
-        let type = HKSampleType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)
-        
-        // Our search predicate which will fetch data from now until a day ago
-        let predicate = HKQuery.predicateForSamplesWithStartDate(NSDate.distantPast() as! NSDate, endDate: NSDate(), options: .None)
-        
-        // The actual HealthKit Query which will fetch all of the steps and sub them up for us.
-        let query = HKSampleQuery(sampleType: type, predicate: predicate, limit: 0, sortDescriptors: nil) { query, results, error in
-            var steps: Double = 0
+        var weekStepData = [Double]()
+        for x in 1...7 {
+            // The type of data we are requesting
+            let type = HKSampleType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)
+            var daysAgo = -1 * x
+            var daysSince = (-1 * x) + 1
+            // Our search predicate which will fetch data from now until a day ago
+            let predicate = HKQuery.predicateForSamplesWithStartDate(NSCalendar.currentCalendar().dateByAddingUnit(.CalendarUnitDay, value: daysAgo, toDate: NSDate(), options: nil), endDate: NSCalendar.currentCalendar().dateByAddingUnit(.CalendarUnitDay, value: daysSince, toDate: NSDate(), options: nil), options: .None)
             
-            if results?.count > 0
-            {
-                for result in results as! [HKQuantitySample]
+            // The actual HealthKit Query which will fetch all of the steps and sub them up for us.
+            let query = HKSampleQuery(sampleType: type, predicate: predicate, limit: 0, sortDescriptors: nil) { query, results, error in
+                var steps: Double = 0
+                
+                
+                if results?.count > 0
                 {
-                    steps += result.quantity.doubleValueForUnit(HKUnit.countUnit())
+                    for result in results as! [HKQuantitySample]
+                    {
+                        steps += result.quantity.doubleValueForUnit(HKUnit.countUnit())
+                    }
+                }
+                
+                completion(steps, error)
+                
+                weekStepData.append(steps)
+                if weekStepData.count > 6 {
+                    for item in weekStepData {
+                        println(item)
+                    }
                 }
             }
             
-            completion(steps, error)
+            self.healthKitStore.executeQuery(query)
+            
         }
-        
-        self.healthKitStore.executeQuery(query)
-        println(query)
     }
+    func stepsInPastDay(completion: (Double, NSError?) -> () )
+    {
+        var dayStepData = [Double]()
+        for x in 1...24 {
+            // The type of data we are requesting
+            let type = HKSampleType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)
+            var hoursAgo = -1 * x
+            var hoursSince = (-1 * x) + 1
+            // Our search predicate which will fetch data from now until a day ago
+            let predicate = HKQuery.predicateForSamplesWithStartDate(NSCalendar.currentCalendar().dateByAddingUnit(.CalendarUnitHour, value: hoursAgo, toDate: NSDate(), options: nil), endDate: NSCalendar.currentCalendar().dateByAddingUnit(.CalendarUnitHour, value: hoursSince, toDate: NSDate(), options: nil), options: .None)
+            
+            // The actual HealthKit Query which will fetch all of the steps and sub them up for us.
+            let query = HKSampleQuery(sampleType: type, predicate: predicate, limit: 0, sortDescriptors: nil) { query, results, error in
+                var steps: Double = 0
+                
+                
+                if results?.count > 0
+                {
+                    for result in results as! [HKQuantitySample]
+                    {
+                        steps += result.quantity.doubleValueForUnit(HKUnit.countUnit())
+                    }
+                }
+                
+                completion(steps, error)
+                
+                dayStepData.append(steps)
+                if dayStepData.count > 23 {
+                    for item in dayStepData {
+                        println(item)
+                    }
+                }
+            }
+            
+            self.healthKitStore.executeQuery(query)
+            println(dayStepData.count)
+        }
+        println(dayStepData.count)
+    }
+    
+    func stepsAllTime(completion: (Double, NSError?) -> () )
+    {
+        var allTimeStepData = [Double]()
+        var y: Int = 0
+        var x = 0
+
+        while y < 3 {
+            // The type of data we are requesting
+            let type = HKSampleType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)
+            x += -1
+            var daysAgo = x
+            var daysSince = x + 1
+            // Our search predicate which will fetch data from now until a day ago
+            let predicate = HKQuery.predicateForSamplesWithStartDate(NSCalendar.currentCalendar().dateByAddingUnit(.CalendarUnitDay, value: daysAgo, toDate: NSDate(), options: nil), endDate: NSCalendar.currentCalendar().dateByAddingUnit(.CalendarUnitDay, value: daysSince, toDate: NSDate(), options: nil), options: .None)
+            
+            // The actual HealthKit Query which will fetch all of the steps and sub them up for us.
+            let query = HKSampleQuery(sampleType: type, predicate: predicate, limit: 0, sortDescriptors: nil) { query, results, error in
+                var steps: Double = 0
+                
+                
+                if results?.count > 0
+                {
+                    for result in results as! [HKQuantitySample]
+                    {
+                        steps += result.quantity.doubleValueForUnit(HKUnit.countUnit())
+                    }
+                }
+                
+                completion(steps, error)
+                allTimeStepData.append(steps)
+                
+                if steps == 0.0 && y == 2 {
+                    y += 1
+                } else if steps == 0.0 && y == 1 {
+                    y += 1
+                } else if steps == 0.0 {
+                    y += 1
+                } else {
+                   y = 0
+                }
+                println(y)
+            }
+            
+            self.healthKitStore.executeQuery(query)
+            println(allTimeStepData.count)
+            for item in allTimeStepData {
+                println(item)
+            }
+        }
+    }
+    
     func saveBMISample(bmi:Double, date:NSDate ) {
         // 1. Create a BMI Sample
         let bmiType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMassIndex)

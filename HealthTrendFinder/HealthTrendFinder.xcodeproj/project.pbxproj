@@ -103,15 +103,10 @@
 			isa = PBXGroup;
 			children = (
 				71542AB21B4AE90400E6A112 /* HealthTrendFinder.entitlements */,
+				71F691451B59B3B4005B990E /* View Controllers */,
 				2B9488851B4305710028B70B /* Analysis */,
-				2BDCAC831B41A625002A7F28 /* AppDelegate.swift */,
-				2BDCAC851B41A625002A7F28 /* ViewController.swift */,
+				71F691461B59B419005B990E /* Managers */,
 				2BDCAC871B41A625002A7F28 /* Main.storyboard */,
-				71F1A71B1B584321006B2D9E /* EnableHealthKitViewController.swift */,
-				71F1A71F1B585506006B2D9E /* InfoViewController.swift */,
-				71F4E7C81B59751300F6AE7B /* HKManager.swift */,
-				2BDCACA31B41A7CC002A7F28 /* CardView.swift */,
-				2BDCACA51B41A80A002A7F28 /* CardViewController.swift */,
 				2BDCAC8A1B41A625002A7F28 /* Images.xcassets */,
 				2BDCAC8C1B41A625002A7F28 /* LaunchScreen.xib */,
 				2BDCAC811B41A625002A7F28 /* Supporting Files */,
@@ -142,6 +137,27 @@
 				2BDCAC981B41A625002A7F28 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		71F691451B59B3B4005B990E /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2BDCAC851B41A625002A7F28 /* ViewController.swift */,
+				71F1A71B1B584321006B2D9E /* EnableHealthKitViewController.swift */,
+				71F1A71F1B585506006B2D9E /* InfoViewController.swift */,
+				2BDCACA51B41A80A002A7F28 /* CardViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		71F691461B59B419005B990E /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				2BDCAC831B41A625002A7F28 /* AppDelegate.swift */,
+				2BDCACA31B41A7CC002A7F28 /* CardView.swift */,
+				71F4E7C81B59751300F6AE7B /* HKManager.swift */,
+			);
+			name = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,6 +210,9 @@
 						CreatedOnToolsVersion = 6.3.1;
 						DevelopmentTeam = W6PL5NP4K5;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.HealthKit = {
 								enabled = 1;
 							};

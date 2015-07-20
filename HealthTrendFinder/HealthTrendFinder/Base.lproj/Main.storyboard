@@ -173,11 +173,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Trend Cards" id="v4O-kJ-CTp">
-                        <barButtonItem key="leftBarButtonItem" image="GearIcon" id="Plr-8l-M0g">
-                            <connections>
-                                <segue destination="Jh5-QB-uoN" kind="show" id="ucd-Ed-7lO"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" image="GearIcon" id="Plr-8l-M0g"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="VIz-NW-xRk">
                             <connections>
                                 <action selector="plusButtonPressed:" destination="NQ9-DS-yL2" id="QvX-pr-Skk"/>
