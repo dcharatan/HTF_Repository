@@ -18,6 +18,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = .LongStyle
+        formatter.timeStyle = .MediumStyle
+        
+        println(formatter.stringFromDate(NSDate()))
+        
+        let UnknownString = "Unknown"
+        
+        var healthManager = HKManager()
+        
+        
+        healthManager.updateHeight()
+        
+        
+        // Read step data
+        var stepData = [Double]()
+        healthManager.stepsInPastWeek({Double, NSError in
+            println("done")
+        })
+        healthManager.stepsInPastDay({Double, NSError in
+            println("complete")
+        })
 
         // Override point for customization after application launch.
         return true

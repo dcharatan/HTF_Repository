@@ -45,38 +45,6 @@ class CardViewController: UIViewController, UIGestureRecognizerDelegate, UIScrol
         // This allows tracking scrolling.
         cardScrollView.delegate = self
         
-        
-        
-        let formatter = NSDateFormatter()
-        formatter.dateStyle = .LongStyle
-        formatter.timeStyle = .MediumStyle
-        
-        println(formatter.stringFromDate(NSDate()))
-        
-        let UnknownString = "Unknown"
-        
-        var healthManager = HKManager()
-        
-        // Read basic data
-        
-        var readProfile = healthManager.readProfile()
-        healthManager.readProfile()
-        println("Profile Read successfully")
-        var basicInfo = [String]()
-        println(readProfile.age == nil ? UnknownString : String(readProfile.age!))
-        basicInfo.append(readProfile.age == nil ? UnknownString : String(readProfile.age!))
-        println(readProfile.bloodtype)
-        // Save sex and blood type to array here
-        var stepData = [Double]()
-        healthManager.stepsInPastWeek({Double, NSError in
-            println("done")
-        })
-        healthManager.stepsInPastDay({Double, NSError in
-            println("complete")
-        })
-        healthManager.stepsAllTime({Double, NSError in
-            println("finished")
-        })
     }
     
     // This is called when cardScrollView begins to scroll.
