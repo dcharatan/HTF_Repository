@@ -14,104 +14,31 @@ class HKManager {
     
     let healthKitStore:HKHealthStore = HKHealthStore()
     
-    func authorizeHealthKit(completion: ((success:Bool, error:NSError!) -> Void)!)
-    {
-        // 1. Set the types you want to read from HK Store
+    func authorizeHealthKit(completion: ((success:Bool, error:NSError!) -> Void)!) {
+        // This keeps track of the types that will be read.
         let healthKitTypesToRead = [
-            HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierDateOfBirth),
-            HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierBloodType),
-            HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierBiologicalSex),
             HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass),
             HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeight),
             HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount),
-            HKObjectType.workoutType()
-        ]
-        let healthKitTypesToWrite = [
-            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMassIndex),
-            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierActiveEnergyBurned),
-            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDistanceWalkingRunning),
-            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount),
-            HKQuantityType.workoutType()
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMassIndex)
         ]
         
-        // 3. If the store is not available, return an error and don't go on.
-        if !HKHealthStore.isHealthDataAvailable()
-        {
+        // This throws an error if HealthKit isn't available.
+        if !HKHealthStore.isHealthDataAvailable() {
             let error = NSError(domain: "com.Test", code: 2, userInfo: [NSLocalizedDescriptionKey:"HealthKit is not available in this device"])
-            if( completion != nil )
-            {
+            if completion != nil {
                 completion(success:false, error:error)
             }
-            return;
+            return
         }
         
-        // 4. Request HealthKit authorization
-        healthKitStore.requestAuthorizationToShareTypes(Set(healthKitTypesToWrite), readTypes: Set(healthKitTypesToRead)) { (success, error) -> Void in
-            
-            if( completion != nil )
-            {
-                completion(success:success,error:error)
+        // This requests HealthKit authorization.
+        healthKitStore.requestAuthorizationToShareTypes(Set(), readTypes: Set(arrayLiteral: healthKitTypesToRead)) {(success, error) -> Void in
+            if completion != nil {
+                completion(success: success, error: error)
             }
         }
     }
-    
-    func readProfile() -> ( age:Int?, biologicalsex:HKBiologicalSexObject?, bloodtype:HKBloodTypeObject?)
-    {
-        var error:NSError?
-        var age:Int?
-        
-        // 1. Request birthday and calculate age
-        if let birthDay = healthKitStore.dateOfBirthWithError(&error)
-        {
-            let today = NSDate()
-            let calendar = NSCalendar.currentCalendar()
-            let differenceComponents = NSCalendar.currentCalendar().components(.CalendarUnitYear, fromDate: birthDay, toDate: today, options: NSCalendarOptions(0) )
-            age = differenceComponents.year
-        }
-        if error != nil {
-            println("Error reading Biological Sex: \(error)")
-        }
-        // 2. Read biological sex
-        var biologicalSex:HKBiologicalSexObject? = healthKitStore.biologicalSexWithError(&error);
-        if error != nil {
-            println("Error reading Biological Sex: \(error)")
-        }
-        // 3. Read Blood Type
-        var bloodType:HKBloodTypeObject? = healthKitStore.bloodTypeWithError(&error);
-        if error != nil {
-            println("Error reading Blood type: \(error)")
-        }
-        enum HKBloodType : Int {
-            case NotSet
-            case APositive
-            case ANegative
-            case BPositive
-            case BNegative
-            case ABPositive
-            case ABNegative
-            case OPositive
-            case ONegative
-            
-            var description : String {
-                switch self {
-                    // Use Internationalization, as appropriate.
-                case .APositive: return "APositive";
-                case .ANegative: return "ANegative";
-                case .BPositive: return "BPositive";
-                case .BNegative: return "BNegative";
-                case .ABPositive: return "ABPositive";
-                case .ABNegative: return "ABNegative";
-                case .OPositive: return "OPositive";
-                case .ONegative: return "ONegative";
-                default: return "";
-                }
-            }
-        }
-        // 4. Return the information read in a tuple
-        return(age, biologicalSex, bloodType)
-    }
-    
-    
     
     func readMostRecentSample(sampleType:HKSampleType , completion: ((HKSample!, NSError!) -> Void)!) {
         
@@ -128,17 +55,17 @@ class HKManager {
         
         // 4. Build samples query
         let sampleQuery = HKSampleQuery(sampleType: sampleType, predicate: mostRecentPredicate, limit: limit, sortDescriptors: [sortDescriptor])
-            { (sampleQuery, results, error) -> Void in
+            {(sampleQuery, results, error) -> Void in
                 
                 if let queryError = error {
-                    completion(nil,error)
-                    return;
+                    completion(nil, error)
+                    return
                 }
                 
                 // Get First Sample
                 let mostRecentSample = results.first as? HKQuantitySample
                 
-                //Execute the completion closure
+                // Execute the completion closure
                 if completion != nil {
                     completion(mostRecentSample,nil)
                 }
@@ -148,8 +75,7 @@ class HKManager {
         self.healthKitStore.executeQuery(sampleQuery)
     }
     
-    func stepsInPastWeek(completion: (Double, NSError?) -> () )
-    {
+    func stepsInPastWeek(completion: (Double, NSError?) -> () ) {
         var weekStepData = [Double]()
         for x in 1...7 {
             // The type of data we are requesting
@@ -164,10 +90,8 @@ class HKManager {
                 var steps: Double = 0
                 
                 
-                if results?.count > 0
-                {
-                    for result in results as! [HKQuantitySample]
-                    {
+                if results?.count > 0 {
+                    for result in results as! [HKQuantitySample] {
                         steps += result.quantity.doubleValueForUnit(HKUnit.countUnit())
                     }
                 }
@@ -186,8 +110,7 @@ class HKManager {
             
         }
     }
-    func stepsInPastDay(completion: (Double, NSError?) -> () )
-    {
+    func stepsInPastDay(completion: (Double, NSError?) -> () ) {
         var dayStepData = [Double]()
         for x in 1...24 {
             // The type of data we are requesting
@@ -202,10 +125,8 @@ class HKManager {
                 var steps: Double = 0
                 
                 
-                if results?.count > 0
-                {
-                    for result in results as! [HKQuantitySample]
-                    {
+                if results?.count > 0 {
+                    for result in results as! [HKQuantitySample] {
                         steps += result.quantity.doubleValueForUnit(HKUnit.countUnit())
                     }
                 }
@@ -226,8 +147,7 @@ class HKManager {
         println(dayStepData.count)
     }
     
-    func stepsAllTime(completion: (Double, NSError?) -> () )
-    {
+    func stepsAllTime(completion: (Double, NSError?) -> () ) {
         var allTimeStepData = [Double]()
         var y: Int = 0
         var x = 0
@@ -246,10 +166,8 @@ class HKManager {
                 var steps: Double = 0
                 
                 
-                if results?.count > 0
-                {
-                    for result in results as! [HKQuantitySample]
-                    {
+                if results?.count > 0 {
+                    for result in results as! [HKQuantitySample] {
                         steps += result.quantity.doubleValueForUnit(HKUnit.countUnit())
                     }
                 }
@@ -276,21 +194,4 @@ class HKManager {
             }
         }
     }
-    
-    func saveBMISample(bmi:Double, date:NSDate ) {
-        // 1. Create a BMI Sample
-        let bmiType = HKQuantityType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMassIndex)
-        let bmiQuantity = HKQuantity(unit: HKUnit.countUnit(), doubleValue: bmi)
-        let bmiSample = HKQuantitySample(type: bmiType, quantity: bmiQuantity, startDate: date, endDate: date)
-        
-        // 2. Save the sample in the store
-        healthKitStore.saveObject(bmiSample, withCompletion: { (success, error) -> Void in
-            if( error != nil ) {
-                println("Error saving BMI sample: \(error.localizedDescription)")
-            } else {
-                println("BMI sample saved successfully!")
-            }
-        })
-    }
-
 }
