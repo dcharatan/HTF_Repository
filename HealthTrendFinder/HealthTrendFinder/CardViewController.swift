@@ -45,12 +45,6 @@ class CardViewController: UIViewController, UIGestureRecognizerDelegate, UIScrol
         // This allows tracking scrolling.
         cardScrollView.delegate = self
         
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> parent of 34ea507... Added function for most HealthKit services (all HKQuantityTypes)
-        
         
         let formatter = NSDateFormatter()
         formatter.dateStyle = .LongStyle
@@ -61,9 +55,7 @@ class CardViewController: UIViewController, UIGestureRecognizerDelegate, UIScrol
         let UnknownString = "Unknown"
         
         var healthManager = HKManager()
-        
-<<<<<<< HEAD
-=======
+
         // Read basic data
         
         var readProfile = healthManager.readProfile()
@@ -89,6 +81,8 @@ class CardViewController: UIViewController, UIGestureRecognizerDelegate, UIScrol
 >>>>>>> origin/master
 =======
 >>>>>>> parent of 34ea507... Added function for most HealthKit services (all HKQuantityTypes)
+=======
+>>>>>>> parent of 977bf33... Merge remote-tracking branch 'origin/master'
     }
     
     // This is called when cardScrollView begins to scroll.

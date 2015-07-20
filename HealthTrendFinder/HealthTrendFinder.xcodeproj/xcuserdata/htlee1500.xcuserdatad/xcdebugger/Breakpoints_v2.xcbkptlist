@@ -31,7 +31,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "107"
             endingLineNumber = "107"
-            landmarkName = "readProfile()"
+            landmarkName = "stepsInPastWeek(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -63,8 +63,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "226"
             endingLineNumber = "226"
-            landmarkName = "stepsInPastDay(_:)"
-            landmarkType = "5">
+            landmarkName = "HKManager"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

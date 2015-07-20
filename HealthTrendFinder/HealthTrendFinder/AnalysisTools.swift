@@ -33,27 +33,7 @@ class AnalysisTools: NSObject {
         }
         
         // This pieces together the numerator and the denominator's components to determine r.
-        return numerator / (sqrt(denominatorComponentX) * sqrt(denominatorComponentY))
-    }
-    
-    static func pccToString(r: Double) -> String {
-        switch r {
-        case 0:
-            return "Nonexistant"
-        case 0..<0.2:
-            return "Very Weak"
-        case 0.2..<0.4:
-            return "Weak"
-        case 0.4..<0.6:
-            return "Moderate"
-        case 0.6..<0.8:
-            return "Strong"
-        case 0.8..<1:
-            return "Very Strong"
-        case 1:
-            return "Perfect"
-        default:
-            return "Invalid"
-        }
+        let r: Double = numerator / (sqrt(denominatorComponentX) * sqrt(denominatorComponentY))
+        return r
     }
 }

@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2B4360631B5DA72F00A3951E /* LineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4360621B5DA72F00A3951E /* LineGraphView.swift */; };
-		2B4360651B5DA74700A3951E /* LineGraphDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4360641B5DA74700A3951E /* LineGraphDataSet.swift */; };
 		2B9488871B43060E0028B70B /* AnalysisTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9488861B43060E0028B70B /* AnalysisTools.swift */; };
 		2BDCAC841B41A625002A7F28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDCAC831B41A625002A7F28 /* AppDelegate.swift */; };
 		2BDCAC861B41A625002A7F28 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDCAC851B41A625002A7F28 /* ViewController.swift */; };
@@ -35,8 +33,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2B4360621B5DA72F00A3951E /* LineGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineGraphView.swift; sourceTree = "<group>"; };
-		2B4360641B5DA74700A3951E /* LineGraphDataSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineGraphDataSet.swift; sourceTree = "<group>"; };
 		2B9488861B43060E0028B70B /* AnalysisTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisTools.swift; sourceTree = "<group>"; };
 		2BDCAC7E1B41A625002A7F28 /* HealthTrendFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthTrendFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BDCAC821B41A625002A7F28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -84,15 +80,6 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
-		2B4360611B5DA68A00A3951E /* Graphing */ = {
-			isa = PBXGroup;
-			children = (
-				2B4360621B5DA72F00A3951E /* LineGraphView.swift */,
-				2B4360641B5DA74700A3951E /* LineGraphDataSet.swift */,
-			);
-			name = Graphing;
-			sourceTree = "<group>";
-		};
 		2B9488851B4305710028B70B /* Analysis */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,7 +110,6 @@
 		2BDCAC801B41A625002A7F28 /* HealthTrendFinder */ = {
 			isa = PBXGroup;
 			children = (
-				2B4360611B5DA68A00A3951E /* Graphing */,
 				2B4360601B5D978D00A3951E /* Views */,
 				71542AB21B4AE90400E6A112 /* HealthTrendFinder.entitlements */,
 				71F691451B59B3B4005B990E /* View Controllers */,
@@ -295,9 +281,7 @@
 				2B9488871B43060E0028B70B /* AnalysisTools.swift in Sources */,
 				2BDCAC861B41A625002A7F28 /* ViewController.swift in Sources */,
 				2BDCACA41B41A7CC002A7F28 /* CardView.swift in Sources */,
-				2B4360631B5DA72F00A3951E /* LineGraphView.swift in Sources */,
 				71F1A71C1B584321006B2D9E /* EnableHealthKitViewController.swift in Sources */,
-				2B4360651B5DA74700A3951E /* LineGraphDataSet.swift in Sources */,
 				71F1A7201B585506006B2D9E /* InfoViewController.swift in Sources */,
 				2BDCAC841B41A625002A7F28 /* AppDelegate.swift in Sources */,
 			);
