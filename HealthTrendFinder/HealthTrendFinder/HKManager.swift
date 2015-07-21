@@ -12,6 +12,9 @@ import UIKit
 
 class HKManager {
     
+    var allTimeStepsTotal: Double = 0
+    var allTimeStepsSum: Double = 0
+    var allTimeSteps = [Double]()
     var unknown = "Unknown"
     var height:HKQuantitySample?
     let healthKitStore:HKHealthStore = HKHealthStore()
@@ -25,6 +28,11 @@ class HKManager {
             HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMassIndex)
         ]
         
+        // This serves no purpose yet but is need to prevent the app from breaking
+        let healthKitTypesToWrite = [
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMassIndex)
+        ]
+        
         // This throws an error if HealthKit isn't available.
         if !HKHealthStore.isHealthDataAvailable() {
             let error = NSError(domain: "com.Test", code: 2, userInfo: [NSLocalizedDescriptionKey:"HealthKit is not available in this device"])
@@ -35,7 +43,7 @@ class HKManager {
         }
         
         // This requests HealthKit authorization.
-        healthKitStore.requestAuthorizationToShareTypes(Set(), readTypes: Set(arrayLiteral: healthKitTypesToRead)) {(success, error) -> Void in
+        healthKitStore.requestAuthorizationToShareTypes(Set(arrayLiteral: healthKitTypesToWrite), readTypes: Set(arrayLiteral: healthKitTypesToRead)) {(success, error) -> Void in
             if completion != nil {
                 completion(success: success, error: error)
             }
@@ -210,18 +218,12 @@ class HKManager {
     }
     
     func stepsAllTime(completion: (Double, NSError?) -> () ) {
-        var allTimeStepData = [Double]()
-        var y: Int = 0
-        var x = 0
 
-        while y < 3 {
             // The type of data we are requesting
             let type = HKSampleType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)
-            x += -1
-            var daysAgo = x
-            var daysSince = x + 1
+
             // Our search predicate which will fetch data from now until a day ago
-            let predicate = HKQuery.predicateForSamplesWithStartDate(NSCalendar.currentCalendar().dateByAddingUnit(.CalendarUnitDay, value: daysAgo, toDate: NSDate(), options: nil), endDate: NSCalendar.currentCalendar().dateByAddingUnit(.CalendarUnitDay, value: daysSince, toDate: NSDate(), options: nil), options: .None)
+            let predicate = HKQuery.predicateForSamplesWithStartDate(NSDate.distantPast() as! NSDate, endDate: NSDate(), options: .None)
             
             // The actual HealthKit Query which will fetch all of the steps and sub them up for us.
             let query = HKSampleQuery(sampleType: type, predicate: predicate, limit: 0, sortDescriptors: nil) { query, results, error in
@@ -235,25 +237,50 @@ class HKManager {
                 }
                 
                 completion(steps, error)
-                allTimeStepData.append(steps)
-                
-                if steps == 0.0 && y == 2 {
-                    y += 1
-                } else if steps == 0.0 && y == 1 {
-                    y += 1
-                } else if steps == 0.0 {
-                    y += 1
-                } else {
-                   y = 0
-                }
-                println(y)
+                self.allTimeStepsTotal += steps
+                println("Total:")
+                println(self.allTimeStepsTotal)
+                println("Sum:")
+                println(self.allTimeStepsSum)
+
             }
             
             self.healthKitStore.executeQuery(query)
-            println(allTimeStepData.count)
-            for item in allTimeStepData {
-                println(item)
+        
+        println("Moving On")
+        var x = 1
+        while self.allTimeStepsTotal != self.allTimeStepsSum {
+            
+            x += -1
+            // The type of data we are requesting
+            let sampleType = HKSampleType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)
+            var daysAgo = -1 * x
+            var daysSince = (-1 * x) + 1
+            
+            
+            // Our search predicate which will fetch data from now until a day ago
+            let samplePredicate = HKQuery.predicateForSamplesWithStartDate(NSCalendar.currentCalendar().dateByAddingUnit(.CalendarUnitDay, value: daysAgo, toDate: NSDate(), options: nil), endDate: NSCalendar.currentCalendar().dateByAddingUnit(.CalendarUnitDay, value: daysSince, toDate: NSDate(), options: nil), options: .None)
+            
+            // The actual HealthKit Query which will fetch all of the steps and sub them up for us.
+            let stepQuery = HKSampleQuery(sampleType: sampleType, predicate: samplePredicate, limit: 0, sortDescriptors: nil) { query, results, error in
+                var steps: Double = 0
+                
+                
+                if results?.count > 0 {
+                    for result in results as! [HKQuantitySample] {
+                        steps += result.quantity.doubleValueForUnit(HKUnit.countUnit())
+                    }
+                }
+                
+                completion(steps, error)
+                self.allTimeStepsSum += steps
+                println("New Sum:")
+                println(self.allTimeStepsSum)
             }
+            
+            self.healthKitStore.executeQuery(stepQuery)
+            
         }
+
     }
 }
