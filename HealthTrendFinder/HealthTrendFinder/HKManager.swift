@@ -19,33 +19,42 @@ class HKManager {
     var height:HKQuantitySample?
     let healthKitStore:HKHealthStore = HKHealthStore()
     
-    func authorizeHealthKit(completion: ((success:Bool, error:NSError!) -> Void)!) {
-        // This keeps track of the types that will be read.
+    func authorizeHealthKit(completion: ((success:Bool, error:NSError!) -> Void)!)
+    {
+        // 1. Set the types you want to read from HK Store
         let healthKitTypesToRead = [
+            HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierDateOfBirth),
+            HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierBloodType),
+            HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierBiologicalSex),
             HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass),
             HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeight),
-            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount),
-            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMassIndex)
+            HKObjectType.workoutType()
         ]
-        
-        // This serves no purpose yet but is need to prevent the app from breaking
         let healthKitTypesToWrite = [
-            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMassIndex)
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMassIndex),
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierActiveEnergyBurned),
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDistanceWalkingRunning),
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount),
+            HKQuantityType.workoutType()
         ]
         
-        // This throws an error if HealthKit isn't available.
-        if !HKHealthStore.isHealthDataAvailable() {
+        // 3. If the store is not available, return an error and don't go on.
+        if !HKHealthStore.isHealthDataAvailable()
+        {
             let error = NSError(domain: "com.Test", code: 2, userInfo: [NSLocalizedDescriptionKey:"HealthKit is not available in this device"])
-            if completion != nil {
+            if( completion != nil )
+            {
                 completion(success:false, error:error)
             }
-            return
+            return;
         }
         
-        // This requests HealthKit authorization.
-        healthKitStore.requestAuthorizationToShareTypes(Set(arrayLiteral: healthKitTypesToWrite), readTypes: Set(arrayLiteral: healthKitTypesToRead)) {(success, error) -> Void in
-            if completion != nil {
-                completion(success: success, error: error)
+        // 4. Request HealthKit authorization
+        healthKitStore.requestAuthorizationToShareTypes(Set(healthKitTypesToWrite), readTypes: Set(healthKitTypesToRead)) { (success, error) -> Void in
+            
+            if( completion != nil )
+            {
+                completion(success:success,error:error)
             }
         }
     }
@@ -249,7 +258,7 @@ class HKManager {
         
         println("Moving On")
         var x = 1
-        while self.allTimeStepsTotal != self.allTimeStepsSum {
+        while self.allTimeStepsTotal > self.allTimeStepsSum {
             
             x += -1
             // The type of data we are requesting

@@ -79,7 +79,7 @@
                     <navigationItem key="navigationItem" title="Settings" id="4hH-ZG-Lfc">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="rEt-GF-eWu">
                             <connections>
-                                <segue destination="NQ9-DS-yL2" kind="show" id="I3S-Y7-cVI"/>
+                                <segue destination="8rJ-nS-xAR" kind="presentation" id="ZqK-wL-lBU"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -100,8 +100,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xyl-Uu-s60">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xyl-Uu-s60">
                                 <rect key="frame" x="200" y="196" width="200" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="e38-d9-zZI"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Authorize HealthKit">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -110,7 +113,7 @@
                                     <action selector="authorizationButton:" destination="jLl-gg-vr2" eventType="touchUpInside" id="8Vq-wd-qD1"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enable HealthKit to use this app" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qdP-SU-OC4">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable HealthKit to use this app" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qdP-SU-OC4">
                                 <rect key="frame" x="16" y="137" width="568" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -118,6 +121,13 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xyl-Uu-s60" firstAttribute="top" secondItem="qdP-SU-OC4" secondAttribute="bottom" constant="38" id="EPr-NL-0A4"/>
+                            <constraint firstItem="qdP-SU-OC4" firstAttribute="leading" secondItem="5an-eE-0I6" secondAttribute="leadingMargin" id="HNu-gc-NDM"/>
+                            <constraint firstItem="qdP-SU-OC4" firstAttribute="centerX" secondItem="xyl-Uu-s60" secondAttribute="centerX" id="HqP-9C-6gy"/>
+                            <constraint firstItem="qdP-SU-OC4" firstAttribute="trailing" secondItem="5an-eE-0I6" secondAttribute="trailingMargin" id="kJZ-5F-p3e"/>
+                            <constraint firstItem="qdP-SU-OC4" firstAttribute="top" secondItem="7kG-Xt-5gz" secondAttribute="bottom" constant="73" id="rcC-NQ-kol"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="HealthKit" id="Z6M-P2-FTl"/>
                     <connections>
@@ -269,7 +279,4 @@
         <image name="GearIcon" width="22" height="22"/>
         <image name="GraphIcon" width="27" height="27"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="I3S-Y7-cVI"/>
-    </inferredMetricsTieBreakers>
 </document>
