@@ -18,7 +18,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = .LongStyle
+        formatter.timeStyle = .MediumStyle
+        
+        println(formatter.stringFromDate(NSDate()))
+        
+        let UnknownString = "Unknown"
+        
+        var healthManager = HKManager()
+        
+        // Read basic data
+        
+        healthManager.allTimeStepsTotal = 0.0
+        healthManager.allTimeStepsSum = 0.0
+        healthManager.stepsAllTimeTotal({Double, NSError in
+            println("All Done")
+        })
+        println("Finished executing stepsAllTime")
+        
+        
         // Override point for customization after application launch.
         return true
     }

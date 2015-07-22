@@ -9,12 +9,16 @@
 import HealthKit
 import Foundation
 import UIKit
+import Darwin
 
 class HKManager {
     
+    var x = 1
+    var checker = 0
     var allTimeStepsTotal: Double = 0
     var allTimeStepsSum: Double = 0
     var allTimeSteps = [Double]()
+    var extra: Double = 0
     var unknown = "Unknown"
     var height:HKQuantitySample?
     let healthKitStore:HKHealthStore = HKHealthStore()
@@ -226,8 +230,8 @@ class HKManager {
         println(dayStepData.count)
     }
     
-    func stepsAllTime(completion: (Double, NSError?) -> () ) {
-
+    func stepsAllTimeTotal(completion: (Double, NSError?) -> () ) {
+        var bool: Bool = true
             // The type of data we are requesting
             let type = HKSampleType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)
 
@@ -255,17 +259,28 @@ class HKManager {
             }
             
             self.healthKitStore.executeQuery(query)
-        
-        println("Moving On")
-        var x = 1
-        while self.allTimeStepsTotal > self.allTimeStepsSum {
+        while bool {
+            if allTimeStepsTotal > allTimeStepsSum {
+                self.stepsAllTime({Double, NSError in
+                    println("Executing Query....")
+                })
+                bool = false
+            }
+        }
+
+    }
+    
+    func stepsAllTime(completion: (Double, NSError?) -> Void) {
+        var stopStart = true
+        while stopStart {
             
             x += -1
             // The type of data we are requesting
             let sampleType = HKSampleType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)
-            var daysAgo = -1 * x
-            var daysSince = (-1 * x) + 1
-            
+            var daysAgo = x
+            var daysSince = x + 1
+            var daysSinceNow = -1 * daysAgo
+            checker = allTimeSteps.count
             
             // Our search predicate which will fetch data from now until a day ago
             let samplePredicate = HKQuery.predicateForSamplesWithStartDate(NSCalendar.currentCalendar().dateByAddingUnit(.CalendarUnitDay, value: daysAgo, toDate: NSDate(), options: nil), endDate: NSCalendar.currentCalendar().dateByAddingUnit(.CalendarUnitDay, value: daysSince, toDate: NSDate(), options: nil), options: .None)
@@ -283,13 +298,25 @@ class HKManager {
                 
                 completion(steps, error)
                 self.allTimeStepsSum += steps
+                self.allTimeSteps.append(steps)
+               
                 println("New Sum:")
                 println(self.allTimeStepsSum)
+                println("Days Since Today:")
+                println(daysSinceNow)
+                
+                if !(self.allTimeStepsTotal > self.allTimeStepsSum) {
+                    stopStart = false
+                }
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in // Dispatch in order to keep things clean
+                    self.stepsAllTime({Double, NSError in
+                        println("done")
+                    })
+                })
             }
             
             self.healthKitStore.executeQuery(stepQuery)
             
         }
-
     }
 }
