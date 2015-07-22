@@ -18,26 +18,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        /*
+        // Display the current date and time for debugging purposes
         let formatter = NSDateFormatter()
         formatter.dateStyle = .LongStyle
         formatter.timeStyle = .MediumStyle
-        
         println(formatter.stringFromDate(NSDate()))
         
         let UnknownString = "Unknown"
         
         var healthManager = HKManager()
         
-        // Read basic data
+        // Authorize HealthKit
+        healthManager.authorizeHealthKit({success, error in
+            if success {
+                println("HealthKit Authorized")
+            }
+        })
+
+        // Read the past week's step data
+        healthManager.stepsInPastWeek({Double, NSError in
+            
+        })
         
+        // Read the past days's step data
+        healthManager.stepsInPastDay({Double, NSError in
+            
+        })
+
+        // Read All-Time Step Data
         healthManager.allTimeStepsTotal = 0.0
         healthManager.allTimeStepsSum = 0.0
         healthManager.stepsAllTimeTotal({Double, NSError in
             println("All Done")
         })
         println("Finished executing stepsAllTime")
-        */
         
         // Override point for customization after application launch.
         return true

@@ -18,7 +18,9 @@ class EnableHealthKitViewController: UIViewController {
     @IBAction func authorizationButton(sender: UIButton) {
         var healthManager = HKManager()
         healthManager.authorizeHealthKit({success, error in
-            println("HealthKit Authorized")
+            if success {
+                println("HealthKit Authorized")
+            }
         })
         
     }
