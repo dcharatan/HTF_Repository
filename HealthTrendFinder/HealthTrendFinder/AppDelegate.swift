@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        /*
         let formatter = NSDateFormatter()
         formatter.dateStyle = .LongStyle
         formatter.timeStyle = .MediumStyle
@@ -36,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             println("All Done")
         })
         println("Finished executing stepsAllTime")
-        
+        */
         
         // Override point for customization after application launch.
         return true

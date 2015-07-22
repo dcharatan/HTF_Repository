@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2B9488871B43060E0028B70B /* AnalysisTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9488861B43060E0028B70B /* AnalysisTools.swift */; };
+		2BB8DC9B1B60078E007704B5 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB8DC9A1B60078E007704B5 /* SettingsTableViewController.swift */; };
 		2BDCAC841B41A625002A7F28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDCAC831B41A625002A7F28 /* AppDelegate.swift */; };
-		2BDCAC861B41A625002A7F28 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDCAC851B41A625002A7F28 /* ViewController.swift */; };
 		2BDCAC891B41A625002A7F28 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BDCAC871B41A625002A7F28 /* Main.storyboard */; };
 		2BDCAC8B1B41A625002A7F28 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BDCAC8A1B41A625002A7F28 /* Images.xcassets */; };
 		2BDCAC8E1B41A625002A7F28 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BDCAC8C1B41A625002A7F28 /* LaunchScreen.xib */; };
@@ -34,10 +34,10 @@
 
 /* Begin PBXFileReference section */
 		2B9488861B43060E0028B70B /* AnalysisTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisTools.swift; sourceTree = "<group>"; };
+		2BB8DC9A1B60078E007704B5 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsTableViewController.swift; path = ../SettingsTableViewController.swift; sourceTree = "<group>"; };
 		2BDCAC7E1B41A625002A7F28 /* HealthTrendFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthTrendFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BDCAC821B41A625002A7F28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BDCAC831B41A625002A7F28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2BDCAC851B41A625002A7F28 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2BDCAC881B41A625002A7F28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2BDCAC8A1B41A625002A7F28 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2BDCAC8D1B41A625002A7F28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -151,7 +151,7 @@
 		71F691451B59B3B4005B990E /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2BDCAC851B41A625002A7F28 /* ViewController.swift */,
+				2BB8DC9A1B60078E007704B5 /* SettingsTableViewController.swift */,
 				71F1A71B1B584321006B2D9E /* EnableHealthKitViewController.swift */,
 				71F1A71F1B585506006B2D9E /* InfoViewController.swift */,
 				2BDCACA51B41A80A002A7F28 /* CardViewController.swift */,
@@ -279,8 +279,8 @@
 				71F4E7C91B59751300F6AE7B /* HKManager.swift in Sources */,
 				2BDCACA61B41A80A002A7F28 /* CardViewController.swift in Sources */,
 				2B9488871B43060E0028B70B /* AnalysisTools.swift in Sources */,
-				2BDCAC861B41A625002A7F28 /* ViewController.swift in Sources */,
 				2BDCACA41B41A7CC002A7F28 /* CardView.swift in Sources */,
+				2BB8DC9B1B60078E007704B5 /* SettingsTableViewController.swift in Sources */,
 				71F1A71C1B584321006B2D9E /* EnableHealthKitViewController.swift in Sources */,
 				71F1A7201B585506006B2D9E /* InfoViewController.swift in Sources */,
 				2BDCAC841B41A625002A7F28 /* AppDelegate.swift in Sources */,

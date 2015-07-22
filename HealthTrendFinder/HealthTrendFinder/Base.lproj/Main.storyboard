@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="8rJ-nS-xAR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="8rJ-nS-xAR">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -43,7 +43,7 @@
         <!--Settings-->
         <scene sceneID="QGz-Vu-e6H">
             <objects>
-                <tableViewController id="MbC-pv-naM" sceneMemberID="viewController">
+                <tableViewController id="MbC-pv-naM" customClass="SettingsTableViewController" customModule="HealthTrendFinder" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="fxG-RG-nBv">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -79,7 +79,7 @@
                     <navigationItem key="navigationItem" title="Settings" id="4hH-ZG-Lfc">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="rEt-GF-eWu">
                             <connections>
-                                <segue destination="8rJ-nS-xAR" kind="presentation" id="ZqK-wL-lBU"/>
+                                <action selector="cancelPressed:" destination="MbC-pv-naM" id="bTs-2O-8Ct"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

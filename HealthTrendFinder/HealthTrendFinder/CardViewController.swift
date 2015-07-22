@@ -44,8 +44,6 @@ class CardViewController: UIViewController, UIGestureRecognizerDelegate, UIScrol
         
         // This allows tracking scrolling.
         cardScrollView.delegate = self
-        
-
     }
     
     // This is called when cardScrollView begins to scroll.
