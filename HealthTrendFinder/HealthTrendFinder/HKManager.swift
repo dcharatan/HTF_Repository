@@ -37,9 +37,6 @@ class HKManager {
         ]
         let healthKitTypesToWrite = [
             HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMassIndex),
-            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierActiveEnergyBurned),
-            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDistanceWalkingRunning),
-            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount),
             HKQuantityType.workoutType()
         ]
         
