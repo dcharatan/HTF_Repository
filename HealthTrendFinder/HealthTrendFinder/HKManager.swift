@@ -43,8 +43,7 @@ class HKManager {
         ]
         
         // 3. If the store is not available, return an error and don't go on.
-        if !HKHealthStore.isHealthDataAvailable()
-        {
+        if !HKHealthStore.isHealthDataAvailable() {
             let error = NSError(domain: "com.Test", code: 2, userInfo: [NSLocalizedDescriptionKey:"HealthKit is not available in this device"])
             if( completion != nil )
             {
@@ -56,8 +55,7 @@ class HKManager {
         // 4. Request HealthKit authorization
         healthKitStore.requestAuthorizationToShareTypes(Set(healthKitTypesToWrite), readTypes: Set(healthKitTypesToRead)) { (success, error) -> Void in
             
-            if( completion != nil )
-            {
+            if( completion != nil ) {
                 completion(success:success,error:error)
             }
         }
