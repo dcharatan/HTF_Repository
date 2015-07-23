@@ -9,11 +9,12 @@
 import HealthKit
 import Foundation
 import UIKit
-import Darwin
 
 class HKManager {
     var weekStepData = [Double]()
     var dayStepData = [Double]()
+    var monthStepData = [Double]()
+    var difference: Double = 0.0
     var x = 1
     var checker = 0
     var allTimeStepsTotal: Double = 0.0
@@ -27,9 +28,6 @@ class HKManager {
     {
         // 1. Set the types you want to read from HK Store
         let healthKitTypesToRead = [
-            HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierDateOfBirth),
-            HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierBloodType),
-            HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierBiologicalSex),
             HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass),
             HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeight),
             HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount),
@@ -127,6 +125,10 @@ class HKManager {
         
     }
     
+    func getCalorieData() {
+        
+    }
+    
     func updateHeight() {
         // 1. Construct an HKSampleType for Height
         let sampleType = HKSampleType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeight)
@@ -153,6 +155,40 @@ class HKManager {
             });
         });
     }
+    
+    func stepsInPastMonth(completion: (Double, NSError?) -> () ) {
+        for x in 1...30 {
+            // The type of data we are requesting
+            let type = HKSampleType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)
+            var dayBeginning = -1 * x
+            var dayEnd = (-1 * x) + 1
+            // Our search predicate which will fetch data from now until a day ago
+            let predicate = HKQuery.predicateForSamplesWithStartDate(NSCalendar.currentCalendar().dateByAddingUnit(.CalendarUnitDay, value: dayBeginning, toDate: NSDate(), options: nil), endDate: NSCalendar.currentCalendar().dateByAddingUnit(.CalendarUnitDay, value: dayEnd, toDate: NSDate(), options: nil), options: .None)
+            
+            // The actual HealthKit Query which will fetch all of the steps and sub them up for us.
+            let query = HKSampleQuery(sampleType: type, predicate: predicate, limit: 0, sortDescriptors: nil) { query, results, error in
+                var steps: Double = 0
+                
+                
+                if results?.count > 0 {
+                    for result in results as! [HKQuantitySample] {
+                        steps += result.quantity.doubleValueForUnit(HKUnit.countUnit())
+                    }
+                }
+                
+                completion(steps, error)
+                
+                self.monthStepData.append(steps)
+                if self.monthStepData.count > 6 {
+                    println(self.monthStepData)
+                }
+            }
+            
+            self.healthKitStore.executeQuery(query)
+            
+        }
+    }
+
     
     func stepsInPastWeek(completion: (Double, NSError?) -> () ) {
         for x in 1...7 {
@@ -231,7 +267,7 @@ class HKManager {
             // The actual HealthKit Query which will fetch all of the steps and sub them up for us.
             let query = HKSampleQuery(sampleType: type, predicate: predicate, limit: 0, sortDescriptors: nil) { query, results, error in
                 var steps: Double = 0
-                
+                println("query")
                 
                 if results?.count > 0 {
                     for result in results as! [HKQuantitySample] {
@@ -241,7 +277,7 @@ class HKManager {
                 
                 completion(steps, error)
                 self.allTimeStepsTotal += steps
- 
+                
 
             }
             
@@ -249,13 +285,15 @@ class HKManager {
 
 
         while keepRunning {
+            println("while")
+            println(allTimeStepsTotal)
             // if the total number of recorded steps is not zero:
             if allTimeStepsTotal != 0.0 {
                 // if the "getData" boolean is true:
+                self.difference = allTimeStepsTotal - allTimeStepsSum
                 if getData {
                     // print the total number of recorded steps and the current sum of recorded steps to the console
-                    println(allTimeStepsTotal)
-                    println(allTimeStepsSum)
+                    println(difference)
                     // execute the function to save a day's step data to the allTimeSteps array
                     self.stepsAllTime({Double, NSError in})
                     // Set getData to false so that the loop does not auto-execute the function
@@ -306,17 +344,6 @@ class HKManager {
             completion(steps, error)
             self.allTimeStepsSum += steps
             self.allTimeSteps.append(steps)
-            for item in self.allTimeSteps {
-                self.checker += 1
-            }
-            /*
-            println("New Sum:")
-            println(self.allTimeStepsSum)
-            println("Days Since Today:")
-            println(daysSinceToday)
-            println("Steps taken today:")
-            println(steps)
-            */
             
         }
         if !(self.allTimeStepsTotal > self.allTimeStepsSum) {

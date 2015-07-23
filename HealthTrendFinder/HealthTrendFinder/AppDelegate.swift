@@ -24,35 +24,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         formatter.timeStyle = .MediumStyle
         println(formatter.stringFromDate(NSDate()))
         
+        var locationManager: OneShotLocationManager?
         let UnknownString = "Unknown"
+
         
-        var healthManager = HKManager()
-        
-        // Authorize HealthKit
-        healthManager.authorizeHealthKit({success, error in
-            if success {
-                println("HealthKit Authorized")
-                // Read the past week's step data
-                healthManager.stepsInPastWeek({Double, NSError in
-                    
-                })
-                
-                // Read the past days's step data
-                healthManager.stepsInPastDay({Double, NSError in
-                    
-                })
-                
-                // Read All-Time Step Data
-                healthManager.allTimeStepsTotal = 0.0
-                healthManager.allTimeStepsSum = 0.0
-                healthManager.stepsAllTimeTotal({Double, NSError in
-                    println("All Done")
-                })
-                println("Finished executing stepsAllTime")
+        /*
+        locationManager = OneShotLocationManager()
+        locationManager!.fetchWithCompletion {location, error in
+            if let loc = location {
+                println(location)
+            } else if let err = error {
+                println(err.localizedDescription)
             }
-        })
-
-
+            locationManager = nil
+        }
+        */
         
         // Override point for customization after application launch.
         return true

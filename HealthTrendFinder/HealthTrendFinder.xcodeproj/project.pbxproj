@@ -20,6 +20,9 @@
 		71F1A71C1B584321006B2D9E /* EnableHealthKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F1A71B1B584321006B2D9E /* EnableHealthKitViewController.swift */; };
 		71F1A7201B585506006B2D9E /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F1A71F1B585506006B2D9E /* InfoViewController.swift */; };
 		71F4E7C91B59751300F6AE7B /* HKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F4E7C81B59751300F6AE7B /* HKManager.swift */; };
+		71F82EFF1B614E5A0087E823 /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F82EFE1B614E5A0087E823 /* WeatherManager.swift */; };
+		71F82F011B6153F50087E823 /* OneShotLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F82F001B6153F50087E823 /* OneShotLocationManager.swift */; };
+		71F82F031B617EC90087E823 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F82F021B617EC90087E823 /* StartViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,9 @@
 		71F1A71B1B584321006B2D9E /* EnableHealthKitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnableHealthKitViewController.swift; sourceTree = "<group>"; };
 		71F1A71F1B585506006B2D9E /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		71F4E7C81B59751300F6AE7B /* HKManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = HKManager.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		71F82EFE1B614E5A0087E823 /* WeatherManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
+		71F82F001B6153F50087E823 /* OneShotLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneShotLocationManager.swift; sourceTree = "<group>"; };
+		71F82F021B617EC90087E823 /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +157,7 @@
 		71F691451B59B3B4005B990E /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				71F82F021B617EC90087E823 /* StartViewController.swift */,
 				2BB8DC9A1B60078E007704B5 /* SettingsTableViewController.swift */,
 				71F1A71B1B584321006B2D9E /* EnableHealthKitViewController.swift */,
 				71F1A71F1B585506006B2D9E /* InfoViewController.swift */,
@@ -164,6 +171,8 @@
 			children = (
 				2BDCAC831B41A625002A7F28 /* AppDelegate.swift */,
 				71F4E7C81B59751300F6AE7B /* HKManager.swift */,
+				71F82F001B6153F50087E823 /* OneShotLocationManager.swift */,
+				71F82EFE1B614E5A0087E823 /* WeatherManager.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -281,9 +290,12 @@
 				2B9488871B43060E0028B70B /* AnalysisTools.swift in Sources */,
 				2BDCACA41B41A7CC002A7F28 /* CardView.swift in Sources */,
 				2BB8DC9B1B60078E007704B5 /* SettingsTableViewController.swift in Sources */,
+				71F82F031B617EC90087E823 /* StartViewController.swift in Sources */,
 				71F1A71C1B584321006B2D9E /* EnableHealthKitViewController.swift in Sources */,
+				71F82EFF1B614E5A0087E823 /* WeatherManager.swift in Sources */,
 				71F1A7201B585506006B2D9E /* InfoViewController.swift in Sources */,
 				2BDCAC841B41A625002A7F28 /* AppDelegate.swift in Sources */,
+				71F82F011B6153F50087E823 /* OneShotLocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
