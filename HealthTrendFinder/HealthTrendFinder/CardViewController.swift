@@ -34,6 +34,8 @@ class CardViewController: UIViewController, UIGestureRecognizerDelegate, UIScrol
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = UIColor(red: 230 / 255, green: 230 / 255, blue: 230 / 255, alpha: 1)
+        
         // This configures the UIRefreshControl which is a lazy var found above.
         cardRefreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         cardRefreshControl.addTarget(self, action: "refreshCards:", forControlEvents: UIControlEvents.ValueChanged)
