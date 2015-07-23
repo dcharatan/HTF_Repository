@@ -31,12 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Authorize HealthKit
         healthManager.authorizeHealthKit({success, error in
             if success {
-                
-                healthManager.stepsInPastDay({Double, NSError in
-                    // nothing
-                })
-                
-                /*println("HealthKit Authorized")
+                println("HealthKit Authorized")
                 // Read the past week's step data
                 healthManager.stepsInPastWeek({Double, NSError in
                     
@@ -53,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 healthManager.stepsAllTimeTotal({Double, NSError in
                     println("All Done")
                 })
-                println("Finished executing stepsAllTime")*/
+                println("Finished executing stepsAllTime")
             }
         })
 

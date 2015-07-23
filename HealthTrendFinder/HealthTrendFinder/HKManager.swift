@@ -23,16 +23,6 @@ class HKManager {
     var height:HKQuantitySample?
     let healthKitStore:HKHealthStore = HKHealthStore()
     
-    // David's function -- DO NOT DELETE
-    func getHKQuantityData(sampleType: HKSampleType, timeUnit: NSCalendarUnit, startDate: NSDate, endDate: NSDate, completion: (Void -> Void)) -> [(NSDate, Double)] {
-        var returnValue: [(NSDate, Double)] = []
-        
-        // Returns one data point for each timeUnit between startDate and endDate
-        // array of tuples - (date, double)
-        
-        return returnValue
-    }
-    
     func authorizeHealthKit(completion: ((success:Bool, error:NSError!) -> Void)!)
     {
         // 1. Set the types you want to read from HK Store
