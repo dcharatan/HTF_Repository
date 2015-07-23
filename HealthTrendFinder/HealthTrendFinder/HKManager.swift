@@ -39,6 +39,7 @@ class HKManager {
             HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMassIndex),
             HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierActiveEnergyBurned),
             HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierDistanceWalkingRunning),
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount),
             HKQuantityType.workoutType()
         ]
         
@@ -221,7 +222,7 @@ class HKManager {
     }
     
     func stepsAllTimeTotal(completion: (Double, NSError?) -> () ) {
-        println("Dank Memes")
+        println("Running")
         var keepRunning: Bool = true
         var getData: Bool = true
             // The type of data we are requesting
@@ -251,10 +252,16 @@ class HKManager {
 
 
         while keepRunning {
+            // if the total number of recorded steps is not zero:
             if allTimeStepsTotal != 0.0 {
+                // if the "getData" boolean is true:
                 if getData {
+                    // print the total number of recorded steps and the current sum of recorded steps to the console
                     println(allTimeStepsTotal)
+                    println(allTimeStepsSum)
+                    // execute the function to save a day's step data to the allTimeSteps array
                     self.stepsAllTime({Double, NSError in})
+                    // Set getData to false so that the loop does not auto-execute the function
                     getData = false
                 } else {
                     if allTimeStepsTotal > allTimeStepsSum {
@@ -305,14 +312,14 @@ class HKManager {
             for item in self.allTimeSteps {
                 self.checker += 1
             }
-            
+            /*
             println("New Sum:")
             println(self.allTimeStepsSum)
             println("Days Since Today:")
             println(daysSinceToday)
             println("Steps taken today:")
             println(steps)
-            
+            */
             
         }
         if !(self.allTimeStepsTotal > self.allTimeStepsSum) {
