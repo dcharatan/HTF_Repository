@@ -22,10 +22,34 @@ class HKManager {
     var unknown = "Unknown"
     var height:HKQuantitySample?
     let healthKitStore:HKHealthStore = HKHealthStore()
+    // Needed Variables
+    var objectType = ""
+    var chooseUnit: String = ""
+
     
     // This is the only data fetching function we need
     func getHKQuantityData(sampleType: HKSampleType, timeUnit: NSCalendarUnit, startDate: NSDate, endDate: NSDate, completion: (Void -> Void)) -> [(NSDate, Double)] {
         var returnValue: [(NSDate, Double)] = []
+        var type: HKSampleType
+        var predicate: NSPredicate!
+        switch objectType {
+        case "StepCount":
+            type = HKSampleType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)
+        case "Height":
+            type = HKSampleType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeight)
+        case "BodyMass":
+            type = HKSampleType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass)
+        case "BMI":
+            type = HKSampleType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMassIndex)
+        default:
+            println("No recognized type")
+        }
+        switch timeUnit {
+        case NSCalendarUnit.CalendarUnitDay:
+            predicate = HKQuery.predicateForSamplesWithStartDate(NSCalendar.currentCalendar().dateByAddingUnit(.CalendarUnitDay, value: startDate, toDate: NSDate(), options: nil), endDate: NSCalendar.currentCalendar().dateByAddingUnit(.CalendarUnitDay, value: endDate, toDate: NSDate(), options: nil), options: .None)
+        }
+        
+        
         
         // Returns one data point for each timeUnit between startDate and endDate
         // array of tuples - (date, double)
@@ -43,6 +67,7 @@ class HKManager {
             HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass),
             HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeight),
             HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount),
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMassIndex),
             HKObjectType.workoutType()
         ]
         let healthKitTypesToWrite = [
