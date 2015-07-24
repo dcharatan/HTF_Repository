@@ -13,6 +13,7 @@ class CardViewController: UIViewController, UIGestureRecognizerDelegate, UIScrol
     
     private let swipeOutAnimationDuration = 0.33 // The duration of the swiping away CardView animation
     private let verticalAnimationDuration = 0.25 // The duration of the vertical CardView animation
+    private let entryAnimationDuration = 0.25 // The duration of a CardView's entry animation
     private let verticalAnimationDelay = 0.05 // The delay between each CardView's animation after another CardView is deleted
     private let scrollThreshold: CGFloat = 10.0 // The distance you have to scroll to be locked into scrolling
     private let movementThreshold: CGFloat = 10.0 // The distance you have to drag to be locked into dragging
@@ -26,7 +27,7 @@ class CardViewController: UIViewController, UIGestureRecognizerDelegate, UIScrol
     
     // This is a temporary button used to add cards.
     @IBAction func plusButtonPressed(sender: AnyObject) {
-        addCard()
+    
     }
     
     @IBOutlet weak var cardScrollView: UIScrollView! // This is the outlet for the UIScrollView the CardView instances are placed in.
@@ -82,17 +83,49 @@ class CardViewController: UIViewController, UIGestureRecognizerDelegate, UIScrol
     // This is called when you refresh.
     func refreshCards(sender: AnyObject) {
         cardRefreshControl.endRefreshing()
+        
+        // This instantly removes all of the remaining cards without animation.
+        for var i: Int = cardArray.count - 1; i >= 0; --i {
+            removeCardAtIndex(i, animate: true)
+        }
+        
+        // Here, the width and height of the new cards are calculated.
+        let width: CGFloat = self.view.bounds.width - 2 * margin
+        let height: CGFloat = 200
+        
+        // This is the special card
+        let newCard = CardView(frame: CGRectMake(margin,
+            0,
+            width,
+            height))
+        
+        // This is the text field that's added the special card
+        var topLabel: UILabel = UILabel(frame: CGRect(
+            x: 0,
+            y: 0,
+            width: width,
+            height: 40
+            ))
+        topLabel.center = CGPointMake(width * 0.5, 50)
+        topLabel.textAlignment = NSTextAlignment.Center
+        topLabel.text = "Welcome to HealthTrendFinder!"
+        newCard.addSubview(topLabel)
+        
+        // This adds two empty cards for testing
+        for var i: Int = 0; i < 2; ++i {
+            addCard(CardView(frame: CGRect(
+                x: margin,
+                y: 0,
+                width: width,
+                height: height
+                )), animate: true, animationDelay: Double(i + 1) * 0.1)
+        }
+
     }
     
     // This adds a card.
-    private func addCard() {
-        let cardIndex = cardArray.count
-        let width: CGFloat = self.view.bounds.width - 2 * margin
-        let height: CGFloat = CGFloat(100 + Int(arc4random_uniform(200)))
-        let newCard = CardView(frame: CGRectMake(margin,
-            cardHeightsAndMarginsUpToButNotIncludingIndex(cardArray.count),
-            width,
-            height))
+    private func addCard(newCard: CardView, animate: Bool = true, animationDelay: Double = 0) {
+        newCard.center.y = cardHeightsAndMarginsUpToButNotIncludingIndex(cardArray.count) + newCard.frame.height * 0.5
         
         // This is where each CardView's UIPanGestureRecognizer is created.
         let panRecognizer = UIPanGestureRecognizer(target: self, action: "detectPan:")
@@ -111,6 +144,16 @@ class CardViewController: UIViewController, UIGestureRecognizerDelegate, UIScrol
         
         // This creates a reference to the CardView within the cardArray.
         cardArray.append(newCard)
+        
+        if animate {
+            let cardX: CGFloat = newCard.center.x
+            
+            newCard.center.x = self.view.bounds.width + newCard.frame.width * 0.5
+            
+            UIView.animateWithDuration(self.verticalAnimationDuration, delay: animationDelay, options: UIViewAnimationOptions.CurveEaseInOut, animations: {
+                newCard.center.x = cardX
+                }, completion: nil)
+        }
         
         // This adjusts the UIScrollView to accomodate the new card.
         adjustCardScrollView(0.0)
@@ -161,12 +204,13 @@ class CardViewController: UIViewController, UIGestureRecognizerDelegate, UIScrol
         }
     }
     
-    private func repositionRemainingCards(deletedCardIndex: Int) {
+    private func repositionRemainingCards(deletedCardIndex: Int, animate: Bool = true) {
         // This variable is used to track the largest animation delay. It is later used to synchronize the animation of the last CardView with that of the UIScrollView.
         var largestDelayInterval: Double = 0.0
         
         // This loop iterates over all of the cards that come after the deleted CardView.
         for j in deletedCardIndex..<self.cardArray.count {
+            if animate {
                 // This animates the selected CardView up.
                 let delayInterval: Double = 0.05 * Double(j - deletedCardIndex) // deletedCardIndex is subtracted to only create delay after the first CardView
                 UIView.animateWithDuration(self.verticalAnimationDuration, delay: delayInterval, options: UIViewAnimationOptions.CurveEaseInOut, animations: {
@@ -175,36 +219,49 @@ class CardViewController: UIViewController, UIGestureRecognizerDelegate, UIScrol
                 if(delayInterval > largestDelayInterval) {
                     largestDelayInterval = delayInterval
                 }
+            } else {
+                self.cardArray[j].center.y = self.cardArray[j].bounds.height * 0.5 + self.cardHeightsAndMarginsUpToButNotIncludingIndex(j)
+            }
         }
-        self.adjustCardScrollView(largestDelayInterval)
+        self.adjustCardScrollView(largestDelayInterval, animate: animate)
     }
     
-    private func removeCardAtIndex(i: Int) {
+    private func removeCardAtIndex(i: Int, animate: Bool = true) {
         var card: CardView = cardArray[i]
         card.removeGestureRecognizer(card.panGestureRecognizerReference!)
         self.cardArray.removeAtIndex(i)
         
-        UIView.animateWithDuration(swipeOutAnimationDuration, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
-            // This makes the card fade out and move away.
-            card.center.x = -card.bounds.width
-            card.alpha = 0
-            }, completion: {(value: Bool) in
-                // Here, the card is removed from the UIScrollView and deleted.
-                card.removeFromSuperview()
-                
-                // This repositions the remaining cards and adjusts their positions.
-                self.repositionRemainingCards(i)
-        })
+        if animate {
+            UIView.animateWithDuration(swipeOutAnimationDuration, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+                // This makes the card fade out and move away.
+                card.center.x = -card.bounds.width
+                card.alpha = 0
+                }, completion: {(value: Bool) in
+                    // Here, the card is removed from the UIScrollView and deleted.
+                    card.removeFromSuperview()
+                    
+                    // This repositions the remaining cards and adjusts their positions.
+                    self.repositionRemainingCards(i, animate: true)
+            })
+        } else {
+            card.removeFromSuperview()
+            repositionRemainingCards(i, animate: false)
+        }
     }
     
-    private func adjustCardScrollView(animationDelay: NSTimeInterval) {
+    private func adjustCardScrollView(animationDelay: NSTimeInterval, animate: Bool = true) {
         var newHeight: CGFloat = self.cardHeightsAndMarginsUpToButNotIncludingIndex(self.cardArray.count)
         
-        UIView.animateWithDuration(verticalAnimationDuration, delay: animationDelay, options: UIViewAnimationOptions.CurveEaseInOut, animations: {
+        if animate {
+            UIView.animateWithDuration(verticalAnimationDuration, delay: animationDelay, options: UIViewAnimationOptions.CurveEaseInOut, animations: {
+                self.cardScrollView.contentSize = CGSizeMake(self.view.bounds.width, newHeight)
+                }, completion: {(value: Bool) in
+                    self.scrollingLocked = false
+            })
+        } else {
             self.cardScrollView.contentSize = CGSizeMake(self.view.bounds.width, newHeight)
-            }, completion: {(value: Bool) in
-                self.scrollingLocked = false
-        })
+            self.scrollingLocked = false
+        }
     }
     
     private func cardHeightsAndMarginsUpToButNotIncludingIndex(i: Int) -> CGFloat {
