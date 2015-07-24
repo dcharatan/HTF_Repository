@@ -25,11 +25,6 @@ class CardViewController: UIViewController, UIGestureRecognizerDelegate, UIScrol
     private var originalScrollPosition: CGFloat = 0.0 // This is used to track whether you've scrolled far enough to be locked into scrolling.
     private var scrollingLocked: Bool = false // This is used to track whether you're locked into scrolling.
     
-    // This is a temporary button used to add cards.
-    @IBAction func plusButtonPressed(sender: AnyObject) {
-    
-    }
-    
     @IBOutlet weak var cardScrollView: UIScrollView! // This is the outlet for the UIScrollView the CardView instances are placed in.
     
     override func viewDidLoad() {

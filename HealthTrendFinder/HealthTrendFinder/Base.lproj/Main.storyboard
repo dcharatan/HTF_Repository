@@ -184,11 +184,6 @@
                                 <segue destination="Jh5-QB-uoN" kind="presentation" id="EBj-kV-Okl"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="VIz-NW-xRk">
-                            <connections>
-                                <action selector="plusButtonPressed:" destination="NQ9-DS-yL2" id="QvX-pr-Skk"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="cardScrollView" destination="VKC-M7-q5M" id="Gak-Fg-Jcn"/>
