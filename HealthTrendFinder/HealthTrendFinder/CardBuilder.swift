@@ -14,7 +14,7 @@ class CardBuilder: NSObject {
     static let innerMargin: CGFloat = 8
     
     static func getCurrentCards(viewBounds: CGRect) -> [CardView] {
-        return [makeBasicCard(viewBounds)]
+        return [makeBarGraphCard(viewBounds)]
     }
     
     static private func makeBasicCard(viewBounds: CGRect) -> CardView {
@@ -27,76 +27,98 @@ class CardBuilder: NSObject {
         return card
     }
     
-    static private func makePieGraphCard(viewBounds: CGRect) -> CardView {
-        // This creates an empty CardView.
-        let newCard: CardView = CardView(frame: CGRect(), headerText: "ayy")
-        
-        // This creates the PieGraphView.
-        var pieGraphView: PieGraphView = PieGraphView()
-        
-        // Here, the PieGraphView's paramaters are set.
-        pieGraphView.labelUnit = "g"
-        pieGraphView.labelFontSize = 3.5
-        pieGraphView.guideY = 35
-        pieGraphView.keyY = 65
-        pieGraphView.colors = [
-            "Fats" : UIColor(red: 44 / 255, green: 76 / 255, blue: 123 / 255, alpha: 1),
-            "Sugars" : UIColor(red: 124 / 255, green: 41 / 255, blue: 43 / 255, alpha: 1),
-            "Carbohydrates" : UIColor(red: 98 / 255, green: 123 / 255, blue: 50 / 255, alpha: 1)
-        ]
-        
-        // Here, data sets for the PieGraphView are created.
-        var weekdayDataSet: PieGraphDataSet = PieGraphDataSet()
-        weekdayDataSet.name = "Weekday Average"
-        weekdayDataSet.slices = [
-            PieGraphSlice(magnitude: 31.2, name: "Fats"),
-            PieGraphSlice(magnitude: 78.3, name: "Carbohydrates"),
-            PieGraphSlice(magnitude: 23.5, name: "Sugars")
-        ]
-        
-        var weekendDataSet: PieGraphDataSet = PieGraphDataSet()
-        weekendDataSet.name = "Weekend Average"
-        weekendDataSet.slices = [
-            PieGraphSlice(magnitude: 54.2, name: "Fats"),
-            PieGraphSlice(magnitude: 65.6, name: "Carbohydrates"),
-            PieGraphSlice(magnitude: 31.7, name: "Sugars")
-        ]
-        
-        pieGraphView.data = [
-            weekdayDataSet,
-            weekendDataSet
-        ]
-        
-        // Here, the PieGraphView's frame is adjusted to fit the card.
-        pieGraphView.frame = CGRect(
-            x: outerMargin,
-            y: outerMargin,
-            width: viewBounds.width - 2 * 8 - outerMargin * 2,
-            height: (viewBounds.width - 2 * 8 - outerMargin * 2) * 3 / 5
-        )
-        
-        // This creates the UITextView.
-        var textView: UITextView = UITextView(frame: CGRect(
-            x: outerMargin,
-            y: outerMargin + innerMargin + pieGraphView.frame.height,
-            width: viewBounds.width - 2 * outerMargin,
-            height: 48
-            ))
-        textView.font = UIFont(name: "Helvetica Neue", size: 11)
-        textView.text = "There's a correlation between WEEKDAY and NUTRITION. On weekdays, you eat more carbohydrates, while on weekends, you eat more sugars and fats."
-        
-        // Here, the dimensions of the new CardView are calculated.
-        newCard.frame = CGRect(
-            x: 8,
+    static private func makeBarGraphCard(viewBounds: CGRect) -> CardView {
+        var returnCard: CardView = CardView(frame: CGRect(
+            x: cardMargin,
             y: 0,
-            width: viewBounds.width - 2 * 8,
-            height: outerMargin * 2 + innerMargin + pieGraphView.frame.height + textView.frame.height
+            width: viewBounds.width - 2 * cardMargin,
+            height: 0
+            ), headerText: "Bar Graph Card")
+        
+        // This adds the bar graph.
+        var barGraph: BarGraphView = BarGraphView()
+        barGraph.frame = CGRect(
+            x: 0,
+            y: returnCard.headerBarSize,
+            width: returnCard.frame.width,
+            height: returnCard.frame.width * 0.6
+        )
+        barGraph.backgroundColor = UIColor.clearColor()
+        barGraph.barDirection = "horizontal"
+        barGraph.bgColor = UIColor.clearColor()
+        barGraph.bgStrokeColor = UIColor.clearColor()
+        barGraph.graphAreaY = 50
+        barGraph.graphAreaHeight = 75
+        barGraph.graphAreaX_Scale = "horizontal"
+        barGraph.graphAreaX = 40
+        barGraph.graphAreaWidth_Scale = "horizontal"
+        barGraph.graphAreaWidth = 65
+        barGraph.keyX_Scale = "horizontal"
+        barGraph.keyX = 80
+        
+        var set1: BarGraphDataSet = BarGraphDataSet()
+        set1.bars = [
+            BarGraphBar(segments: [
+                BarGraphBarSegment(length: 4, name: "Running")
+                ]),
+            BarGraphBar(segments: [
+                BarGraphBarSegment(length: 13, name: "Running")
+                ])
+        ]
+        
+        var set2: BarGraphDataSet = BarGraphDataSet()
+        set2.bars = [
+            BarGraphBar(segments: [
+                BarGraphBarSegment(length: 6, name: "Walking")
+                ]),
+            BarGraphBar(segments: [
+                BarGraphBarSegment(length: 11, name: "Walking")
+                ])
+        ]
+        
+        var set3: BarGraphDataSet = BarGraphDataSet()
+        set3.bars = [
+            BarGraphBar(segments: [
+                BarGraphBarSegment(length: 15, name: "Sitting")
+                ]),
+            BarGraphBar(segments: [
+                BarGraphBarSegment(length: 3, name: "Sitting")
+                ])
+        ]
+        
+        var set4: BarGraphDataSet = BarGraphDataSet()
+        set4.bars = [
+            BarGraphBar(segments: [
+                BarGraphBarSegment(length: 8, name: "Driving")
+                ]),
+            BarGraphBar(segments: [
+                BarGraphBarSegment(length: 4, name: "Driving")
+                ])
+        ]
+        
+        barGraph.data = [
+            set1,
+            set2,
+            set3,
+            set4
+        ]
+        
+        barGraph.colors = [
+            "Running" : UIColor(red: 0xBF / 255, green: 0x30 / 255, blue: 0x30 / 255, alpha: 1),
+            "Walking" : UIColor(red: 0xA6 / 255, green: 0x00 / 255, blue: 0x00 / 255, alpha: 1),
+            "Sitting" : UIColor(red: 0x26 / 255, green: 0x99 / 255, blue: 0x26 / 255, alpha: 1),
+            "Driving" : UIColor(red: 0x00 / 255, green: 0x85 / 255, blue: 0x00 / 255, alpha: 1)
+        ]
+        
+        returnCard.addSubview(barGraph)
+        
+        returnCard.frame = CGRect(
+            x: cardMargin,
+            y: 0,
+            width: viewBounds.width - 2 * cardMargin,
+            height: returnCard.headerBarSize + barGraph.frame.height
         )
         
-        // Here, the subviews are added to the CardView
-        newCard.addSubview(pieGraphView)
-        newCard.addSubview(textView)
-        
-        return newCard
+        return returnCard
     }
 }

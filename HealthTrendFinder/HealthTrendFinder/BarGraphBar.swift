@@ -19,4 +19,12 @@ class BarGraphBar: NSObject {
             return returnValue
         }
     }
+    
+    override init() {
+        // empty init
+    }
+    
+    init(segments: [BarGraphBarSegment]) {
+        self.segments = segments
+    }
 }

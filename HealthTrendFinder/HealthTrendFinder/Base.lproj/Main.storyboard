@@ -34,7 +34,13 @@
                             <constraint firstItem="Fw6-fG-wqv" firstAttribute="leading" secondItem="L6o-FM-j93" secondAttribute="leadingMargin" id="Qhh-3l-2fQ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Health Analysis" id="uSS-Ew-0zN"/>
+                    <navigationItem key="navigationItem" title="Health Analysis" id="uSS-Ew-0zN">
+                        <barButtonItem key="leftBarButtonItem" image="GearIcon" id="krw-va-dAJ">
+                            <connections>
+                                <segue destination="Jh5-QB-uoN" kind="presentation" id="Lck-q5-YAZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FuW-Jy-grj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -274,4 +280,7 @@
         <image name="GearIcon" width="22" height="22"/>
         <image name="GraphIcon" width="27" height="27"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Lck-q5-YAZ"/>
+    </inferredMetricsTieBreakers>
 </document>

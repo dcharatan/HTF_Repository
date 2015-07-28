@@ -568,7 +568,7 @@ class LineGraphView: UIView {
         let xLabelSizeAbsolute = xLabelSize / 100 * self.bounds.height
         let textRect: CGRect = CGRectMake(translateX(x, windowRef: data[0].window) - xLabelSizeAbsolute * 0.5,
             self.bounds.height,
-            (self.bounds.height - graphingArea.height) * 0.5 - xLabelMarginAbsolute,
+            self.bounds.height - graphingArea.maxY - xLabelMarginAbsolute,
             xLabelSizeAbsolute)
         let font: UIFont = UIFont(name: "Helvetica Neue", size: xLabelSize / 100 * self.bounds.height)!
         var textStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()

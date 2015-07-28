@@ -56,7 +56,7 @@ class BarGraphView: UIView {
     @IBInspectable var keySize_Scale: String = "vertical"
     
     @IBInspectable var keyEnabled: Bool = true
-    @IBInspectable var keyMode: String = "bars" // can be either "bars" or "segments"
+    @IBInspectable var keyMode: String = "segments" // can be either "bars" or "segments"
     @IBInspectable var keyX: CGFloat = 110
     @IBInspectable var keyY: CGFloat = 50
     
@@ -468,7 +468,7 @@ class BarGraphView: UIView {
         let labelSizeAbsolute = labelSize / 100 * self.bounds.height
         let textRect: CGRect = CGRectMake(translateX(x) - labelSizeAbsolute * 0.5,
             self.bounds.height,
-            (self.bounds.height - graphingArea.height) * 0.5 - labelMarginAbsolute,
+            self.bounds.height - graphingArea.maxY - labelMarginAbsolute,
             labelSizeAbsolute)
         let font: UIFont = UIFont(name: "Helvetica Neue", size: labelSize / 100 * self.bounds.height)!
         var textStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()

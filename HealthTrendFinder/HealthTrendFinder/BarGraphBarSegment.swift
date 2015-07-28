@@ -11,4 +11,13 @@ import UIKit
 class BarGraphBarSegment: NSObject {
     internal var length: CGFloat = 0
     internal var name: String = ""
+    
+    init(length: CGFloat, name: String) {
+        self.length = length
+        self.name = name
+    }
+    
+    override init() {
+        // empty init
+    }
 }
