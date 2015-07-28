@@ -84,38 +84,14 @@ class CardViewController: UIViewController, UIGestureRecognizerDelegate, UIScrol
             removeCardAtIndex(i, animate: true)
         }
         
-        // Here, the width and height of the new cards are calculated.
-        let width: CGFloat = self.view.bounds.width - 2 * margin
-        let height: CGFloat = 200
+        // This adds new cards.
+        let newCards: [CardView] = CardBuilder.getCurrentCards(self.view.bounds)
         
-        // This is the special card
-        let newCard = CardView(frame: CGRectMake(margin,
-            0,
-            width,
-            height))
+        println(newCards.count)
         
-        // This is the text field that's added the special card
-        var topLabel: UILabel = UILabel(frame: CGRect(
-            x: 0,
-            y: 0,
-            width: width,
-            height: 40
-            ))
-        topLabel.center = CGPointMake(width * 0.5, 50)
-        topLabel.textAlignment = NSTextAlignment.Center
-        topLabel.text = "Welcome to HealthTrendFinder!"
-        newCard.addSubview(topLabel)
-        
-        // This adds two empty cards for testing
-        for var i: Int = 0; i < 2; ++i {
-            addCard(CardView(frame: CGRect(
-                x: margin,
-                y: 0,
-                width: width,
-                height: height
-                )), animate: true, animationDelay: Double(i + 1) * 0.1)
+        for var i: Int = 0; i < newCards.count; ++i {
+            addCard(newCards[i], animate: true, animationDelay: Double(i) * 0.05)
         }
-
     }
     
     // This adds a card.

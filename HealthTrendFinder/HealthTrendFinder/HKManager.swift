@@ -30,6 +30,7 @@ class HKManager {
     // This is the only data fetching function we need
     func getHKQuantityData(sampleType: HKSampleType, timeUnit: NSCalendarUnit, startDate: NSDate, endDate: NSDate, completion: (Void -> Void)) -> [(NSDate, Double)] {
         var returnValue: [(NSDate, Double)] = []
+        /*
         var type: HKSampleType
         var predicate: NSPredicate!
         switch objectType {
@@ -54,6 +55,7 @@ class HKManager {
         // Returns one data point for each timeUnit between startDate and endDate
         // array of tuples - (date, double)
         
+        */
         return returnValue
     }
     

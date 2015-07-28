@@ -18,6 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        var dataSet: QuantitativeDataSet = DataFaker.linearFakeQuantitativeData(days: 7, name: "Steps")
+        
+        for tuple in dataSet.data {
+            println("date: \(tuple.date), value: \(tuple.value)")
+        }
+        
         // Display the current date and time for debugging purposes
         let formatter = NSDateFormatter()
         formatter.dateStyle = .LongStyle
