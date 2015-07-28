@@ -13,6 +13,8 @@
 		2B24DDA31B6822DF00504255 /* BarGraphDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B24DD9F1B6822DF00504255 /* BarGraphDataSet.swift */; };
 		2B24DDA41B6822DF00504255 /* BarGraphBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B24DDA01B6822DF00504255 /* BarGraphBar.swift */; };
 		2B24DDA51B6822DF00504255 /* BarGraphBarSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B24DDA11B6822DF00504255 /* BarGraphBarSegment.swift */; };
+		2B24DDA91B68254F00504255 /* LineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B24DDA71B68254F00504255 /* LineGraphView.swift */; };
+		2B24DDAA1B68254F00504255 /* LineGraphDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B24DDA81B68254F00504255 /* LineGraphDataSet.swift */; };
 		2B51A9691B62A6980001AA97 /* CardBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B51A9681B62A6980001AA97 /* CardBuilder.swift */; };
 		2B51A96E1B62A8550001AA97 /* PieGraphDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B51A96B1B62A8550001AA97 /* PieGraphDataSet.swift */; };
 		2B51A96F1B62A8550001AA97 /* PieGraphSlice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B51A96C1B62A8550001AA97 /* PieGraphSlice.swift */; };
@@ -49,6 +51,8 @@
 		2B24DD9F1B6822DF00504255 /* BarGraphDataSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarGraphDataSet.swift; sourceTree = "<group>"; };
 		2B24DDA01B6822DF00504255 /* BarGraphBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarGraphBar.swift; sourceTree = "<group>"; };
 		2B24DDA11B6822DF00504255 /* BarGraphBarSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarGraphBarSegment.swift; sourceTree = "<group>"; };
+		2B24DDA71B68254F00504255 /* LineGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineGraphView.swift; sourceTree = "<group>"; };
+		2B24DDA81B68254F00504255 /* LineGraphDataSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineGraphDataSet.swift; sourceTree = "<group>"; };
 		2B51A9681B62A6980001AA97 /* CardBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardBuilder.swift; sourceTree = "<group>"; };
 		2B51A96B1B62A8550001AA97 /* PieGraphDataSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieGraphDataSet.swift; sourceTree = "<group>"; };
 		2B51A96C1B62A8550001AA97 /* PieGraphSlice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieGraphSlice.swift; sourceTree = "<group>"; };
@@ -121,6 +125,15 @@
 			name = BarGraphing;
 			sourceTree = "<group>";
 		};
+		2B24DDA61B68253C00504255 /* LineGraphing */ = {
+			isa = PBXGroup;
+			children = (
+				2B24DDA71B68254F00504255 /* LineGraphView.swift */,
+				2B24DDA81B68254F00504255 /* LineGraphDataSet.swift */,
+			);
+			name = LineGraphing;
+			sourceTree = "<group>";
+		};
 		2B4360601B5D978D00A3951E /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +146,7 @@
 		2B51A96A1B62A8370001AA97 /* Graphing */ = {
 			isa = PBXGroup;
 			children = (
+				2B24DDA61B68253C00504255 /* LineGraphing */,
 				2B24DD9D1B68222100504255 /* BarGraphing */,
 				2B24DD9C1B68221200504255 /* PieGraphing */,
 			);
@@ -344,6 +358,7 @@
 				2BDCACA41B41A7CC002A7F28 /* CardView.swift in Sources */,
 				2B24DD981B67EFD200504255 /* QuantitativeDataSet.swift in Sources */,
 				2B24DDA41B6822DF00504255 /* BarGraphBar.swift in Sources */,
+				2B24DDA91B68254F00504255 /* LineGraphView.swift in Sources */,
 				2B51A9701B62A8550001AA97 /* PieGraphView.swift in Sources */,
 				2B24DDA21B6822DF00504255 /* BarGraphView.swift in Sources */,
 				2B24DDA51B6822DF00504255 /* BarGraphBarSegment.swift in Sources */,
@@ -354,6 +369,7 @@
 				71F1A7201B585506006B2D9E /* InfoViewController.swift in Sources */,
 				2B24DD9B1B67F05E00504255 /* DataFaker.swift in Sources */,
 				2B24DDA31B6822DF00504255 /* BarGraphDataSet.swift in Sources */,
+				2B24DDAA1B68254F00504255 /* LineGraphDataSet.swift in Sources */,
 				2B51A9691B62A6980001AA97 /* CardBuilder.swift in Sources */,
 				2BDCAC841B41A625002A7F28 /* AppDelegate.swift in Sources */,
 			);
