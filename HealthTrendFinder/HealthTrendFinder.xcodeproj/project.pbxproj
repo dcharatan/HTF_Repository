@@ -21,6 +21,10 @@
 		2B51A9701B62A8550001AA97 /* PieGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B51A96D1B62A8550001AA97 /* PieGraphView.swift */; };
 		2B9488871B43060E0028B70B /* AnalysisTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9488861B43060E0028B70B /* AnalysisTools.swift */; };
 		2BB8DC9B1B60078E007704B5 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB8DC9A1B60078E007704B5 /* SettingsTableViewController.swift */; };
+		2BBA0AF21B6936F200F55383 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBA0AF11B6936F200F55383 /* StorageManager.swift */; };
+		2BBA0AF41B693C8500F55383 /* EntrySwitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBA0AF31B693C8500F55383 /* EntrySwitchViewController.swift */; };
+		2BBA0AF71B69403700F55383 /* ReplaceWithoutAnimationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBA0AF61B69403700F55383 /* ReplaceWithoutAnimationSegue.swift */; };
+		2BBA0AF91B6946B800F55383 /* HealthKitAuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBA0AF81B6946B800F55383 /* HealthKitAuthorizationViewController.swift */; };
 		2BDCAC841B41A625002A7F28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDCAC831B41A625002A7F28 /* AppDelegate.swift */; };
 		2BDCAC891B41A625002A7F28 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BDCAC871B41A625002A7F28 /* Main.storyboard */; };
 		2BDCAC8B1B41A625002A7F28 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BDCAC8A1B41A625002A7F28 /* Images.xcassets */; };
@@ -59,6 +63,10 @@
 		2B51A96D1B62A8550001AA97 /* PieGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieGraphView.swift; sourceTree = "<group>"; };
 		2B9488861B43060E0028B70B /* AnalysisTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisTools.swift; sourceTree = "<group>"; };
 		2BB8DC9A1B60078E007704B5 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsTableViewController.swift; path = ../SettingsTableViewController.swift; sourceTree = "<group>"; };
+		2BBA0AF11B6936F200F55383 /* StorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		2BBA0AF31B693C8500F55383 /* EntrySwitchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntrySwitchViewController.swift; sourceTree = "<group>"; };
+		2BBA0AF61B69403700F55383 /* ReplaceWithoutAnimationSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplaceWithoutAnimationSegue.swift; sourceTree = "<group>"; };
+		2BBA0AF81B6946B800F55383 /* HealthKitAuthorizationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitAuthorizationViewController.swift; sourceTree = "<group>"; };
 		2BDCAC7E1B41A625002A7F28 /* HealthTrendFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HealthTrendFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BDCAC821B41A625002A7F28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BDCAC831B41A625002A7F28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -163,6 +171,14 @@
 			name = Analysis;
 			sourceTree = "<group>";
 		};
+		2BBA0AF51B69400800F55383 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				2BBA0AF61B69403700F55383 /* ReplaceWithoutAnimationSegue.swift */,
+			);
+			name = Navigation;
+			sourceTree = "<group>";
+		};
 		2BDCAC751B41A625002A7F28 = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +204,7 @@
 				2B24DD991B67F03E00504255 /* Debug */,
 				2B4360601B5D978D00A3951E /* Views */,
 				71542AB21B4AE90400E6A112 /* HealthTrendFinder.entitlements */,
+				2BBA0AF51B69400800F55383 /* Navigation */,
 				71F691451B59B3B4005B990E /* View Controllers */,
 				2B9488851B4305710028B70B /* Analysis */,
 				71F691461B59B419005B990E /* Managers */,
@@ -230,6 +247,8 @@
 				2BB8DC9A1B60078E007704B5 /* SettingsTableViewController.swift */,
 				71F1A71B1B584321006B2D9E /* EnableHealthKitViewController.swift */,
 				71F1A71F1B585506006B2D9E /* InfoViewController.swift */,
+				2BBA0AF81B6946B800F55383 /* HealthKitAuthorizationViewController.swift */,
+				2BBA0AF31B693C8500F55383 /* EntrySwitchViewController.swift */,
 				2BDCACA51B41A80A002A7F28 /* CardViewController.swift */,
 			);
 			name = "View Controllers";
@@ -240,6 +259,7 @@
 			children = (
 				2BDCAC831B41A625002A7F28 /* AppDelegate.swift */,
 				71F4E7C81B59751300F6AE7B /* HKManager.swift */,
+				2BBA0AF11B6936F200F55383 /* StorageManager.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -352,14 +372,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BBA0AF71B69403700F55383 /* ReplaceWithoutAnimationSegue.swift in Sources */,
 				71F4E7C91B59751300F6AE7B /* HKManager.swift in Sources */,
 				2BDCACA61B41A80A002A7F28 /* CardViewController.swift in Sources */,
 				2B9488871B43060E0028B70B /* AnalysisTools.swift in Sources */,
+				2BBA0AF21B6936F200F55383 /* StorageManager.swift in Sources */,
 				2BDCACA41B41A7CC002A7F28 /* CardView.swift in Sources */,
+				2BBA0AF41B693C8500F55383 /* EntrySwitchViewController.swift in Sources */,
 				2B24DD981B67EFD200504255 /* QuantitativeDataSet.swift in Sources */,
 				2B24DDA41B6822DF00504255 /* BarGraphBar.swift in Sources */,
 				2B24DDA91B68254F00504255 /* LineGraphView.swift in Sources */,
 				2B51A9701B62A8550001AA97 /* PieGraphView.swift in Sources */,
+				2BBA0AF91B6946B800F55383 /* HealthKitAuthorizationViewController.swift in Sources */,
 				2B24DDA21B6822DF00504255 /* BarGraphView.swift in Sources */,
 				2B24DDA51B6822DF00504255 /* BarGraphBarSegment.swift in Sources */,
 				2B51A96E1B62A8550001AA97 /* PieGraphDataSet.swift in Sources */,

@@ -59,9 +59,7 @@ class HKManager {
         return returnValue
     }
     
-    func authorizeHealthKit(completion: ((success:Bool, error:NSError!) -> Void)!)
-    {
-        // 1. Set the types you want to read from HK Store
+    func authorizeHealthKit(completion: ((success: Bool, error: NSError?) -> Void)!) {
         let healthKitTypesToRead = [
             HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierDateOfBirth),
             HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierBloodType),
@@ -77,21 +75,17 @@ class HKManager {
             HKQuantityType.workoutType()
         ]
         
-        // 3. If the store is not available, return an error and don't go on.
         if !HKHealthStore.isHealthDataAvailable() {
-            let error = NSError(domain: "com.Test", code: 2, userInfo: [NSLocalizedDescriptionKey:"HealthKit is not available in this device"])
-            if( completion != nil )
-            {
-                completion(success:false, error:error)
+            if completion != nil {
+                completion(success: false, error: nil)
             }
-            return;
+            return
         }
         
-        // 4. Request HealthKit authorization
         healthKitStore.requestAuthorizationToShareTypes(Set(healthKitTypesToWrite), readTypes: Set(healthKitTypesToRead)) { (success, error) -> Void in
             
-            if( completion != nil ) {
-                completion(success:success,error:error)
+            if completion != nil {
+                completion(success: success, error: error)
             }
         }
     }

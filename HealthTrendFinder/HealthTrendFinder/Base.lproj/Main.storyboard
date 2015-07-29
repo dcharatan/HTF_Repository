@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="8rJ-nS-xAR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vct-JX-qQM">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -44,7 +44,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FuW-Jy-grj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2662" y="1082"/>
+            <point key="canvasLocation" x="3474" y="1082"/>
         </scene>
         <!--Settings-->
         <scene sceneID="QGz-Vu-e6H">
@@ -55,24 +55,73 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
-                            <tableViewSection id="ADS-ib-5HY">
+                            <tableViewSection headerTitle="HealthKit" id="ADS-ib-5HY">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="T1s-LD-Ba6" style="IBUITableViewCellStyleDefault" id="WQd-8W-gjq">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="mgi-9g-E2h" style="IBUITableViewCellStyleDefault" id="gKF-Bj-Vzw">
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WQd-8W-gjq" id="l59-j8-Xu5">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gKF-Bj-Vzw" id="Z2f-jQ-Tp4">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="HealthKit" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="T1s-LD-Ba6">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Authorize HealthKit" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mgi-9g-E2h">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Cvq-AR-7C3" kind="show" id="mxM-TB-W6L"/>
+                                            <segue destination="Cvq-AR-7C3" kind="show" id="bXh-UP-Raf"/>
                                         </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Notifications" id="agW-xd-lSY">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="xRs-Oz-m9g" style="IBUITableViewCellStyleDefault" id="3c3-OB-Xrs">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3c3-OB-Xrs" id="fvG-CO-sqG">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Allow daily notifications" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xRs-Oz-m9g">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="Shg-3m-DT6" style="IBUITableViewCellStyleDefault" id="8Qb-ul-8P8">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Qb-ul-8P8" id="vP3-rT-Uq8">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Allow weekly notifications" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Shg-3m-DT6">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="Hf8-yL-e77" style="IBUITableViewCellStyleDefault" id="194-43-Tq5">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="194-43-Tq5" id="6DL-Jf-D3B">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Allow context-based notifications" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Hf8-yL-e77">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -83,7 +132,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="4hH-ZG-Lfc">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="rEt-GF-eWu">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="rEt-GF-eWu">
                             <connections>
                                 <action selector="cancelPressed:" destination="MbC-pv-naM" id="bTs-2O-8Ct"/>
                             </connections>
@@ -92,7 +141,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dkp-qf-QaS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3454" y="-244"/>
+            <point key="canvasLocation" x="4906" y="751"/>
         </scene>
         <!--HealthKit-->
         <scene sceneID="61I-Qo-fG1">
@@ -122,7 +171,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable HealthKit to use this app" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qdP-SU-OC4">
                                 <rect key="frame" x="16" y="137" width="568" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -142,7 +191,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ncn-px-rv2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4877" y="-928"/>
+            <point key="canvasLocation" x="4906" y="2244"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DDs-3e-6N0">
@@ -158,7 +207,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BuT-R9-Jd3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4169" y="-928"/>
+            <point key="canvasLocation" x="4906" y="1561"/>
         </scene>
         <!--Trend Cards-->
         <scene sceneID="NhE-ly-wNh">
@@ -197,7 +246,87 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PHs-3h-zOz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2662" y="420"/>
+            <point key="canvasLocation" x="3474" y="420"/>
+        </scene>
+        <!--Entry Switch View Controller-->
+        <scene sceneID="1RD-7F-744">
+            <objects>
+                <viewController id="qWZ-4e-CV0" customClass="EntrySwitchViewController" customModule="HealthTrendFinder" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xhF-X3-lu3"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZyB-b2-2a1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PcB-Xx-Ptw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Xxz-7E-YMX"/>
+                    <connections>
+                        <segue destination="8rJ-nS-xAR" kind="custom" identifier="segueToApp" customClass="ReplaceWithoutAnimationSegue" customModule="HealthTrendFinder" customModuleProvider="target" id="bhl-Wn-79l"/>
+                        <segue destination="Er2-NZ-sya" kind="custom" identifier="segueToHealthKitAuthorization" customClass="ReplaceWithoutAnimationSegue" customModule="HealthTrendFinder" customModuleProvider="target" id="Xny-it-dMQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WgE-Rc-8EM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1060" y="751"/>
+        </scene>
+        <!--HealthKit Authorization-->
+        <scene sceneID="do4-L8-INq">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="ep1-QM-sbY" customClass="HealthKitAuthorizationViewController" customModule="HealthTrendFinder" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lS1-4c-6qe"/>
+                        <viewControllerLayoutGuide type="bottom" id="9Nk-mY-MMh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kK1-a9-kZ2">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FIv-32-us0">
+                                <rect key="frame" x="16" y="72" width="568" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Kw6-FS-96u"/>
+                                </constraints>
+                                <string key="text">This app requires HealthKit authorization. You can authorize HealthKit now with the button below or authorize HealthKit later in the settings menu.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2UU-rt-eo2">
+                                <rect key="frame" x="234" y="130" width="132" height="30"/>
+                                <state key="normal" title="Authorize HealthKit">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="authorizeHK:" destination="ep1-QM-sbY" eventType="touchUpInside" id="1Nm-J3-Bib"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="FIv-32-us0" firstAttribute="top" secondItem="lS1-4c-6qe" secondAttribute="bottom" constant="8" id="HWG-8C-Cip"/>
+                            <constraint firstAttribute="centerX" secondItem="2UU-rt-eo2" secondAttribute="centerX" id="Qsh-TK-UBH"/>
+                            <constraint firstItem="FIv-32-us0" firstAttribute="leading" secondItem="kK1-a9-kZ2" secondAttribute="leadingMargin" id="aee-ha-u7G"/>
+                            <constraint firstItem="FIv-32-us0" firstAttribute="trailing" secondItem="kK1-a9-kZ2" secondAttribute="trailingMargin" id="fkG-mj-1ma"/>
+                            <constraint firstItem="2UU-rt-eo2" firstAttribute="top" secondItem="FIv-32-us0" secondAttribute="bottom" constant="8" id="l7j-JO-BXt"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="HealthKit Authorization" id="iZ9-z6-gc7">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Q0o-op-QVU">
+                            <connections>
+                                <segue destination="8rJ-nS-xAR" kind="showDetail" identifier="segueToApp" id="E4C-cd-kvY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="textView" destination="FIv-32-us0" id="wFc-6Z-SMT"/>
+                        <outlet property="textViewHeight" destination="Kw6-FS-96u" id="Zz5-0R-d06"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Tw-e6-JEP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1842" y="1561"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="1wY-Fn-8nJ">
@@ -216,7 +345,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rVk-hP-6FY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1030" y="751"/>
+            <point key="canvasLocation" x="1842" y="751"/>
         </scene>
         <!--Trend Cards-->
         <scene sceneID="3xd-mX-ky1">
@@ -235,7 +364,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wht-gl-Nvs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1850" y="420"/>
+            <point key="canvasLocation" x="2662" y="420"/>
         </scene>
         <!--Health Analysis-->
         <scene sceneID="nNh-FX-Dei">
@@ -254,7 +383,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Im-wn-rPq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1850" y="1082"/>
+            <point key="canvasLocation" x="2662" y="1082"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iKN-BL-kIm">
@@ -272,7 +401,43 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pRq-AS-Nyw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2670" y="-244"/>
+            <point key="canvasLocation" x="4234" y="751"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="zp8-Df-FXm">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vct-JX-qQM" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="If8-7F-EKF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="qWZ-4e-CV0" kind="relationship" relationship="rootViewController" id="Ngw-79-iAn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2UL-Wb-mFb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="248" y="751"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="xpw-Jf-o1C">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Er2-NZ-sya" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HxH-3G-Dwe">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ep1-QM-sbY" kind="relationship" relationship="rootViewController" id="kC9-V8-VGs"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MyS-wH-YS2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1060" y="1561"/>
         </scene>
     </scenes>
     <resources>
@@ -281,6 +446,7 @@
         <image name="GraphIcon" width="27" height="27"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="E4C-cd-kvY"/>
         <segue reference="Lck-q5-YAZ"/>
     </inferredMetricsTieBreakers>
 </document>

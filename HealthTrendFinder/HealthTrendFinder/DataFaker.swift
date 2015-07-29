@@ -24,9 +24,6 @@ class DataFaker: NSObject {
             returnValue.data.insert((date: currentDate, value: currentValue), atIndex: 0)
         }
         
-        println("DataFaker.linearFakeQuantitativeData(days: \(days), name: \(name)) -> QuantitativeDataSet")
-        println("slope: \(slope)")
-        
         return returnValue
     }
     
