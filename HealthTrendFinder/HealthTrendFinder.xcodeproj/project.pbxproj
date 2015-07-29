@@ -33,7 +33,6 @@
 		2BDCACA41B41A7CC002A7F28 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDCACA31B41A7CC002A7F28 /* CardView.swift */; };
 		2BDCACA61B41A80A002A7F28 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDCACA51B41A80A002A7F28 /* CardViewController.swift */; };
 		71E1F4131B5370130065D4EB /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71E1F4121B5370130065D4EB /* HealthKit.framework */; };
-		71F1A71C1B584321006B2D9E /* EnableHealthKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F1A71B1B584321006B2D9E /* EnableHealthKitViewController.swift */; };
 		71F1A7201B585506006B2D9E /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F1A71F1B585506006B2D9E /* InfoViewController.swift */; };
 		71F4E7C91B59751300F6AE7B /* HKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F4E7C81B59751300F6AE7B /* HKManager.swift */; };
 /* End PBXBuildFile section */
@@ -80,7 +79,6 @@
 		2BDCACA51B41A80A002A7F28 /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 		71542AB21B4AE90400E6A112 /* HealthTrendFinder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HealthTrendFinder.entitlements; sourceTree = "<group>"; };
 		71E1F4121B5370130065D4EB /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
-		71F1A71B1B584321006B2D9E /* EnableHealthKitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnableHealthKitViewController.swift; sourceTree = "<group>"; };
 		71F1A71F1B585506006B2D9E /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		71F4E7C81B59751300F6AE7B /* HKManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = HKManager.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
@@ -245,7 +243,6 @@
 			isa = PBXGroup;
 			children = (
 				2BB8DC9A1B60078E007704B5 /* SettingsTableViewController.swift */,
-				71F1A71B1B584321006B2D9E /* EnableHealthKitViewController.swift */,
 				71F1A71F1B585506006B2D9E /* InfoViewController.swift */,
 				2BBA0AF81B6946B800F55383 /* HealthKitAuthorizationViewController.swift */,
 				2BBA0AF31B693C8500F55383 /* EntrySwitchViewController.swift */,
@@ -389,7 +386,6 @@
 				2B51A96E1B62A8550001AA97 /* PieGraphDataSet.swift in Sources */,
 				2BB8DC9B1B60078E007704B5 /* SettingsTableViewController.swift in Sources */,
 				2B51A96F1B62A8550001AA97 /* PieGraphSlice.swift in Sources */,
-				71F1A71C1B584321006B2D9E /* EnableHealthKitViewController.swift in Sources */,
 				71F1A7201B585506006B2D9E /* InfoViewController.swift in Sources */,
 				2B24DD9B1B67F05E00504255 /* DataFaker.swift in Sources */,
 				2B24DDA31B6822DF00504255 /* BarGraphDataSet.swift in Sources */,
