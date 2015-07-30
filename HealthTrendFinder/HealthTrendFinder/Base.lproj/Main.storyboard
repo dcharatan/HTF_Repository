@@ -57,7 +57,7 @@
                         <sections>
                             <tableViewSection headerTitle="HealthKit" id="ADS-ib-5HY">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="mgi-9g-E2h" style="IBUITableViewCellStyleDefault" id="gKF-Bj-Vzw">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="mgi-9g-E2h" detailTextLabel="zt0-JH-Doh" style="IBUITableViewCellStyleSubtitle" id="gKF-Bj-Vzw">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gKF-Bj-Vzw" id="Z2f-jQ-Tp4">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -65,6 +65,12 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Authorize HealthKit" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mgi-9g-E2h">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Use the Health app to change HealthKit authorizations." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zt0-JH-Doh">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -105,21 +111,6 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="Hf8-yL-e77" style="IBUITableViewCellStyleDefault" id="194-43-Tq5">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="194-43-Tq5" id="6DL-Jf-D3B">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Allow context-based notifications" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Hf8-yL-e77">
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -136,6 +127,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="allowDailyNotificationsCell" destination="3c3-OB-Xrs" id="Lh2-Qf-Erm"/>
+                        <outlet property="allowWeeklyNotificationsCell" destination="8Qb-ul-8P8" id="uJf-rU-Ipc"/>
                         <outlet property="authorizationCell" destination="gKF-Bj-Vzw" id="bBg-Le-eFS"/>
                     </connections>
                 </tableViewController>
@@ -218,12 +211,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FIv-32-us0">
-                                <rect key="frame" x="16" y="72" width="568" height="50"/>
+                                <rect key="frame" x="16" y="72" width="567" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Kw6-FS-96u"/>
                                 </constraints>
-                                <string key="text">This app requires HealthKit authorization. You can authorize HealthKit now with the button below or authorize HealthKit later in the settings menu.</string>
+                                <string key="text">This app requires HealthKit authorization to function. You can authorize HealthKit now with the button below or authorize HealthKit later in the settings menu.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -242,7 +235,7 @@
                             <constraint firstItem="FIv-32-us0" firstAttribute="top" secondItem="lS1-4c-6qe" secondAttribute="bottom" constant="8" id="HWG-8C-Cip"/>
                             <constraint firstAttribute="centerX" secondItem="2UU-rt-eo2" secondAttribute="centerX" id="Qsh-TK-UBH"/>
                             <constraint firstItem="FIv-32-us0" firstAttribute="leading" secondItem="kK1-a9-kZ2" secondAttribute="leadingMargin" id="aee-ha-u7G"/>
-                            <constraint firstItem="FIv-32-us0" firstAttribute="trailing" secondItem="kK1-a9-kZ2" secondAttribute="trailingMargin" id="fkG-mj-1ma"/>
+                            <constraint firstItem="FIv-32-us0" firstAttribute="trailing" secondItem="kK1-a9-kZ2" secondAttribute="trailingMargin" constant="-1" id="fkG-mj-1ma"/>
                             <constraint firstItem="2UU-rt-eo2" firstAttribute="top" secondItem="FIv-32-us0" secondAttribute="bottom" constant="8" id="l7j-JO-BXt"/>
                         </constraints>
                     </view>

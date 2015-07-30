@@ -17,6 +17,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        // This verifies that there's a save file every time the app is launched.
+        StorageManager.verifySaveFile()
+        
+        // This asks for permission for notifications.
+        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
+        
+        var notification: UILocalNotification = UILocalNotification()
+        notification.alertAction = "view cards"
+        notification.alertBody = "This is an entirely fake notification, but it shows that notifications work."
+        notification.fireDate = NSDate(timeIntervalSinceNow: 15)
+        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+        
         // Override point for customization after application launch.
         return true
     }

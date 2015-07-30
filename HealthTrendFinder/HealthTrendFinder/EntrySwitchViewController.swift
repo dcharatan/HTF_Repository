@@ -14,16 +14,12 @@ class EntrySwitchViewController: UIViewController {
         super.viewDidAppear(false)
         
         // Depending on whether HealthKit has been activated, this either goes to the HealthKit activation screen or the app.
-        let defaults = NSUserDefaults.standardUserDefaults()
-        if let healthKitAuthorized = defaults.valueForKey(StorageManager.StorageKeys.healthKitAuthorized.rawValue) as? Bool {
+        if let healthKitAuthorized = StorageManager.getValue(StorageManager.StorageKeys.healthKitAuthorized) as? Bool {
             if healthKitAuthorized {
                 performSegueWithIdentifier("segueToApp", sender: nil)
             } else {
                 performSegueWithIdentifier("segueToHealthKitAuthorization", sender: nil)
             }
-        } else {
-            println("EntrySwitchViewController: No value for StorageManager.StorageKeys.healthKitAuthorized.rawValue found. Switching to HealthKit authorization view.")
-            performSegueWithIdentifier("segueToHealthKitAuthorization", sender: nil)
         }
     }
     
