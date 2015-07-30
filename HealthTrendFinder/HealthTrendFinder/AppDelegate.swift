@@ -23,6 +23,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // This asks for permission for notifications.
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
         
+        // BELOW HERE, THIS IS TESTING STUFF -- DO NOT DELETE
+        
+        var hk = HKManager()
+        println("aaa")
+        var data = hk.getHKQuantityData(HKSampleType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount), timeUnit: NSCalendarUnit.CalendarUnitMinute, dataUnit: HKUnit.countUnit(), startDate: NSDate(timeIntervalSinceNow: -(7 * 24 * 60 * 60)), endDate: NSDate(), completion: nil)
+        println(data)
+        println("bbb")
+        
+        let startDate = NSDate(timeIntervalSinceNow: 0)
+        let endDate = NSDate(timeIntervalSinceNow: 4/24 * 60 * 60 * 24)
+        let timeUnit = NSCalendarUnit.CalendarUnitHour
+        let conversionComponents: NSDateComponents = NSCalendar.currentCalendar().components(timeUnit, fromDate: startDate, toDate: endDate, options: nil)
+        let elapsedUnitsBetweenDates: Int = conversionComponents.valueForComponent(timeUnit)
+        println("aaa \(elapsedUnitsBetweenDates)")
+        
         var notification: UILocalNotification = UILocalNotification()
         notification.alertAction = "view cards"
         notification.alertBody = "This is an entirely fake notification, but it shows that notifications work."

@@ -12,6 +12,7 @@ import UIKit
 import Darwin
 
 class HKManager {
+    // none of these variables should be here
     var weekStepData = [Double]()
     var dayStepData = [Double]()
     var x = 1
@@ -21,58 +22,47 @@ class HKManager {
     var allTimeSteps = [Double]()
     var unknown = "Unknown"
     var height:HKQuantitySample?
+    
     let healthKitStore:HKHealthStore = HKHealthStore()
-    // Needed Variables
-    var objectType = ""
-    var chooseUnit: String = ""
-
     
     // This is the only data fetching function we need
-    func getHKQuantityData(sampleType: HKSampleType, timeUnit: NSCalendarUnit, startDate: NSDate, endDate: NSDate, completion: (Void -> Void)) -> [(NSDate, Double)] {
+    func getHKQuantityData(sampleType: HKQuantityType, timeUnit: NSCalendarUnit, dataUnit: HKUnit, startDate: NSDate, endDate: NSDate, completion: (Void -> Void)?) -> [(NSDate, Double)] {
         var returnValue: [(NSDate, Double)] = []
-        /*
-        var type: HKSampleType
-        var predicate: NSPredicate!
-        switch objectType {
-        case "StepCount":
-            type = HKSampleType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount)
-        case "Height":
-            type = HKSampleType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeight)
-        case "BodyMass":
-            type = HKSampleType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass)
-        case "BMI":
-            type = HKSampleType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMassIndex)
-        default:
-            println("No recognized type")
+        let conversionComponents: NSDateComponents = NSCalendar.currentCalendar().components(timeUnit, fromDate: startDate, toDate: endDate, options: nil)
+        let elapsedUnitsBetweenDates: Int = conversionComponents.valueForComponent(timeUnit)
+        println("(HKManager.getHKQuantityData) elapsedUnitsBetweenDates = \(elapsedUnitsBetweenDates)")
+        
+        for var i: Int = 0; i < elapsedUnitsBetweenDates; ++i {
+            let predicateStartDate: NSDate = NSCalendar.currentCalendar().dateByAddingUnit(timeUnit, value: -(i + 1), toDate: endDate, options: nil)!
+            let predicateEndDate: NSDate = NSCalendar.currentCalendar().dateByAddingUnit(timeUnit, value: -i, toDate: endDate, options: nil)!
+            let predicate: NSPredicate = HKQuery.predicateForSamplesWithStartDate(predicateStartDate,
+                endDate: predicateEndDate,
+                options: HKQueryOptions.None)
+            
+            let query = HKSampleQuery(sampleType: sampleType, predicate: predicate, limit: 0, sortDescriptors: nil) {query, results, error in
+                var dataPointTotal: Double = 0
+                if results?.count > 0 {
+                    for result in results as! [HKQuantitySample] {
+                        dataPointTotal += result.quantity.doubleValueForUnit(dataUnit)
+                    }
+                }
+                returnValue += [(predicateStartDate, dataPointTotal)]
+                
+                if let completionFunction = completion {
+                    completionFunction()
+                }
+            }
+            self.healthKitStore.executeQuery(query)
         }
-        switch timeUnit {
-        case NSCalendarUnit.CalendarUnitDay:
-            predicate = HKQuery.predicateForSamplesWithStartDate(NSCalendar.currentCalendar().dateByAddingUnit(.CalendarUnitDay, value: startDate, toDate: NSDate(), options: nil), endDate: NSCalendar.currentCalendar().dateByAddingUnit(.CalendarUnitDay, value: endDate, toDate: NSDate(), options: nil), options: .None)
-        }
-        
-        
-        
-        // Returns one data point for each timeUnit between startDate and endDate
-        // array of tuples - (date, double)
-        
-        */
         return returnValue
     }
     
     func authorizeHealthKit(completion: ((success: Bool, error: NSError?) -> Void)!) {
-        let healthKitTypesToRead = [
-            HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierDateOfBirth),
-            HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierBloodType),
-            HKObjectType.characteristicTypeForIdentifier(HKCharacteristicTypeIdentifierBiologicalSex),
+        let healthKitTypesToRead: Set = [
             HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass),
             HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeight),
             HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount),
-            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMassIndex),
-            HKObjectType.workoutType()
-        ]
-        let healthKitTypesToWrite = [
-            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMassIndex),
-            HKQuantityType.workoutType()
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMassIndex)
         ]
         
         if !HKHealthStore.isHealthDataAvailable() {
@@ -82,8 +72,7 @@ class HKManager {
             return
         }
         
-        healthKitStore.requestAuthorizationToShareTypes(Set(healthKitTypesToWrite), readTypes: Set(healthKitTypesToRead)) { (success, error) -> Void in
-            
+        healthKitStore.requestAuthorizationToShareTypes(Set(), readTypes: healthKitTypesToRead) { (success, error) -> Void in
             if completion != nil {
                 completion(success: success, error: error)
             }
@@ -156,33 +145,6 @@ class HKManager {
             self.healthKitStore.executeQuery(sampleQuery)
         }
         
-    }
-    
-    func updateHeight() {
-        // 1. Construct an HKSampleType for Height
-        let sampleType = HKSampleType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeight)
-        // 2. Call the method to read the most recent Height sample
-        self.readWeekData(sampleType, completion: { (mostRecentHeight, error) -> Void in
-           
-            if( error != nil ) {
-                println("Error reading height from HealthKit Store: \(error.localizedDescription)")
-                return;
-            }
-            
-            var heightLocalizedString = self.unknown
-            self.height = (mostRecentHeight as? HKQuantitySample)!;
-            // 3. Format the height to display it on the screen
-            if let meters = self.height?.quantity.doubleValueForUnit(HKUnit.meterUnit()) {
-                let heightFormatter = NSLengthFormatter()
-                heightFormatter.forPersonHeightUse = true;
-                heightLocalizedString = heightFormatter.stringFromMeters(meters);
-            }
-            
-            // 4. Update UI. HealthKit uses an internal queue. We make sure that we interact with the UI in the main thread
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                println(heightLocalizedString)
-            });
-        });
     }
     
     func stepsInPastWeek(completion: (Double, NSError?) -> () ) {
