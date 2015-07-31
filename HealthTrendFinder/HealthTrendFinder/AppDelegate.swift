@@ -26,17 +26,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // BELOW HERE, THIS IS TESTING STUFF -- DO NOT DELETE
         
         var hk = HKManager()
-        println("aaa")
-        var data = hk.getHKQuantityData(HKSampleType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount), timeUnit: NSCalendarUnit.CalendarUnitMinute, dataUnit: HKUnit.countUnit(), startDate: NSDate(timeIntervalSinceNow: -(7 * 24 * 60 * 60)), endDate: NSDate(), completion: nil)
-        println(data)
-        println("bbb")
-        
-        let startDate = NSDate(timeIntervalSinceNow: 0)
-        let endDate = NSDate(timeIntervalSinceNow: 4/24 * 60 * 60 * 24)
-        let timeUnit = NSCalendarUnit.CalendarUnitHour
-        let conversionComponents: NSDateComponents = NSCalendar.currentCalendar().components(timeUnit, fromDate: startDate, toDate: endDate, options: nil)
-        let elapsedUnitsBetweenDates: Int = conversionComponents.valueForComponent(timeUnit)
-        println("aaa \(elapsedUnitsBetweenDates)")
+        hk.getHKQuantityData(HKSampleType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount), timeUnit: NSCalendarUnit.CalendarUnitDay, dataUnit: HKUnit.countUnit(), startDate: NSDate(timeIntervalSinceNow: -(7 * 24 * 60 * 60)), endDate: NSDate(), completion: {data in
+            // THIS IS WHERE YOU DO THE NEXT THING!
+            // DATA IS ACCESSED WITH data
+            // data is [(NSDate, Double)]
+        })
         
         var notification: UILocalNotification = UILocalNotification()
         notification.alertAction = "view cards"

@@ -26,7 +26,59 @@ class HKManager {
     let healthKitStore:HKHealthStore = HKHealthStore()
     
     // This is the only data fetching function we need
-    func getHKQuantityData(sampleType: HKQuantityType, timeUnit: NSCalendarUnit, dataUnit: HKUnit, startDate: NSDate, endDate: NSDate, completion: (Void -> Void)?) -> [(NSDate, Double)] {
+    func getHKQuantityData(sampleType: HKQuantityType, timeUnit: NSCalendarUnit, dataUnit: HKUnit, startDate: NSDate, endDate: NSDate, completion: ([(NSDate, Double)] -> Void)?) {
+        var returnValue: [(NSDate, Double)] = []
+        
+        let conversionComponents: NSDateComponents = NSCalendar.currentCalendar().components(timeUnit, fromDate: startDate, toDate: endDate, options: nil)
+        let elapsedUnitsBetweenDates: Int = conversionComponents.valueForComponent(timeUnit)
+        let predicateStartDate: NSDate = NSCalendar.currentCalendar().dateByAddingUnit(timeUnit, value: -elapsedUnitsBetweenDates, toDate: endDate, options: nil)!
+        let predicateEndDate: NSDate = endDate
+        let predicate: NSPredicate = HKQuery.predicateForSamplesWithStartDate(predicateStartDate, endDate: predicateEndDate, options: HKQueryOptions.None)
+        
+        let query = HKSampleQuery(sampleType: sampleType, predicate: predicate, limit: 0, sortDescriptors: nil) {query, results, error in
+            // This takes all of the results
+            var currentSectionTotal: Double = 0
+            var currentSectionNumber: Int = 0
+            if results?.count > 0 {
+                var currentSectionStartDate: NSDate = NSDate()
+                var currentSectionEndDate: NSDate = NSDate()
+                
+                for result: HKQuantitySample in results as! [HKQuantitySample] {
+                    currentSectionEndDate = NSCalendar.currentCalendar().dateByAddingUnit(timeUnit, value: -currentSectionNumber, toDate: predicateEndDate, options: nil)!
+                    currentSectionStartDate = NSCalendar.currentCalendar().dateByAddingUnit(timeUnit, value: -1, toDate: currentSectionEndDate, options: nil)!
+                    
+                    while currentSectionStartDate.timeIntervalSinceDate(result.endDate) > 0 {
+                        returnValue += [(currentSectionStartDate, currentSectionTotal)]
+                        currentSectionNumber += 1
+                        currentSectionTotal = 0
+                        currentSectionEndDate = NSCalendar.currentCalendar().dateByAddingUnit(timeUnit, value: -currentSectionNumber, toDate: predicateEndDate, options: nil)!
+                        currentSectionStartDate = NSCalendar.currentCalendar().dateByAddingUnit(timeUnit, value: -1, toDate: currentSectionEndDate, options: nil)!
+                    }
+                    
+                    currentSectionTotal += result.quantity.doubleValueForUnit(dataUnit)
+                }
+                
+                while currentSectionNumber < elapsedUnitsBetweenDates {
+                    returnValue += [(currentSectionStartDate, currentSectionTotal)]
+                    currentSectionNumber += 1
+                    currentSectionTotal = 0
+                    currentSectionEndDate = NSCalendar.currentCalendar().dateByAddingUnit(timeUnit, value: -currentSectionNumber, toDate: predicateEndDate, options: nil)!
+                    currentSectionStartDate = NSCalendar.currentCalendar().dateByAddingUnit(timeUnit, value: -1, toDate: currentSectionEndDate, options: nil)!
+                }
+                
+                if let completionFunction = completion {
+                    completionFunction(returnValue)
+                }
+                
+                println("HKManager.getHKQuantityData:")
+                println("returnValue.count: \(returnValue.count), elapsedUnitsBetweenDates: \(elapsedUnitsBetweenDates)")
+                println("returnValue: \(returnValue)")
+            }
+        }
+        self.healthKitStore.executeQuery(query)
+    }
+    // unused but don't delete this yet
+    func getHKQuantityDataBrokenButWeMightNeedCodeSnippetsFromThis(sampleType: HKQuantityType, timeUnit: NSCalendarUnit, dataUnit: HKUnit, startDate: NSDate, endDate: NSDate, completion: (Void -> Void)?) -> [(NSDate, Double)] {
         var returnValue: [(NSDate, Double)] = []
         let conversionComponents: NSDateComponents = NSCalendar.currentCalendar().components(timeUnit, fromDate: startDate, toDate: endDate, options: nil)
         let elapsedUnitsBetweenDates: Int = conversionComponents.valueForComponent(timeUnit)

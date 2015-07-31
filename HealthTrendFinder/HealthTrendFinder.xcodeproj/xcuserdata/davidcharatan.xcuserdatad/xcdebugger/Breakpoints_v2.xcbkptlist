@@ -90,13 +90,61 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HealthTrendFinder/HKManager.swift"
-            timestampString = "459988598.206279"
+            timestampString = "460053883.431902"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "authorizeHealthKit(_:)"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HealthTrendFinder/HKManager.swift"
+            timestampString = "459993326.009165"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "getHKQuantityData(_:timeUnit:dataUnit:startDate:endDate:completion:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HealthTrendFinder.HKManager.getHKQuantityData (HealthTrendFinder.HKManager)(ObjectiveC.HKQuantityType, timeUnit : C.NSCalendarUnit, dataUnit : ObjectiveC.HKUnit, startDate : ObjectiveC.NSDate, endDate : ObjectiveC.NSDate, completion : Swift.Optional&lt;() -&gt; ()&gt;) -&gt; Swift.Array&lt;(ObjectiveC.NSDate, Swift.Double)&gt;"
+                  moduleName = "HealthTrendFinder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/davidcharatan/Documents/HealthTrendFinderRepository/HTF_Repository/HealthTrendFinder/HealthTrendFinder/HKManager.swift"
+                  timestampString = "459991591.141037"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "1887">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HealthTrendFinder.HKManager.(getHKQuantityData (HealthTrendFinder.HKManager) -&gt; (ObjectiveC.HKQuantityType, timeUnit : C.NSCalendarUnit, dataUnit : ObjectiveC.HKUnit, startDate : ObjectiveC.NSDate, endDate : ObjectiveC.NSDate, completion : Swift.Optional&lt;() -&gt; ()&gt;) -&gt; Swift.Array&lt;(ObjectiveC.NSDate, Swift.Double)&gt;).(closure #1)"
+                  moduleName = "HealthTrendFinder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/davidcharatan/Documents/HealthTrendFinderRepository/HTF_Repository/HealthTrendFinder/HealthTrendFinder/HKManager.swift"
+                  timestampString = "459991591.141231"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "1316">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
