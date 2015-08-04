@@ -16,11 +16,11 @@ class PieGraphView: UIView {
     @IBInspectable var xOfKeyScale: String = "vertical"
     @IBInspectable var yOfKeyScale: String = "vertical"
     @IBInspectable var xOfGuideScale: String = "vertical"
-    @IBInspectable var yOfGuideScale: String = "vertical"
     @IBInspectable var keySizeScale: String = "vertical"
-    @IBInspectable var guideSizeScale: String = "vertical"
     @IBInspectable var labelSizeScale: String = "vertical"
     @IBInspectable var diameterScale: String = "vertical"
+    @IBInspectable var guideLengthScale: String = "vertical"
+    @IBInspectable var guideFontSizeScale: String = "vertical"
     
     @IBInspectable var pieX: CGFloat = 50
     @IBInspectable var pieY: CGFloat = 50
@@ -31,22 +31,16 @@ class PieGraphView: UIView {
     @IBInspectable var sliceColor: UIColor = UIColor.darkGrayColor()
     
     @IBInspectable var guideEnabled: Bool = true
-    @IBInspectable var guideX: CGFloat = 110
-    @IBInspectable var guideY: CGFloat = 25
-    
-    @IBInspectable var guideCircleSize: CGFloat = 7
-    @IBInspectable var guideLineWidth: CGFloat = 2.5
-    @IBInspectable var guideLineColor: UIColor = UIColor.darkGrayColor()
-    @IBInspectable var guideArrowSize: CGFloat = 3.5
+    @IBInspectable var guideLength: CGFloat = 0
+    @IBInspectable var guideStartColor: UIColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
+    @IBInspectable var guideEndColor: UIColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
     @IBInspectable var guideFontSize: CGFloat = 5
-    @IBInspectable var guideFontMargin: CGFloat = 3.75
-    @IBInspectable var guideFontSpacing: CGFloat = 2.5
-    @IBInspectable var guideFontPadding: CGFloat = 5
     @IBInspectable var guideFontColor: UIColor = UIColor.darkGrayColor()
+    @IBInspectable var guideTextX: CGFloat = 110
     
     @IBInspectable var keyEnabled: Bool = true
     @IBInspectable var keyX: CGFloat = 110
-    @IBInspectable var keyY: CGFloat = 75
+    @IBInspectable var keyY: CGFloat = 50
     
     @IBInspectable var swatchSize: CGFloat = 5
     @IBInspectable var swatchGap: CGFloat = 2.5
@@ -59,8 +53,8 @@ class PieGraphView: UIView {
     @IBInspectable var labelBoxWidth: CGFloat = 20
     @IBInspectable var labelFontColor: UIColor = UIColor.whiteColor()
     @IBInspectable var labelInPercent: Bool = false
-    @IBInspectable var labelUnit: String = ""
     @IBInspectable var labelPrecision: Int = 1
+    @IBInspectable var labelUnit: String = ""
     
     internal var data: [PieGraphDataSet] = []
     internal var colors: [String : UIColor] = [:]
@@ -79,13 +73,13 @@ class PieGraphView: UIView {
         sortData()
         determinePiePosition()
         determineRingDimensions()
+        if guideEnabled {
+            drawGuide()
+        }
         drawRings()
         determineKeyScaling()
         if keyEnabled {
             drawKey()
-        }
-        if guideEnabled {
-            drawGuide()
         }
     }
     
@@ -264,7 +258,7 @@ class PieGraphView: UIView {
                     y: pieCenter.y - absoluteRingInnerRadii[dataSet]!,
                     width: absoluteRingInnerRadii[dataSet]! * 2,
                     height: absoluteRingInnerRadii[dataSet]! * 2
-                ))
+                    ))
                 CGContextFillPath(context)
                 CGContextRestoreGState(context)
             }
@@ -293,7 +287,7 @@ class PieGraphView: UIView {
             x: location.x - textRectLengthAbsolute * 0.5,
             y: location.y - fontSizeAbsolute * 0.5,
             width: textRectLengthAbsolute,
-            height: fontSizeAbsolute * 1.25
+            height: fontSizeAbsolute
         )
         
         var text: String
@@ -358,7 +352,7 @@ class PieGraphView: UIView {
         for (name, color) in colors {
             let context = UIGraphicsGetCurrentContext()
             let rectangle = CGRect(
-                x: keyCoords.x - swatchSizeAbsolute * 0.5,
+                x: keyCoords.x,
                 y: startY + CGFloat(i) * (swatchSizeAbsolute + swatchGapAbsolute),
                 width: swatchSizeAbsolute,
                 height: swatchSizeAbsolute
@@ -369,7 +363,7 @@ class PieGraphView: UIView {
             
             let text: NSString = (name as NSString)
             let textRect: CGRect = CGRect(
-                x: keyCoords.x + swatchSizeAbsolute * 0.5 + swatchFontMarginAbsolute,
+                x: keyCoords.x + swatchSizeAbsolute + swatchFontMarginAbsolute,
                 y: startY + (CGFloat(i) + 0.5) * swatchSizeAbsolute + CGFloat(i) * swatchGapAbsolute - swatchFontSizeAbsolute * 0.625,
                 width: self.bounds.width - keyCoords.x - swatchGapAbsolute - swatchFontMarginAbsolute,
                 height: swatchFontSizeAbsolute * 1.25
@@ -387,88 +381,68 @@ class PieGraphView: UIView {
     }
     
     private func drawGuide() {
-        var circleSizeAbsolute: CGFloat = 0
-        var lineWidthAbsolute: CGFloat = 0
-        var arrowSizeAbsolute: CGFloat = 0
-        var fontSizeAbsolute: CGFloat = 0
-        var fontMarginAbsolute: CGFloat = 0
-        var fontSpacingAbsolute: CGFloat = 0
-        var fontPaddingAbsolute: CGFloat = 0
-        
-        if guideSizeScale == "horizontal" {
-            circleSizeAbsolute = self.bounds.width * guideCircleSize * 0.01
-            lineWidthAbsolute = self.bounds.width * guideLineWidth * 0.01
-            arrowSizeAbsolute = self.bounds.width * guideArrowSize * 0.01
-            fontSizeAbsolute = self.bounds.width * guideFontSize * 0.01
-            fontMarginAbsolute = self.bounds.width * guideFontMargin * 0.01
-            fontSpacingAbsolute = self.bounds.width * guideFontSpacing * 0.01
-            fontPaddingAbsolute = self.bounds.width * guideFontPadding * 0.01
+        var guideLengthAbsolute: CGFloat = 0
+        if guideLengthScale == "horizontal" {
+            guideLengthAbsolute = guideLength * 0.01 * self.bounds.width
         }
-        if guideSizeScale == "vertical" {
-            circleSizeAbsolute = self.bounds.height * guideCircleSize * 0.01
-            lineWidthAbsolute = self.bounds.height * guideLineWidth * 0.01
-            arrowSizeAbsolute = self.bounds.height * guideArrowSize * 0.01
-            fontSizeAbsolute = self.bounds.height * guideFontSize * 0.01
-            fontMarginAbsolute = self.bounds.height * guideFontMargin * 0.01
-            fontSpacingAbsolute = self.bounds.height * guideFontSpacing * 0.01
-            fontPaddingAbsolute = self.bounds.height * guideFontPadding * 0.01
+        if guideLengthScale == "vertical" {
+            guideLengthAbsolute = guideLength * 0.01 * self.bounds.height
         }
-        
-        var location: CGPoint = CGPoint()
-        
-        if xOfGuideScale == "horizontal" {
-            location.x = self.bounds.width * guideX * 0.01
+        if guideLength == 0 {
+            println("aaa")
+            guideLengthAbsolute = self.bounds.width - pieCenter.x
+            println(guideLengthAbsolute)
         }
-        if xOfGuideScale == "vertical" {
-            location.x = self.bounds.height * guideX * 0.01
-        }
-        if yOfGuideScale == "horizontal" {
-            location.y = self.bounds.width * guideY * 0.01
-        }
-        if yOfGuideScale == "vertical" {
-            location.y = self.bounds.height * guideY * 0.01
-        }
-        
-        let totalHeightAbsolute: CGFloat = circleSizeAbsolute + arrowSizeAbsolute + fontSizeAbsolute * CGFloat(data.count) + fontSpacingAbsolute * CGFloat(data.count - 1) + 2 * fontPaddingAbsolute
         
         let context: CGContextRef = UIGraphicsGetCurrentContext()
         
-        // This draws the circle.
-        let circleRect: CGRect = CGRect(
-            x: location.x - circleSizeAbsolute * 0.5,
-            y: location.y + totalHeightAbsolute * 0.5 - circleSizeAbsolute,
-            width: circleSizeAbsolute,
-            height: circleSizeAbsolute
-        )
-        CGContextAddEllipseInRect(context, circleRect)
-        CGContextSetFillColorWithColor(context, guideLineColor.CGColor)
-        CGContextFillPath(context)
-        
-        // This draws the line.
-        CGContextMoveToPoint(context, location.x, location.y + totalHeightAbsolute * 0.5 - circleSizeAbsolute * 0.5)
-        CGContextAddLineToPoint(context, location.x, location.y - totalHeightAbsolute * 0.5)
-        CGContextSetStrokeColorWithColor(context, guideLineColor.CGColor)
-        CGContextSetLineWidth(context, lineWidthAbsolute)
-        CGContextSetLineCap(context, kCGLineCapRound)
-        CGContextStrokePath(context)
-        
-        // This draws the arrow.
-        CGContextMoveToPoint(context, location.x - arrowSizeAbsolute, location.y - totalHeightAbsolute * 0.5 + arrowSizeAbsolute)
-        CGContextAddLineToPoint(context, location.x, location.y - totalHeightAbsolute * 0.5)
-        CGContextAddLineToPoint(context, location.x + arrowSizeAbsolute, location.y - totalHeightAbsolute * 0.5 + arrowSizeAbsolute)
-        CGContextStrokePath(context)
-        
-        // This writes the text.
-        let lowerMostY: CGFloat = location.y + totalHeightAbsolute * 0.5 - circleSizeAbsolute - fontPaddingAbsolute - fontSizeAbsolute
-        
-        for var i: Int = 0; i < data.count; ++i {
-            let textRect: CGRect = CGRect(
-                x: location.x + lineWidthAbsolute * 0.5 + fontMarginAbsolute,
-                y: lowerMostY - CGFloat(i) * (fontSizeAbsolute + fontSpacingAbsolute),
-                width: self.bounds.width - (location.x + lineWidthAbsolute * 0.5 + fontMarginAbsolute), // entire width - start x
-                height: fontSizeAbsolute * 1.25 // It's best to add a bit, since letters like lowercase g are cut off otherwise.
+        for i: Int in 0..<data.count {
+            let guideHeightAbsolute: CGFloat = absoluteRingOuterRadii[data[i]]! - absoluteRingInnerRadii[data[i]]!
+            let guideRect: CGRect = CGRect(
+                x: pieCenter.x,
+                y: pieCenter.y - absoluteRingOuterRadii[data[i]]!,
+                width: guideLengthAbsolute,
+                height: guideHeightAbsolute
             )
-            let font: UIFont = UIFont(name: "Helvetica Neue", size: fontSizeAbsolute)!
+            
+            CGContextSaveGState(context)
+            
+            CGContextClipToRect(context, guideRect)
+            let locations: [CGFloat] = [0, 1]
+            let gradientColors: [CGColor] = [guideStartColor.CGColor, guideEndColor.CGColor]
+            let colorspace: CGColorSpaceRef = CGColorSpaceCreateDeviceRGB()
+            let gradient: CGGradientRef = CGGradientCreateWithColors(colorspace, gradientColors, locations)
+            let startPoint: CGPoint = CGPoint(x: pieCenter.x, y: 0)
+            let endPoint: CGPoint = CGPoint(x: pieCenter.x + guideLengthAbsolute, y: 0)
+            CGContextDrawLinearGradient(context, gradient, startPoint, endPoint, 0)
+            
+            CGContextRestoreGState(context)
+            
+            // This writes the text.
+            var guideTextXAbsolute: CGFloat = 0
+            if xOfGuideScale == "horizontal" {
+                guideTextXAbsolute = guideTextX * 0.01 * self.bounds.width
+            }
+            if xOfGuideScale == "vertical" {
+                guideTextXAbsolute = guideTextX * 0.01 * self.bounds.height
+            }
+            
+            var guideFontSizeAbsolute: CGFloat = 0
+            if guideFontSizeScale == "horizontal" {
+                guideFontSizeAbsolute = guideFontSize * 0.01 * self.bounds.width
+            }
+            if guideFontSizeScale == "vertical" {
+                guideFontSizeAbsolute = guideFontSize * 0.01 * self.bounds.height
+            }
+            let guideTextYAbsolute: CGFloat = pieCenter.y - absoluteRingOuterRadii[data[i]]! + (guideHeightAbsolute - guideFontSizeAbsolute) * 0.4
+            
+            let textRect: CGRect = CGRect(
+                x: guideTextXAbsolute,
+                y: guideTextYAbsolute,
+                width: guideLengthAbsolute,
+                height: guideFontSizeAbsolute * 1.25 // It's best to add a bit, since letters like lowercase g are cut off otherwise.
+            )
+            let font: UIFont = UIFont(name: "Helvetica Neue", size: guideFontSizeAbsolute)!
             var textStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
             let textAttributes = [
                 NSFontAttributeName: font,

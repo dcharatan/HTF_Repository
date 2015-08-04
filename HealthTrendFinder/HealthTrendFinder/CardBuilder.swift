@@ -14,7 +14,7 @@ class CardBuilder: NSObject {
     static let innerMargin: CGFloat = 8
     
     static func getCurrentCards(viewBounds: CGRect) -> [CardView] {
-        return [makeBarGraphCard(viewBounds)]
+        return [makeBarGraphCard(viewBounds), makePieGraphCard(viewBounds)]
     }
     
     static private func makeBasicCard(viewBounds: CGRect) -> CardView {
@@ -117,6 +117,54 @@ class CardBuilder: NSObject {
             y: 0,
             width: viewBounds.width - 2 * cardMargin,
             height: returnCard.headerBarSize + barGraph.frame.height
+        )
+        
+        return returnCard
+    }
+    
+    static private func makePieGraphCard(viewBounds: CGRect) -> CardView {
+        var returnCard: CardView = CardView(frame: CGRect(), headerText: "Activity on Weekends vs. Weekdays")
+        
+        // This creates the pie graph.
+        var pieGraph: PieGraphView = PieGraphView()
+        pieGraph.frame = CGRect(
+            x: cardMargin,
+            y: cardMargin + returnCard.headerBarSize,
+            width: viewBounds.width - 3 * cardMargin,
+            height: (viewBounds.width - 2 * cardMargin) * 0.5
+        )
+        
+        // This adds data to the pie graph.
+        var weekdayDataSet: PieGraphDataSet = PieGraphDataSet()
+        weekdayDataSet.name = "Weekdays"
+        weekdayDataSet.slices = [
+            PieGraphSlice(magnitude: 3.1, name: "Activity"),
+            PieGraphSlice(magnitude: 13.6, name: "Inactivity")
+        ]
+        
+        var weekendDataSet: PieGraphDataSet = PieGraphDataSet()
+        weekendDataSet.name = "Weekends"
+        weekendDataSet.slices = [
+            PieGraphSlice(magnitude: 5.2, name: "Activity"),
+            PieGraphSlice(magnitude: 10.4, name: "Inactivity")
+        ]
+        
+        pieGraph.data = [weekdayDataSet, weekendDataSet]
+        pieGraph.colors = [
+            "Activity": ColorManager.colors[4],
+            "Inactivity": ColorManager.colors[5]
+        ]
+        pieGraph.guideFontSize = 7.5
+        pieGraph.swatchFontMargin = 5
+        pieGraph.swatchSize = 7.5
+        pieGraph.swatchFontSize = 7.5
+        pieGraph.labelFontSize = 5
+        pieGraph.labelUnit = "h"
+        
+        returnCard.addSubview(pieGraph)
+        
+        returnCard.frame = CGRect(
+            x: cardMargin, y: 0, width: viewBounds.width - 2 * cardMargin, height: returnCard.headerBarSize + pieGraph.frame.height + cardMargin * 2
         )
         
         return returnCard

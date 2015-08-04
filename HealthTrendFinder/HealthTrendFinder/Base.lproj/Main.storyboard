@@ -26,12 +26,22 @@
                                     <segment title="Year"/>
                                 </segments>
                             </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CRu-zS-hM8" customClass="DataColorLabel" customModule="HealthTrendFinder" customModuleProvider="target">
+                                <rect key="frame" x="16" y="108" width="250" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="Ntr-7V-rAN"/>
+                                    <constraint firstAttribute="height" constant="50" id="SQN-Jw-mJG"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Fw6-fG-wqv" firstAttribute="top" secondItem="HN4-VJ-u3v" secondAttribute="bottom" constant="8" id="2gG-eq-Wle"/>
+                            <constraint firstItem="CRu-zS-hM8" firstAttribute="leading" secondItem="L6o-FM-j93" secondAttribute="leadingMargin" id="33j-CQ-DT9"/>
                             <constraint firstItem="Fw6-fG-wqv" firstAttribute="trailing" secondItem="L6o-FM-j93" secondAttribute="trailingMargin" id="LCT-ui-tGJ"/>
                             <constraint firstItem="Fw6-fG-wqv" firstAttribute="leading" secondItem="L6o-FM-j93" secondAttribute="leadingMargin" id="Qhh-3l-2fQ"/>
+                            <constraint firstItem="CRu-zS-hM8" firstAttribute="top" secondItem="Fw6-fG-wqv" secondAttribute="bottom" constant="8" id="dwD-ZU-BKA"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Health Analysis" id="uSS-Ew-0zN">

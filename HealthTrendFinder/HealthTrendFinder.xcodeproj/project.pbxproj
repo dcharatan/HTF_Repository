@@ -19,6 +19,8 @@
 		2B51A96E1B62A8550001AA97 /* PieGraphDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B51A96B1B62A8550001AA97 /* PieGraphDataSet.swift */; };
 		2B51A96F1B62A8550001AA97 /* PieGraphSlice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B51A96C1B62A8550001AA97 /* PieGraphSlice.swift */; };
 		2B51A9701B62A8550001AA97 /* PieGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B51A96D1B62A8550001AA97 /* PieGraphView.swift */; };
+		2B7695261B71361F001ABB7B /* DataColorLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7695251B71361F001ABB7B /* DataColorLabel.swift */; };
+		2B7695281B716F3A001ABB7B /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7695271B716F3A001ABB7B /* ColorManager.swift */; };
 		2B9488871B43060E0028B70B /* AnalysisTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9488861B43060E0028B70B /* AnalysisTools.swift */; };
 		2BB8DC9B1B60078E007704B5 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB8DC9A1B60078E007704B5 /* SettingsTableViewController.swift */; };
 		2BBA0AF21B6936F200F55383 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBA0AF11B6936F200F55383 /* StorageManager.swift */; };
@@ -60,6 +62,8 @@
 		2B51A96B1B62A8550001AA97 /* PieGraphDataSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieGraphDataSet.swift; sourceTree = "<group>"; };
 		2B51A96C1B62A8550001AA97 /* PieGraphSlice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieGraphSlice.swift; sourceTree = "<group>"; };
 		2B51A96D1B62A8550001AA97 /* PieGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieGraphView.swift; sourceTree = "<group>"; };
+		2B7695251B71361F001ABB7B /* DataColorLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataColorLabel.swift; sourceTree = "<group>"; };
+		2B7695271B716F3A001ABB7B /* ColorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
 		2B9488861B43060E0028B70B /* AnalysisTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisTools.swift; sourceTree = "<group>"; };
 		2BB8DC9A1B60078E007704B5 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsTableViewController.swift; path = ../SettingsTableViewController.swift; sourceTree = "<group>"; };
 		2BBA0AF11B6936F200F55383 /* StorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
@@ -152,6 +156,7 @@
 		2B51A96A1B62A8370001AA97 /* Graphing */ = {
 			isa = PBXGroup;
 			children = (
+				2B7695251B71361F001ABB7B /* DataColorLabel.swift */,
 				2B24DDA61B68253C00504255 /* LineGraphing */,
 				2B24DD9D1B68222100504255 /* BarGraphing */,
 				2B24DD9C1B68221200504255 /* PieGraphing */,
@@ -255,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				2BDCAC831B41A625002A7F28 /* AppDelegate.swift */,
+				2B7695271B716F3A001ABB7B /* ColorManager.swift */,
 				71F4E7C81B59751300F6AE7B /* HKManager.swift */,
 				2BBA0AF11B6936F200F55383 /* StorageManager.swift */,
 			);
@@ -380,11 +386,13 @@
 				2B24DDA41B6822DF00504255 /* BarGraphBar.swift in Sources */,
 				2B24DDA91B68254F00504255 /* LineGraphView.swift in Sources */,
 				2B51A9701B62A8550001AA97 /* PieGraphView.swift in Sources */,
+				2B7695281B716F3A001ABB7B /* ColorManager.swift in Sources */,
 				2BBA0AF91B6946B800F55383 /* HealthKitAuthorizationViewController.swift in Sources */,
 				2B24DDA21B6822DF00504255 /* BarGraphView.swift in Sources */,
 				2B24DDA51B6822DF00504255 /* BarGraphBarSegment.swift in Sources */,
 				2B51A96E1B62A8550001AA97 /* PieGraphDataSet.swift in Sources */,
 				2BB8DC9B1B60078E007704B5 /* SettingsTableViewController.swift in Sources */,
+				2B7695261B71361F001ABB7B /* DataColorLabel.swift in Sources */,
 				2B51A96F1B62A8550001AA97 /* PieGraphSlice.swift in Sources */,
 				71F1A7201B585506006B2D9E /* InfoViewController.swift in Sources */,
 				2B24DD9B1B67F05E00504255 /* DataFaker.swift in Sources */,

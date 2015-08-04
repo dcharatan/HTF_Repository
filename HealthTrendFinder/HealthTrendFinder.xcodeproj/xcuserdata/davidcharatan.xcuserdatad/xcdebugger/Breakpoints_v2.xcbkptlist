@@ -42,13 +42,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HealthTrendFinder/CardBuilder.swift"
-            timestampString = "459813415.439664"
+            timestampString = "460410899.210144"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
-            landmarkName = "makeBarGraphCard(_:)"
-            landmarkType = "5">
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "CardBuilder"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -94,9 +94,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "authorizeHealthKit(_:)"
-            landmarkType = "5">
+            endingLineNumber = "113">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
