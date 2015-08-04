@@ -144,7 +144,41 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dkp-qf-QaS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4906" y="751"/>
+            <point key="canvasLocation" x="5080" y="751"/>
+        </scene>
+        <!--CardView Detail-->
+        <scene sceneID="Kaw-lf-m7h">
+            <objects>
+                <viewController storyboardIdentifier="CardDetail" id="pdH-wN-UEw" customClass="CardDetailViewController" customModule="HealthTrendFinder" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Bbl-ep-jsO"/>
+                        <viewControllerLayoutGuide type="bottom" id="R5b-Vm-QAk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2ZK-wG-gD1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WIP" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eok-xg-nLG">
+                                <rect key="frame" x="284" y="289" width="32" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="eok-xg-nLG" secondAttribute="centerX" id="Cys-aF-Hj5"/>
+                            <constraint firstAttribute="centerY" secondItem="eok-xg-nLG" secondAttribute="centerY" id="XNj-sM-EYX"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="CardView Detail" id="sjM-cj-8Jw"/>
+                    <connections>
+                        <outlet property="sampleLabel" destination="eok-xg-nLG" id="SLb-Sg-noV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JCx-pD-nbZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4286" y="-279"/>
         </scene>
         <!--Trend Cards-->
         <scene sceneID="NhE-ly-wNh">
@@ -338,7 +372,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pRq-AS-Nyw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4234" y="751"/>
+            <point key="canvasLocation" x="4286" y="751"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zp8-Df-FXm">
@@ -376,6 +410,24 @@
             </objects>
             <point key="canvasLocation" x="1060" y="1561"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hqf-qH-XBe">
+            <objects>
+                <navigationController storyboardIdentifier="CardDetailNavigation" automaticallyAdjustsScrollViewInsets="NO" id="6h0-UY-ykh" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cUn-TC-MqV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="pdH-wN-UEw" kind="relationship" relationship="rootViewController" id="lfC-yb-KBm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FCz-BW-70k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3474" y="-279"/>
+        </scene>
     </scenes>
     <resources>
         <image name="CardIcon" width="32" height="32"/>
@@ -384,6 +436,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="E4C-cd-kvY"/>
-        <segue reference="Lck-q5-YAZ"/>
+        <segue reference="EBj-kV-Okl"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -88,8 +88,6 @@ class CardViewController: UIViewController, UIGestureRecognizerDelegate, UIScrol
         // This adds new cards.
         let newCards: [CardView] = CardBuilder.getCurrentCards(self.view.bounds)
         
-        println(newCards.count)
-        
         for var i: Int = 0; i < newCards.count; ++i {
             addCard(newCards[i], animate: true, animationDelay: Double(i) * 0.05)
         }
@@ -98,6 +96,10 @@ class CardViewController: UIViewController, UIGestureRecognizerDelegate, UIScrol
     // This adds a card.
     private func addCard(newCard: CardView, animate: Bool = true, animationDelay: Double = 0) {
         newCard.center.y = cardHeightsAndMarginsUpToButNotIncludingIndex(cardArray.count) + newCard.frame.height * 0.5
+        
+        // This adds the tap listener.
+        let gestureRecognizer: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "cardTapped:")
+        newCard.addGestureRecognizer(gestureRecognizer)
         
         // This is where each CardView's UIPanGestureRecognizer is created.
         let panRecognizer = UIPanGestureRecognizer(target: self, action: "detectPan:")
@@ -132,6 +134,13 @@ class CardViewController: UIViewController, UIGestureRecognizerDelegate, UIScrol
         
         // Makes sure scrolling doesn't get locked into because of change in scroll window size.
         scrollingLocked = false
+    }
+    
+    func cardTapped(sender: AnyObject) {
+        var destinationViewController: CardDetailViewController = self.storyboard!.instantiateViewControllerWithIdentifier("CardDetail") as! CardDetailViewController
+        destinationViewController.cardTitle = (sender.view as! CardView).headerText
+        
+        self.navigationController!.pushViewController(destinationViewController, animated: true)
     }
     
     func detectPan(recognizer: UIPanGestureRecognizer) {

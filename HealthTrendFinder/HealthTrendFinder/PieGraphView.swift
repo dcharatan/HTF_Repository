@@ -389,9 +389,7 @@ class PieGraphView: UIView {
             guideLengthAbsolute = guideLength * 0.01 * self.bounds.height
         }
         if guideLength == 0 {
-            println("aaa")
             guideLengthAbsolute = self.bounds.width - pieCenter.x
-            println(guideLengthAbsolute)
         }
         
         let context: CGContextRef = UIGraphicsGetCurrentContext()
