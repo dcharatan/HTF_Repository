@@ -26,22 +26,87 @@
                                     <segment title="Year"/>
                                 </segments>
                             </segmentedControl>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CRu-zS-hM8" customClass="DataColorLabel" customModule="HealthTrendFinder" customModuleProvider="target">
-                                <rect key="frame" x="16" y="108" width="250" height="50"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6wn-F0-TQT" customClass="CorrelationView" customModule="HealthTrendFinder" customModuleProvider="target">
+                                <rect key="frame" x="16" y="108" width="200" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="250" id="Ntr-7V-rAN"/>
-                                    <constraint firstAttribute="height" constant="50" id="SQN-Jw-mJG"/>
+                                    <constraint firstAttribute="width" constant="200" id="c4L-jY-EwU"/>
+                                    <constraint firstAttribute="height" constant="40" id="dj3-fh-mkX"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="r">
+                                        <real key="value" value="0.125"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="amW-q9-e9Y" customClass="CorrelationView" customModule="HealthTrendFinder" customModuleProvider="target">
+                                <rect key="frame" x="16" y="156" width="200" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="0Lk-fO-rNI"/>
+                                    <constraint firstAttribute="height" constant="40" id="GK8-VA-3RH"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="r">
+                                        <real key="value" value="0.375"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j12-rS-9Jc" customClass="CorrelationView" customModule="HealthTrendFinder" customModuleProvider="target">
+                                <rect key="frame" x="16" y="204" width="200" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="Yb9-Bb-yWT"/>
+                                    <constraint firstAttribute="height" constant="40" id="k2r-c6-LJ2"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="r">
+                                        <real key="value" value="0.625"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m8J-ej-Pcz" customClass="CorrelationView" customModule="HealthTrendFinder" customModuleProvider="target">
+                                <rect key="frame" x="16" y="300" width="200" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="j4P-ev-Qno"/>
+                                    <constraint firstAttribute="height" constant="40" id="z0U-Xj-Dsp"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="r">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AFr-z8-tjp" customClass="CorrelationView" customModule="HealthTrendFinder" customModuleProvider="target">
+                                <rect key="frame" x="16" y="252" width="200" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Fc4-1L-5ww"/>
+                                    <constraint firstAttribute="width" constant="200" id="ftC-6h-93y"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="r">
+                                        <real key="value" value="0.875"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="m8J-ej-Pcz" firstAttribute="leading" secondItem="L6o-FM-j93" secondAttribute="leadingMargin" id="1c2-yv-n3S"/>
                             <constraint firstItem="Fw6-fG-wqv" firstAttribute="top" secondItem="HN4-VJ-u3v" secondAttribute="bottom" constant="8" id="2gG-eq-Wle"/>
-                            <constraint firstItem="CRu-zS-hM8" firstAttribute="leading" secondItem="L6o-FM-j93" secondAttribute="leadingMargin" id="33j-CQ-DT9"/>
+                            <constraint firstItem="j12-rS-9Jc" firstAttribute="top" secondItem="amW-q9-e9Y" secondAttribute="bottom" constant="8" id="DdF-Sa-Z37"/>
+                            <constraint firstItem="AFr-z8-tjp" firstAttribute="top" secondItem="j12-rS-9Jc" secondAttribute="bottom" constant="8" id="GxM-y5-Xx5"/>
+                            <constraint firstItem="6wn-F0-TQT" firstAttribute="top" secondItem="Fw6-fG-wqv" secondAttribute="bottom" constant="8" id="IrM-Dl-mIe"/>
                             <constraint firstItem="Fw6-fG-wqv" firstAttribute="trailing" secondItem="L6o-FM-j93" secondAttribute="trailingMargin" id="LCT-ui-tGJ"/>
                             <constraint firstItem="Fw6-fG-wqv" firstAttribute="leading" secondItem="L6o-FM-j93" secondAttribute="leadingMargin" id="Qhh-3l-2fQ"/>
-                            <constraint firstItem="CRu-zS-hM8" firstAttribute="top" secondItem="Fw6-fG-wqv" secondAttribute="bottom" constant="8" id="dwD-ZU-BKA"/>
+                            <constraint firstItem="6wn-F0-TQT" firstAttribute="leading" secondItem="L6o-FM-j93" secondAttribute="leadingMargin" id="WUD-L0-Vxg"/>
+                            <constraint firstItem="j12-rS-9Jc" firstAttribute="leading" secondItem="L6o-FM-j93" secondAttribute="leadingMargin" id="aDw-xW-2dF"/>
+                            <constraint firstItem="AFr-z8-tjp" firstAttribute="leading" secondItem="L6o-FM-j93" secondAttribute="leadingMargin" id="gHv-8z-wHY"/>
+                            <constraint firstItem="m8J-ej-Pcz" firstAttribute="top" secondItem="AFr-z8-tjp" secondAttribute="bottom" constant="8" id="jtG-xz-i4v"/>
+                            <constraint firstItem="amW-q9-e9Y" firstAttribute="leading" secondItem="L6o-FM-j93" secondAttribute="leadingMargin" id="tCm-ca-l0K"/>
+                            <constraint firstItem="amW-q9-e9Y" firstAttribute="top" secondItem="6wn-F0-TQT" secondAttribute="bottom" constant="8" id="zsp-YX-L2O"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Health Analysis" id="uSS-Ew-0zN">
@@ -436,6 +501,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="E4C-cd-kvY"/>
-        <segue reference="EBj-kV-Okl"/>
+        <segue reference="Lck-q5-YAZ"/>
     </inferredMetricsTieBreakers>
 </document>
