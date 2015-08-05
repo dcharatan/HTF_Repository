@@ -1,20 +1,15 @@
+//
+//  LineGraphDataSet.swift
+//  LineGraphingV3
+//
+//  Created by David Charatan on 7/31/15.
+//  Copyright (c) 2015 David Charatan. All rights reserved.
+//
+
 import UIKit
 
 class LineGraphDataSet: NSObject {
-    // This array stores data points.
-    internal var points: [CGPoint] = []
-    internal var name: String = ""
-    internal var lineColor: UIColor? = nil
-    internal var markerColor: UIColor? = nil
-    internal var markerStyle: Int? = nil
-    
-    // These variables are calculated by GraphView to help with graphing.
-    internal var extreme: CGPoint = CGPoint()
-    internal var oppositeExtreme: CGPoint = CGPoint()
-    internal var window: CGRect = CGRect()
-    internal var gridSpacing: CGPoint = CGPoint()
-    
-    init(points: [CGPoint] = []) {
-        self.points = points
-    }
+    var name: String = ""
+    var unit: String = ""
+    var points: [(x: NSDate, y: CGFloat)] = []
 }

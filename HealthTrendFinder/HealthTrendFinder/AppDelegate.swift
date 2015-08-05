@@ -24,7 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
         
         // BELOW HERE, THIS IS TESTING STUFF -- DO NOT DELETE
-        
         var hk = HKManager()
         hk.getHKQuantityData(HKSampleType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount), timeUnit: NSCalendarUnit.CalendarUnitDay, dataUnit: HKUnit.countUnit(), startDate: NSDate(timeIntervalSinceNow: -(7 * 24 * 60 * 60)), endDate: NSDate(), completion: {data in
             // THIS IS WHERE YOU DO THE NEXT THING!
