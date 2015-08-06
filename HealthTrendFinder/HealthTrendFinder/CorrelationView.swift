@@ -93,7 +93,7 @@ import UIKit
             width: self.bounds.width,
             height: descriptionSize * 1.25)))
         descriptionLabel.font = UIFont(name: "Helvetica Neue", size: descriptionSize)
-        descriptionLabel.text = descriptionForR(r)
+        descriptionLabel.text = descriptionForR(r) + " Correlation"
         descriptionLabel.textColor = descriptionColor
         addSubview(descriptionLabel)
     }

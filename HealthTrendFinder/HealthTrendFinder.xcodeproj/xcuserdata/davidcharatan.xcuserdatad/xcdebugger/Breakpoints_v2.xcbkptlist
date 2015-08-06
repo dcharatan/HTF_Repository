@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HealthTrendFinder/CardBuilder.swift"
-            timestampString = "460509858.693692"
+            timestampString = "460569664.228509"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
             landmarkName = "CardBuilder"
             landmarkType = "3">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HealthTrendFinder/CardBuilder.swift"
-            timestampString = "460509858.693692"
+            timestampString = "460569664.228509"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
             landmarkName = "makeBarGraphCard(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HealthTrendFinder/CardBuilder.swift"
-            timestampString = "460509858.693692"
+            timestampString = "460569664.228509"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "makeBarGraphCard(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -90,11 +90,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HealthTrendFinder/HKManager.swift"
-            timestampString = "460053883.431902"
+            timestampString = "460568542.278668"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113">
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "getHKQuantityData(_:timeUnit:dataUnit:startDate:endDate:completion:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -104,12 +106,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HealthTrendFinder/HKManager.swift"
-            timestampString = "459993326.009165"
+            timestampString = "460568542.278668"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "getHKQuantityData(_:timeUnit:dataUnit:startDate:endDate:completion:)"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "getHKQuantityDataHolden(_:timeUnit:dataUnit:startDate:endDate:completion:)"
             landmarkType = "5">
             <Locations>
                <Location

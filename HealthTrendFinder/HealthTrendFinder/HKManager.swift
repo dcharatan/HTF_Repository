@@ -24,22 +24,16 @@ class HKManager {
     var height:HKQuantitySample?
     
     let healthKitStore:HKHealthStore = HKHealthStore()
-<<<<<<< Updated upstream
     
     // This is the only data fetching function we need
-    func getHKQuantityData(sampleType: HKQuantityType, timeUnit: NSCalendarUnit, dataUnit: HKUnit, startDate: NSDate, endDate: NSDate, completion: ([(NSDate, Double)] -> Void)?) {
+    func getHKQuantityDataHolden(sampleType: HKQuantityType, timeUnit: NSCalendarUnit, dataUnit: HKUnit, startDate: NSDate, endDate: NSDate, completion: ([(NSDate, Double)] -> Void)?) {
         var returnValue: [(NSDate, Double)] = []
-=======
-    // Needed Variables
-    var objectType = ""
+        // Needed Variables
+        var objectType = ""
 
-
-    // This is the only data fetching function we need
-    func getHKQuantityData(sampleType: HKSampleType, timeUnit: NSCalendarUnit, startDate: NSDate, endDate: NSDate, completion: (Void -> Void)) -> [(NSDate, Double)] {
         var startTime = 0
         var endTime = 0
         var repeat: Double
-        var returnValue: [(NSDate, Double)] = []
         var queryType: String = ""
         var predicate: NSPredicate!
         let timeInterval = endDate.timeIntervalSinceDate(startDate)
@@ -79,9 +73,10 @@ class HKManager {
         while loop {
             
         }
+    }
         
->>>>>>> Stashed changes
-        
+    func getHKQuantityData(sampleType: HKQuantityType, timeUnit: NSCalendarUnit, dataUnit: HKUnit, startDate: NSDate, endDate: NSDate, completion: ([(NSDate, Double)] -> Void)?) {
+        var returnValue: [(NSDate, Double)] = []
         let conversionComponents: NSDateComponents = NSCalendar.currentCalendar().components(timeUnit, fromDate: startDate, toDate: endDate, options: nil)
         let elapsedUnitsBetweenDates: Int = conversionComponents.valueForComponent(timeUnit)
         let predicateStartDate: NSDate = NSCalendar.currentCalendar().dateByAddingUnit(timeUnit, value: -elapsedUnitsBetweenDates, toDate: endDate, options: nil)!

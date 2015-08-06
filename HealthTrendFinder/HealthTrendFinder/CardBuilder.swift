@@ -32,12 +32,12 @@ class CardBuilder: NSObject {
         let cardContentWidth: CGFloat = viewBounds.width - 4 * margin
         
         // This sets up the TextView.
-        var textView: UITextView = UITextView(frame: CGRect(x: margin, y: 0, width: cardContentWidth, height: 200))
-        textView.text = "There is a correlation between x and y. Bla bla bla. More text goes here. This should wrap and automatically adjust its height."
-        textView.sizeToFit()
-        textView.layoutIfNeeded()
-        let textViewHeight: CGFloat = textView.sizeThatFits(CGSizeMake(textView.frame.size.width, CGFloat.max)).height
-        textView.frame = CGRect(x: margin, y: CardView.headerBarSize + margin, width: cardContentWidth, height: textViewHeight)
+        var textView: UITextView = dynamicHeightTextView(
+            margin,
+            y: CardView.headerBarSize + margin,
+            width: cardContentWidth,
+            text: "This card will show correlation in terms of Pearson's r. This text will show a quick description of any correlation. Right now, it doesn't show anything."
+        )
         
         // This sets up the CorrelationView.
         let correlationViewHeight: CGFloat = 40
@@ -45,9 +45,22 @@ class CardBuilder: NSObject {
         correlationView.r = CGFloat(arc4random_uniform(100)) / 100
         
         // This sets up the returned CardView.
-        var returnCard: CardView = CardView(frame: CGRect(x: margin, y: 0, width: cardWidth, height: 3 * margin + CardView.headerBarSize + textViewHeight + correlationViewHeight), headerText: "Pearson R Card")
+        var returnCard: CardView = CardView(frame: CGRect(x: margin, y: 0, width: cardWidth, height: 3 * margin + CardView.headerBarSize + textView.frame.height + correlationView.frame.height), headerText: "Pearson R Card")
         returnCard.addSubview(correlationView)
+        returnCard.addSubview(textView)
         return returnCard
+    }
+    
+    static private func dynamicHeightTextView(x: CGFloat, y: CGFloat, width: CGFloat, text: String) -> UITextView {
+        var textView: UITextView = UITextView(frame: CGRect(x: x, y: y, width: width, height: 100))
+        textView.text = text
+        textView.scrollEnabled = false
+        textView.selectable = false
+        textView.sizeToFit()
+        textView.layoutIfNeeded()
+        let textViewHeight: CGFloat = textView.sizeThatFits(CGSizeMake(width, CGFloat.max)).height
+        textView.frame = CGRect(x: x, y: y, width: width, height: textViewHeight)
+        return textView
     }
     
     static private func makeBarGraphCard(viewBounds: CGRect) -> CardView {
