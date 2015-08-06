@@ -24,10 +24,63 @@ class HKManager {
     var height:HKQuantitySample?
     
     let healthKitStore:HKHealthStore = HKHealthStore()
+<<<<<<< Updated upstream
     
     // This is the only data fetching function we need
     func getHKQuantityData(sampleType: HKQuantityType, timeUnit: NSCalendarUnit, dataUnit: HKUnit, startDate: NSDate, endDate: NSDate, completion: ([(NSDate, Double)] -> Void)?) {
         var returnValue: [(NSDate, Double)] = []
+=======
+    // Needed Variables
+    var objectType = ""
+
+
+    // This is the only data fetching function we need
+    func getHKQuantityData(sampleType: HKSampleType, timeUnit: NSCalendarUnit, startDate: NSDate, endDate: NSDate, completion: (Void -> Void)) -> [(NSDate, Double)] {
+        var startTime = 0
+        var endTime = 0
+        var repeat: Double
+        var returnValue: [(NSDate, Double)] = []
+        var queryType: String = ""
+        var predicate: NSPredicate!
+        let timeInterval = endDate.timeIntervalSinceDate(startDate)
+        var loop: Bool = true
+        switch sampleType {
+        case HKSampleType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount):
+            queryType = "step"
+        case HKSampleType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeight):
+            queryType = "height"
+        case HKSampleType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass):
+            queryType = "weight"
+        case HKSampleType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMassIndex):
+            queryType = "bmi"
+        default:
+            println("No recognized type")
+        }
+
+        switch timeInterval {
+        // 1. Case for seconds
+        case 0...59:
+            predicate = HKQuery.predicateForSamplesWithStartDate(NSCalendar.currentCalendar().dateByAddingUnit(.CalendarUnitSecond, value: startTime, toDate: NSDate(), options: nil), endDate: NSCalendar.currentCalendar().dateByAddingUnit(.CalendarUnitSecond, value: startTime, toDate: NSDate(), options: nil), options: .None)
+            repeat = timeInterval
+        // 2. Case for minutes
+        case 61...3599:
+            predicate = HKQuery.predicateForSamplesWithStartDate(NSCalendar.currentCalendar().dateByAddingUnit(.CalendarUnitMinute, value: startTime, toDate: NSDate(), options: nil), endDate: NSCalendar.currentCalendar().dateByAddingUnit(.CalendarUnitMinute, value: startTime, toDate: NSDate(), options: nil), options: .None)
+            repeat = round(timeInterval / 60)
+        // 3. Case for Hours
+        case 3600...86399:
+            predicate = HKQuery.predicateForSamplesWithStartDate(NSCalendar.currentCalendar().dateByAddingUnit(.CalendarUnitHour, value: startTime, toDate: NSDate(), options: nil), endDate: NSCalendar.currentCalendar().dateByAddingUnit(.CalendarUnitHour, value: startTime, toDate: NSDate(), options: nil), options: .None)
+            repeat = round(timeInterval / 3600)
+        // 4. Default for Days
+        default:
+            predicate = HKQuery.predicateForSamplesWithStartDate(NSCalendar.currentCalendar().dateByAddingUnit(.CalendarUnitDay, value: startTime, toDate: NSDate(), options: nil), endDate: NSCalendar.currentCalendar().dateByAddingUnit(.CalendarUnitDay, value: startTime, toDate: NSDate(), options: nil), options: .None)
+            repeat = round(timeInterval / 86400)
+        }
+        
+        while loop {
+            
+        }
+        
+>>>>>>> Stashed changes
         
         let conversionComponents: NSDateComponents = NSCalendar.currentCalendar().components(timeUnit, fromDate: startDate, toDate: endDate, options: nil)
         let elapsedUnitsBetweenDates: Int = conversionComponents.valueForComponent(timeUnit)
