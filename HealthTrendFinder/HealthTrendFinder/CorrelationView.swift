@@ -98,6 +98,12 @@ import UIKit
         addSubview(descriptionLabel)
     }
     
+    // This function is needed to prevent black backgrounds from appearing when drawRect is overridden.
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.backgroundColor = UIColor.clearColor()
+    }
+    
     private func colorForR(r: CGFloat) -> UIColor {
         var returnValue: UIColor = UIColor()
         

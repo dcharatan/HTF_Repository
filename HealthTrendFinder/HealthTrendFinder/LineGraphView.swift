@@ -93,6 +93,12 @@ class LineGraphView: UIView {
         drawDataSetNames()
     }
     
+    // This function is needed to prevent black backgrounds from appearing when drawRect is overridden.
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.backgroundColor = UIColor.clearColor()
+    }
+    
     private func reset() {
         extremes = [:]
         oppositeExtremes = [:]

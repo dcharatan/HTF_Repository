@@ -17,7 +17,7 @@ class CardView: UIView {
     
     // Variables used to reference other things
     internal var headerText: String = ""
-    internal let headerBarSize: CGFloat = 44
+    static let headerBarSize: CGFloat = 44
     
     override func drawRect(rect: CGRect) {
         let context: CGContextRef = UIGraphicsGetCurrentContext()
@@ -52,18 +52,18 @@ class CardView: UIView {
             x: self.bounds.minX,
             y: self.bounds.minY,
             width: self.bounds.width,
-            height: headerBarSize
+            height: CardView.headerBarSize
             ), byRoundingCorners: UIRectCorner.TopLeft | UIRectCorner.TopRight, cornerRadii: CGSize(width: cornerRadius, height: cornerRadius))
         headerColor.setFill()
         headerPath.fill()
         
         // This draws the header text.
-        let headerLabelMargin: CGFloat = (headerBarSize - headerFontSize) * 0.5
+        let headerLabelMargin: CGFloat = (CardView.headerBarSize - headerFontSize) * 0.5
         let headerLabel: UILabel = UILabel(frame: CGRect(
             x: headerLabelMargin,
             y: 0,
             width: self.bounds.width - 2 * headerLabelMargin,
-            height: headerBarSize
+            height: CardView.headerBarSize
             ))
         headerLabel.text = headerText
         headerLabel.font = UIFont(name: "Helvetica Neue", size: headerFontSize)

@@ -9,29 +9,52 @@
 import UIKit
 
 class CardBuilder: NSObject {
-    static let cardMargin: CGFloat = 8
+    static let margin: CGFloat = 8
     static let outerMargin: CGFloat = 24
     static let innerMargin: CGFloat = 8
     
     static func getCurrentCards(viewBounds: CGRect) -> [CardView] {
-        return [makeBarGraphCard(viewBounds), makePieGraphCard(viewBounds)]
+        return [makeBarGraphCard(viewBounds), makePieGraphCard(viewBounds), makeBasicCard(viewBounds), makePearsonRCard(viewBounds), makePearsonRCard(viewBounds), makePearsonRCard(viewBounds), makePearsonRCard(viewBounds), makePearsonRCard(viewBounds)]
     }
     
     static private func makeBasicCard(viewBounds: CGRect) -> CardView {
         var card: CardView = CardView(frame: CGRect(
-            x: cardMargin,
+            x: margin,
             y: 0,
-            width: viewBounds.width - 2 * cardMargin,
+            width: viewBounds.width - 2 * margin,
             height: 200
             ), headerText: "Trend Card")
         return card
     }
     
+    static private func makePearsonRCard(viewBounds: CGRect) -> CardView {
+        let cardWidth: CGFloat = viewBounds.width - 2 * margin
+        let cardContentWidth: CGFloat = viewBounds.width - 4 * margin
+        
+        // This sets up the TextView.
+        var textView: UITextView = UITextView(frame: CGRect(x: margin, y: 0, width: cardContentWidth, height: 200))
+        textView.text = "There is a correlation between x and y. Bla bla bla. More text goes here. This should wrap and automatically adjust its height."
+        textView.sizeToFit()
+        textView.layoutIfNeeded()
+        let textViewHeight: CGFloat = textView.sizeThatFits(CGSizeMake(textView.frame.size.width, CGFloat.max)).height
+        textView.frame = CGRect(x: margin, y: CardView.headerBarSize + margin, width: cardContentWidth, height: textViewHeight)
+        
+        // This sets up the CorrelationView.
+        let correlationViewHeight: CGFloat = 40
+        var correlationView: CorrelationView = CorrelationView(frame: CGRect(x: margin, y: CardView.headerBarSize + 2 * margin + textView.frame.height, width: cardContentWidth, height: 40))
+        correlationView.r = CGFloat(arc4random_uniform(100)) / 100
+        
+        // This sets up the returned CardView.
+        var returnCard: CardView = CardView(frame: CGRect(x: margin, y: 0, width: cardWidth, height: 3 * margin + CardView.headerBarSize + textViewHeight + correlationViewHeight), headerText: "Pearson R Card")
+        returnCard.addSubview(correlationView)
+        return returnCard
+    }
+    
     static private func makeBarGraphCard(viewBounds: CGRect) -> CardView {
         var returnCard: CardView = CardView(frame: CGRect(
-            x: cardMargin,
+            x: margin,
             y: 0,
-            width: viewBounds.width - 2 * cardMargin,
+            width: viewBounds.width - 2 * margin,
             height: 0
             ), headerText: "Bar Graph Card")
         
@@ -39,7 +62,7 @@ class CardBuilder: NSObject {
         var barGraph: BarGraphView = BarGraphView()
         barGraph.frame = CGRect(
             x: 0,
-            y: returnCard.headerBarSize,
+            y: CardView.headerBarSize,
             width: returnCard.frame.width,
             height: returnCard.frame.width * 0.6
         )
@@ -113,10 +136,10 @@ class CardBuilder: NSObject {
         returnCard.addSubview(barGraph)
         
         returnCard.frame = CGRect(
-            x: cardMargin,
+            x: margin,
             y: 0,
-            width: viewBounds.width - 2 * cardMargin,
-            height: returnCard.headerBarSize + barGraph.frame.height
+            width: viewBounds.width - 2 * margin,
+            height: CardView.headerBarSize + barGraph.frame.height
         )
         
         return returnCard
@@ -128,10 +151,10 @@ class CardBuilder: NSObject {
         // This creates the pie graph.
         var pieGraph: PieGraphView = PieGraphView()
         pieGraph.frame = CGRect(
-            x: cardMargin,
-            y: cardMargin + returnCard.headerBarSize,
-            width: viewBounds.width - 3 * cardMargin,
-            height: (viewBounds.width - 2 * cardMargin) * 0.5
+            x: margin,
+            y: margin + CardView.headerBarSize,
+            width: viewBounds.width - 3 * margin,
+            height: (viewBounds.width - 2 * margin) * 0.5
         )
         
         // This adds data to the pie graph.
@@ -164,7 +187,7 @@ class CardBuilder: NSObject {
         returnCard.addSubview(pieGraph)
         
         returnCard.frame = CGRect(
-            x: cardMargin, y: 0, width: viewBounds.width - 2 * cardMargin, height: returnCard.headerBarSize + pieGraph.frame.height + cardMargin * 2
+            x: margin, y: 0, width: viewBounds.width - 2 * margin, height: CardView.headerBarSize + pieGraph.frame.height + margin * 2
         )
         
         return returnCard

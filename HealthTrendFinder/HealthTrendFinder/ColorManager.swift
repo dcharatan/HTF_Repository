@@ -15,7 +15,7 @@ class ColorManager: NSObject {
         UIColor(red: 250 / 255, green: 206 / 255, blue: 31 / 255, alpha: 1),
         UIColor(red: 89 / 255, green: 221 / 255, blue: 101 / 255, alpha: 1),
         UIColor(red: 75 / 255, green: 169 / 255, blue: 219 / 255, alpha: 1),
-        UIColor(red: 95 / 255, green: 75 / 255, blue: 231 / 255, alpha: 1)
+        ColorManager.colorForRGB(red: 0x00, green: 0x7A, blue: 0xFF)
     ]
     
     static func colorForRGB(#red: Int, green: Int, blue: Int) -> UIColor {
