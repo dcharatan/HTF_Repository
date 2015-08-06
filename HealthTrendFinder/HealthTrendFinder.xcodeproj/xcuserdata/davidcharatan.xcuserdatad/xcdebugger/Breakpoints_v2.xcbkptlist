@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HealthTrendFinder/CardBuilder.swift"
-            timestampString = "460569664.228509"
+            timestampString = "460583398.639865"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
+            startingLineNumber = "214"
+            endingLineNumber = "214"
             landmarkName = "CardBuilder"
             landmarkType = "3">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HealthTrendFinder/CardBuilder.swift"
-            timestampString = "460569664.228509"
+            timestampString = "460583398.639865"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
             landmarkName = "makeBarGraphCard(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HealthTrendFinder/CardBuilder.swift"
-            timestampString = "460569664.228509"
+            timestampString = "460583398.639865"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
             landmarkName = "makeBarGraphCard(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -160,6 +160,22 @@
             startingLineNumber = "110"
             endingLineNumber = "110"
             landmarkName = "colorForR(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HealthTrendFinder/CardBuilder.swift"
+            timestampString = "460583398.639865"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "yForPreviousViews(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

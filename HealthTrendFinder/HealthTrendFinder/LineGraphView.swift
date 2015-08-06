@@ -11,8 +11,7 @@ import UIKit
 @IBDesignable
 class LineGraphView: UIView {
     @IBInspectable var cornerRadius: CGFloat = 8
-    @IBInspectable var gradientTop: UIColor = UIColor(red: 80 / 255, green: 80 / 255, blue: 80 / 255, alpha: 1)
-    @IBInspectable var gradientBottom: UIColor = UIColor(red: 20 / 255, green: 20 / 255, blue: 20 / 255, alpha: 1)
+    @IBInspectable var baseColor: UIColor = UIColor(red: 0x33 / 255, green: 0x33 / 255, blue: 0x33 / 255, alpha: 1)
     
     @IBInspectable var independentY: Bool = true
     @IBInspectable var yEmptyWindow: CGFloat = 2
@@ -44,7 +43,10 @@ class LineGraphView: UIView {
     @IBInspectable var dataSetLabelFontSize: CGFloat = 5
     @IBInspectable var dataSetLabelFontSize_scaleIsBasedOnY: Bool = true
     
-    private let thresholds: [(maxValue: CGFloat, roundTo: CGFloat)] = [
+    @IBInspectable var shadowSize: CGFloat = 1
+    @IBInspectable var shadowColor: UIColor = UIColor(white: 0, alpha: 0.1)
+    
+    internal var thresholds: [(maxValue: CGFloat, roundTo: CGFloat)] = [
         (1.0, 0.1),
         (2.5, 0.25),
         (5.0, 0.5),
@@ -54,13 +56,12 @@ class LineGraphView: UIView {
         case Day
         case Week
     }
-    private let graphMode: graphModes = graphModes.Week
-    private let dataColors: [UIColor] = [
+    internal var graphMode: graphModes = graphModes.Week
+    internal var dataColors: [UIColor] = [
         UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 1),
         UIColor(red: 175 / 255, green: 175 / 255, blue: 175 / 255, alpha: 1),
         UIColor(red: 125 / 255, green: 125 / 255, blue: 125 / 255, alpha: 1)
     ]
-    
     internal var data: [LineGraphDataSet] = []
     
     private var extremes: [LineGraphDataSet:CGFloat] = [:]
@@ -110,13 +111,21 @@ class LineGraphView: UIView {
         let clippingPath: UIBezierPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: cornerRadius)
         clippingPath.addClip()
         
-        // This draws the gradient.
+        // This draws the background.
         let context: CGContextRef = UIGraphicsGetCurrentContext()
-        let colorSpace: CGColorSpaceRef = CGColorSpaceCreateDeviceRGB()
-        let gradient: CGGradientRef = CGGradientCreateWithColors(colorSpace, [gradientTop.CGColor, gradientBottom.CGColor], [0.0, 1.0])
-        let startPoint: CGPoint = CGPoint()
-        let endPoint: CGPoint = CGPoint(x: 0, y: self.bounds.height)
-        CGContextDrawLinearGradient(context, gradient, startPoint, endPoint, 0)
+        let baseRect: CGRect = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height - shadowSize)
+        
+        CGContextAddRect(context, self.bounds)
+        CGContextSetFillColorWithColor(context, baseColor.CGColor)
+        CGContextFillRect(context, self.bounds)
+        
+        CGContextAddRect(context, self.bounds)
+        CGContextSetFillColorWithColor(context, shadowColor.CGColor)
+        CGContextFillRect(context, self.bounds)
+        
+        let basePath: UIBezierPath = UIBezierPath(roundedRect: baseRect, cornerRadius: cornerRadius)
+        baseColor.setFill()
+        basePath.fill()
     }
     
     private func determineExtremes() {
@@ -495,7 +504,7 @@ class LineGraphView: UIView {
                 total: data.count,
                 fontSizeAbsolute: dataSetLabelFontSizeAbsolute,
                 y: textY,
-                color: dataColors[i])
+                color: dataColors[i % dataColors.count])
         }
     }
     
@@ -510,7 +519,7 @@ class LineGraphView: UIView {
         let textFont: UIFont = UIFont(name: "Helvetica Neue", size: fontSizeAbsolute)!
         if position == 0 {
             textStyle.alignment = NSTextAlignment.Left
-        } else if position == data.count - 1 {
+        } else if position == total - 1 {
             textStyle.alignment = NSTextAlignment.Right
         } else {
             textStyle.alignment = NSTextAlignment.Center

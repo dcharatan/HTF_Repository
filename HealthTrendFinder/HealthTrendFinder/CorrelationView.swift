@@ -11,7 +11,7 @@ import UIKit
 @IBDesignable class CorrelationView: UIView {
     @IBInspectable var r: CGFloat = 0.8
     @IBInspectable var cornerRadius: CGFloat = 8
-    @IBInspectable var numberBackgroundColor: UIColor = ColorManager.colorForRGB(red: 0xEE, green: 0xEE, blue: 0xEE)
+    @IBInspectable var numberBackgroundColor: UIColor = ColorManager.colorForRGB(red: 245, green: 245, blue: 245)
     @IBInspectable var numberSize: CGFloat = 20
     @IBInspectable var numberSpacing: CGFloat = 8
     @IBInspectable var descriptionColor: UIColor = UIColor.whiteColor()
@@ -21,11 +21,11 @@ import UIKit
     @IBInspectable var shadowSize: CGFloat = 1
     
     let correlationGroups: [(rUpperBound: CGFloat, color: UIColor, description: String)] = [
-        (0.125, ColorManager.colorForRGB(red: 0xFF, green: 0x3B, blue: 0x30), "Very Weak"),
-        (0.375, ColorManager.colorForRGB(red: 0xFF, green: 0x95, blue: 0x00), "Weak"),
-        (0.625, ColorManager.colorForRGB(red: 0xFF, green: 0xCC, blue: 0x00), "Moderate"),
-        (0.875, ColorManager.colorForRGB(red: 0x4C, green: 0xD9, blue: 0x64), "Strong"),
-        (1.000, ColorManager.colorForRGB(red: 0x34, green: 0xAA, blue: 0xDC), "Very Strong")
+        (0.2, ColorManager.colorForRGB(red: 0xFF, green: 0x3B, blue: 0x30), "Very Weak"),
+        (0.4, ColorManager.colorForRGB(red: 0xFF, green: 0x95, blue: 0x00), "Weak"),
+        (0.6, ColorManager.colorForRGB(red: 0xFF, green: 0xCC, blue: 0x00), "Moderate"),
+        (0.8, ColorManager.colorForRGB(red: 0x4C, green: 0xD9, blue: 0x64), "Strong"),
+        (1.0, ColorManager.colorForRGB(red: 0x34, green: 0xAA, blue: 0xDC), "Very Strong")
     ]
     
     override func drawRect(rect: CGRect) {

@@ -31,23 +31,66 @@ class CardBuilder: NSObject {
         let cardWidth: CGFloat = viewBounds.width - 2 * margin
         let cardContentWidth: CGFloat = viewBounds.width - 4 * margin
         
-        // This sets up the TextView.
-        var textView: UITextView = dynamicHeightTextView(
-            margin,
-            y: CardView.headerBarSize + margin,
-            width: cardContentWidth,
-            text: "This card will show correlation in terms of Pearson's r. This text will show a quick description of any correlation. Right now, it doesn't show anything."
-        )
+        // This sets up the GraphView.
+        var graphView: LineGraphView = LineGraphView(frame: CGRect(x: margin, y: yForPreviousViews(), width: cardContentWidth, height: cardContentWidth * 0.5))
+        graphView.baseColor = ColorManager.colorForRGB(red: 245, green: 245, blue: 245)
+        graphView.boundsLineColor = ColorManager.colorForRGB(red: 85, green: 85, blue: 85)
+        graphView.labelFontColor = ColorManager.colorForRGB(red: 85, green: 85, blue: 85)
+        graphView.graphMode = LineGraphView.graphModes.Day
+        graphView.independentY = true
+        graphView.dataSetLabelFontSize = 5.75
+        graphView.dataColors = [
+            ColorManager.colorForRGB(red: 0x77, green: 0x77, blue: 0x77),
+            ColorManager.colorForRGB(red: 0x33, green: 0x33, blue: 0x33)
+        ]
+        
+        let calendar: NSCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        var set1: LineGraphDataSet = LineGraphDataSet()
+        set1.name = "Tomatoes Eaten"
+        set1.unit = " tomatoes"
+        for var i: Int = 0; i < 24; i++ {
+            let date: NSDate = calendar.dateWithEra(1, year: 2015, month: 5, day: 1, hour: i, minute: 1, second: 1, nanosecond: 1)!
+            let value: CGFloat = -4 * abs(CGFloat(i) - 12) + CGFloat(arc4random_uniform(48)) + 80
+            set1.points += [(date, value)]
+        }
+        var set2: LineGraphDataSet = LineGraphDataSet()
+        set2.name = "Potatoes Eaten"
+        set2.unit = " potatoes"
+        for var i: Int = 0; i < 24; i++ {
+            let date: NSDate = calendar.dateWithEra(1, year: 2015, month: 5, day: 1, hour: i, minute: 1, second: 1, nanosecond: 1)!
+            let value: CGFloat = -8 * abs(CGFloat(i) - 12) + CGFloat(arc4random_uniform(96)) + 120
+            set2.points += [(date, value)]
+        }
+        
+        graphView.data = [set1, set2]
         
         // This sets up the CorrelationView.
         let correlationViewHeight: CGFloat = 40
-        var correlationView: CorrelationView = CorrelationView(frame: CGRect(x: margin, y: CardView.headerBarSize + 2 * margin + textView.frame.height, width: cardContentWidth, height: 40))
-        correlationView.r = CGFloat(arc4random_uniform(100)) / 100
+        var correlationView: CorrelationView = CorrelationView(frame: CGRect(x: margin, y: yForPreviousViews(graphView), width: cardContentWidth, height: 40))
+        
+        var rPoints: [CGPoint] = []
+        for i: Int in 0..<set1.points.count {
+            rPoints += [CGPoint(
+                x: set1.points[i].y,
+                y: set2.points[i].y
+            )]
+        }
+        
+        correlationView.r = round(AnalysisTools.pcc(rPoints) * 100) / 100
+        
+        // This sets up the TextView.
+        var textView: UITextView = dynamicHeightTextView(
+            margin,
+            y: yForPreviousViews(graphView, correlationView),
+            width: cardContentWidth,
+            text: "This card will show correlation in terms of Pearson's r. This text will show a quick description of any correlation. Right now, it doesn't show anything. This is another sentence. This is also a sentence, but it's a lot longer. Welcome to the Michael Scott Paper Company."
+        )
         
         // This sets up the returned CardView.
-        var returnCard: CardView = CardView(frame: CGRect(x: margin, y: 0, width: cardWidth, height: 3 * margin + CardView.headerBarSize + textView.frame.height + correlationView.frame.height), headerText: "Pearson R Card")
-        returnCard.addSubview(correlationView)
+        var returnCard: CardView = CardView(frame: CGRect(x: margin, y: 0, width: cardWidth, height: yForPreviousViews(graphView, correlationView, textView)), headerText: "Pearson R Card")
+        returnCard.addSubview(graphView)
         returnCard.addSubview(textView)
+        returnCard.addSubview(correlationView)
         return returnCard
     }
     
@@ -61,6 +104,17 @@ class CardBuilder: NSObject {
         let textViewHeight: CGFloat = textView.sizeThatFits(CGSizeMake(width, CGFloat.max)).height
         textView.frame = CGRect(x: x, y: y, width: width, height: textViewHeight)
         return textView
+    }
+    
+    static private func yForPreviousViews(previousViews: UIView...) -> CGFloat {
+        var returnValue: CGFloat = CardView.headerBarSize + margin
+        
+        for previousView: UIView in previousViews {
+            returnValue += previousView.frame.height
+            returnValue += margin
+        }
+        
+        return returnValue
     }
     
     static private func makeBarGraphCard(viewBounds: CGRect) -> CardView {
