@@ -33,7 +33,7 @@ class SettingsTableViewController: UITableViewController {
             // Notifications have been authorized.
             notificationCell.accessoryType = UITableViewCellAccessoryType.Checkmark
         } else {
-            notificationCell.detailTextLabel!.text = "You have disabled required notification types."
+            notificationCell.detailTextLabel!.text = "Please tap to enable required notification types."
         }
         
         // This sets up the switch for the daily notifications cell.
