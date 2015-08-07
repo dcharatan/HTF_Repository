@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         StorageManager.verifySaveFile()
         
         // This asks for permission for notifications.
-        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
+        //application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
         
         // BELOW HERE, THIS IS TESTING STUFF -- DO NOT DELETE
         var hk = HKManager()
@@ -31,11 +31,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // data is [(NSDate, Double)]
         })
         
-        var notification: UILocalNotification = UILocalNotification()
-        notification.alertAction = "view cards"
-        notification.alertBody = "This is an entirely fake notification, but it shows that notifications work."
-        notification.fireDate = NSDate(timeIntervalSinceNow: 15)
-        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+        //var notification: UILocalNotification = UILocalNotification()
+        //notification.alertAction = "view cards"
+        //notification.alertBody = "This is an entirely fake notification, but it shows that notifications work."
+        //notification.fireDate = NSDate(timeIntervalSinceNow: 15)
+        //UIApplication.sharedApplication().scheduleLocalNotification(notification)
         
         // Override point for customization after application launch.
         return true

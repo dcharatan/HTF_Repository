@@ -20,6 +20,9 @@ class HealthKitAuthorizationViewController: UIViewController {
         textView.sizeToFit()
         textView.layoutIfNeeded()
         textViewHeight.constant = textView.sizeThatFits(CGSizeMake(textView.frame.size.width, CGFloat.max)).height
+        
+        // This asks for notification authorization.
+        UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
     }
 
     @IBAction func authorizeHK(sender: AnyObject) {

@@ -13,17 +13,30 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet weak var authorizationCell: UITableViewCell!
     @IBOutlet weak var allowDailyNotificationsCell: UITableViewCell!
     @IBOutlet weak var allowWeeklyNotificationsCell: UITableViewCell!
+    @IBOutlet weak var notificationCell: UITableViewCell!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // This changes the accessory/ selectability of the HealthKit authorization cell based on whether HealthKit is authorized.
         if let healthKitAuthorized = StorageManager.getValue(StorageManager.StorageKeys.healthKitAuthorized) as? Bool {
             if healthKitAuthorized {
                 authorizationCell.accessoryType = UITableViewCellAccessoryType.Checkmark
-                self.authorizationCell.selectionStyle = UITableViewCellSelectionStyle.None
+                authorizationCell.selectionStyle = UITableViewCellSelectionStyle.None
             }
         }
         
+        // This changes the accessory/ selectability of the notification authorization cell based on whether notifications are authorized.
+        let notificationSettings: UIUserNotificationSettings = UIApplication.sharedApplication().currentUserNotificationSettings()
+        let requiredTypes: UIUserNotificationType = UIUserNotificationType.Badge | UIUserNotificationType.Alert
+        if (notificationSettings.types & requiredTypes) != nil {
+            // Notifications have been authorized.
+            notificationCell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        } else {
+            notificationCell.detailTextLabel!.text = "You have disabled required notification types."
+        }
+        
+        // This sets up the switch for the daily notifications cell.
         allowDailyNotificationsCell.selectionStyle = UITableViewCellSelectionStyle.None
         var dailyNotificationsSwitch = UISwitch(frame: CGRectZero) as UISwitch
         dailyNotificationsSwitch.on = false
@@ -35,6 +48,7 @@ class SettingsTableViewController: UITableViewController {
             }
         }
         
+        // This sets up the switch for the weekly notifications cell.
         allowWeeklyNotificationsCell.selectionStyle = UITableViewCellSelectionStyle.None
         var weeklyNotificationsSwitch = UISwitch(frame: CGRectZero) as UISwitch
         weeklyNotificationsSwitch.on = false
@@ -75,13 +89,14 @@ class SettingsTableViewController: UITableViewController {
         case 0:
             return 1
         case 1:
-            return 2
+            return 3
         default:
             return 0
         }
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        // If the HealthKit cell is clicked, the app asks for HealthKit authorization.
         if indexPath == tableView.indexPathForCell(authorizationCell) {
             if let healthKitAuthorized = StorageManager.getValue(StorageManager.StorageKeys.healthKitAuthorized) as? Bool {
                 if !healthKitAuthorized {
@@ -89,6 +104,12 @@ class SettingsTableViewController: UITableViewController {
                 }
             }
         }
+        
+        // If the notifications cell is clicked, the app asks for notification authorization.
+        if indexPath == tableView.indexPathForCell(notificationCell) {
+            UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
+        }
+        
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
     }
     
