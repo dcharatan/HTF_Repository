@@ -241,8 +241,8 @@ class CardBuilder: NSObject {
         
         pieGraph.data = [weekdayDataSet, weekendDataSet]
         pieGraph.colors = [
-            "Activity": ColorManager.colors[4],
-            "Inactivity": ColorManager.colors[5]
+            "Activity": ColorManager.colors[0],
+            "Inactivity": ColorManager.colors[1]
         ]
         pieGraph.guideFontSize = 7.5
         pieGraph.swatchFontMargin = 5
