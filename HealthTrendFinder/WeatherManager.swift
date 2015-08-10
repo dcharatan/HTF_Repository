@@ -8,13 +8,8 @@
 
 import UIKit
 
-class WeatherManager {
-    // Note: All dates linked to weather information should be at midnight (i.e. the start of the day).
-    // Note: The format of the data should be [(date: NSDate):(location: NotSureWhatFormatThisWillUse, tempHigh: Double, tempLow: Double, someOtherInformation0: SomeObject ... someOtherInformationN: SomeObject)]
-    // Note: In other words, you use the date as the key. Multiple locations won't be needed for the same date, since you're usually only in one region each day.
-    
-    static func updateWeatherHistory(completion: (success: Bool, error: NSError) -> Void) {
-        // This calendar is needed in several places, so it is created here.
+class WeatherManager: NSObject {
+    static func updateWeatherHistory() {
         let calendar: NSCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
         
         // This sets the start date to midnight of the current date if no start date has been set.
@@ -28,8 +23,7 @@ class WeatherManager {
             StorageManager.setValue([:], forKey: StorageManager.StorageKeys.WeatherData)
         }
         
-        // This determines which dates need filling in.
-        var weatherData: AnyObject! = StorageManager.getValue(StorageManager.StorageKeys.WeatherData)
+        var weatherData: AnyObject = StorageManager.getValue(StorageManager.StorageKeys.WeatherData)!
         let startMidnight: NSDate = StorageManager.getValue(StorageManager.StorageKeys.WeatherStartDate) as! NSDate
         let currentMidnight: NSDate = calendar.startOfDayForDate(NSDate())
         let daysFromStartDate: Int = calendar.components(NSCalendarUnit.CalendarUnitDay, fromDate: startMidnight, toDate: currentMidnight, options: nil).day
