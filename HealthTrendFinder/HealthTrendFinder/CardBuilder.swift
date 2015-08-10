@@ -76,7 +76,7 @@ class CardBuilder: NSObject {
             )]
         }
         
-        correlationView.r = round(AnalysisTools.pcc(rPoints) * 100) / 100
+        correlationView.r = round(AnalysisTools.pearsonR(rPoints) * 100) / 100
         
         // This sets up the TextView.
         var textView: UITextView = dynamicHeightTextView(

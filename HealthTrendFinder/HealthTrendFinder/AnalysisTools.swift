@@ -9,7 +9,7 @@
 import UIKit
 
 class AnalysisTools: NSObject {
-    static func pcc(data: [CGPoint]) -> CGFloat {
+    static func pearsonR(data: [CGPoint]) -> CGFloat {
         // This function determines Pearson's correlation coefficient for a given data set.
         
         // This determines the average data values for x and y.
