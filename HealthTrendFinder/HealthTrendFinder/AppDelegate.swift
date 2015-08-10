@@ -23,19 +23,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // This asks for permission for notifications.
         //application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
         
-        // BELOW HERE, THIS IS TESTING STUFF -- DO NOT DELETE
-        var hk = HKManager()
-        hk.getHKQuantityData(HKSampleType.quantityTypeForIdentifier(HKQuantityTypeIdentifierStepCount), timeUnit: NSCalendarUnit.CalendarUnitDay, dataUnit: HKUnit.countUnit(), startDate: NSDate(timeIntervalSinceNow: -(7 * 24 * 60 * 60)), endDate: NSDate(), completion: {data in
-            // THIS IS WHERE YOU DO THE NEXT THING!
-            // DATA IS ACCESSED WITH data
-            // data is [(NSDate, Double)]
-        })
+        // TESTING STUFF BELOW THIS POINT
         
-        //var notification: UILocalNotification = UILocalNotification()
-        //notification.alertAction = "view cards"
-        //notification.alertBody = "This is an entirely fake notification, but it shows that notifications work."
-        //notification.fireDate = NSDate(timeIntervalSinceNow: 15)
-        //UIApplication.sharedApplication().scheduleLocalNotification(notification)
+        let data = [
+            CGPointMake(200, 1.8),
+            CGPointMake(275, 1.6),
+            CGPointMake(300, 2.2),
+            CGPointMake(350, 2.1),
+            CGPointMake(600, 4.0),
+        ]
+        
+        var a = AnalysisTools.spearmanRho(data)
+        println(a)
         
         // Override point for customization after application launch.
         return true
