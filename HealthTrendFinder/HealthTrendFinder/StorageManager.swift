@@ -10,24 +10,32 @@ import UIKit
 
 class StorageManager {
     enum StorageKeys: String {
-        case healthKitAuthorized = "healthKitAuthorized"
-        case allowWeeklyNotifications = "allowWeeklyNotifications"
-        case allowDailyNotifications = "allowDailyNotifications"
+        // HealthKit Authorization
+        case HealthKitAuthorized = "HealthKitAuthorized"
+        
+        // Notifications
+        case AllowWeeklyNotifications = "AllowWeeklyNotifications"
+        case AllowDailyNotifications = "AllowDailyNotifications"
+        
+        // Weather
+        case WeatherStartDate = "WeatherStartDate"
+        case WeatherData = "WeatherData"
     }
     
     static func verifySaveFile() {
+        // These values are part of the settings, so standard values must be set.
         let defaults = NSUserDefaults.standardUserDefaults()
         
-        if defaults.valueForKey(StorageKeys.healthKitAuthorized.rawValue) == nil {
-            defaults.setValue(false, forKey: StorageKeys.healthKitAuthorized.rawValue)
+        if defaults.valueForKey(StorageKeys.HealthKitAuthorized.rawValue) == nil {
+            defaults.setValue(false, forKey: StorageKeys.HealthKitAuthorized.rawValue)
         }
         
-        if defaults.valueForKey(StorageKeys.allowWeeklyNotifications.rawValue) == nil {
-            defaults.setValue(true, forKey: StorageKeys.allowDailyNotifications.rawValue)
+        if defaults.valueForKey(StorageKeys.AllowWeeklyNotifications.rawValue) == nil {
+            defaults.setValue(true, forKey: StorageKeys.AllowDailyNotifications.rawValue)
         }
         
-        if defaults.valueForKey(StorageKeys.allowWeeklyNotifications.rawValue) == nil {
-            defaults.setValue(true, forKey: StorageKeys.allowWeeklyNotifications.rawValue)
+        if defaults.valueForKey(StorageKeys.AllowWeeklyNotifications.rawValue) == nil {
+            defaults.setValue(true, forKey: StorageKeys.AllowWeeklyNotifications.rawValue)
         }
     }
     

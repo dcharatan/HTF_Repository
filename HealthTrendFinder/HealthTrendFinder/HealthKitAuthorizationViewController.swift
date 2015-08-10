@@ -29,7 +29,7 @@ class HealthKitAuthorizationViewController: UIViewController {
         var healthManager = HKManager()
         healthManager.authorizeHealthKit({success, error in
             if success {
-                StorageManager.setValue(true, forKey: StorageManager.StorageKeys.healthKitAuthorized)
+                StorageManager.setValue(true, forKey: StorageManager.StorageKeys.HealthKitAuthorized)
                 
                 // You have to wait until everything's ready for a new animation before animating out. This is accomplished with dispatch_async.
                 dispatch_async(dispatch_get_main_queue()) {
