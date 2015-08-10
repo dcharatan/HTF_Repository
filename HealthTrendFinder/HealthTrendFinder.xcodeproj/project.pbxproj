@@ -36,7 +36,6 @@
 		2BDCAC9A1B41A625002A7F28 /* HealthTrendFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDCAC991B41A625002A7F28 /* HealthTrendFinderTests.swift */; };
 		2BDCACA41B41A7CC002A7F28 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDCACA31B41A7CC002A7F28 /* CardView.swift */; };
 		2BDCACA61B41A80A002A7F28 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDCACA51B41A80A002A7F28 /* CardViewController.swift */; };
-		711955951B791E920060F217 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711955941B791E920060F217 /* SwiftyJSON.swift */; };
 		71E1F4131B5370130065D4EB /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71E1F4121B5370130065D4EB /* HealthKit.framework */; };
 		71F1A7201B585506006B2D9E /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F1A71F1B585506006B2D9E /* InfoViewController.swift */; };
 		71F4E7C91B59751300F6AE7B /* HKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F4E7C81B59751300F6AE7B /* HKManager.swift */; };
@@ -86,7 +85,6 @@
 		2BDCAC991B41A625002A7F28 /* HealthTrendFinderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTrendFinderTests.swift; sourceTree = "<group>"; };
 		2BDCACA31B41A7CC002A7F28 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		2BDCACA51B41A80A002A7F28 /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
-		711955941B791E920060F217 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = "../../../Downloads/SwiftyJSON-master/Source/SwiftyJSON.swift"; sourceTree = "<group>"; };
 		71542AB21B4AE90400E6A112 /* HealthTrendFinder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HealthTrendFinder.entitlements; sourceTree = "<group>"; };
 		71E1F4121B5370130065D4EB /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		71F1A71F1B585506006B2D9E /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
@@ -210,7 +208,6 @@
 		2BDCAC801B41A625002A7F28 /* HealthTrendFinder */ = {
 			isa = PBXGroup;
 			children = (
-				711955931B791E750060F217 /* Source */,
 				2B24DD991B67F03E00504255 /* Debug */,
 				2B4360601B5D978D00A3951E /* Views */,
 				71542AB21B4AE90400E6A112 /* HealthTrendFinder.entitlements */,
@@ -249,14 +246,6 @@
 				2BDCAC981B41A625002A7F28 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		711955931B791E750060F217 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				711955941B791E920060F217 /* SwiftyJSON.swift */,
-			);
-			name = Source;
 			sourceTree = "<group>";
 		};
 		71F691451B59B3B4005B990E /* View Controllers */ = {
@@ -411,7 +400,6 @@
 				2B51A96E1B62A8550001AA97 /* PieGraphDataSet.swift in Sources */,
 				2BB8DC9B1B60078E007704B5 /* SettingsTableViewController.swift in Sources */,
 				2B51A96F1B62A8550001AA97 /* PieGraphSlice.swift in Sources */,
-				711955951B791E920060F217 /* SwiftyJSON.swift in Sources */,
 				2B43C4381B72811B002C6D68 /* LineGraphView.swift in Sources */,
 				71F1A7201B585506006B2D9E /* InfoViewController.swift in Sources */,
 				2B24DD9B1B67F05E00504255 /* DataFaker.swift in Sources */,
