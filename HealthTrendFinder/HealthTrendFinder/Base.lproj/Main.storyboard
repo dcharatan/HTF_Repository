@@ -204,7 +204,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VKC-M7-q5M">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VKC-M7-q5M">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </scrollView>
                         </subviews>
@@ -447,7 +447,7 @@
         <image name="GraphIcon" width="27" height="27"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="EBj-kV-Okl"/>
-        <segue reference="bhl-Wn-79l"/>
+        <segue reference="E4C-cd-kvY"/>
+        <segue reference="Lck-q5-YAZ"/>
     </inferredMetricsTieBreakers>
 </document>
