@@ -19,7 +19,7 @@ class SettingsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         // This changes the accessory/ selectability of the HealthKit authorization cell based on whether HealthKit is authorized.
-        if let healthKitAuthorized = StorageManager.getValue(StorageManager.StorageKeys.healthKitAuthorized) as? Bool {
+        if let healthKitAuthorized = StorageManager.getValue(StorageManager.StorageKeys.HealthKitAuthorized) as? Bool {
             if healthKitAuthorized {
                 authorizationCell.accessoryType = UITableViewCellAccessoryType.Checkmark
                 authorizationCell.selectionStyle = UITableViewCellSelectionStyle.None
@@ -42,7 +42,7 @@ class SettingsTableViewController: UITableViewController {
         dailyNotificationsSwitch.on = false
         allowDailyNotificationsCell.accessoryView = dailyNotificationsSwitch
         dailyNotificationsSwitch.addTarget(self, action: Selector("switchChanged:"), forControlEvents: UIControlEvents.ValueChanged)
-        if let dailyNotificationsEnabled = StorageManager.getValue(StorageManager.StorageKeys.allowDailyNotifications) as? Bool {
+        if let dailyNotificationsEnabled = StorageManager.getValue(StorageManager.StorageKeys.AllowDailyNotifications) as? Bool {
             if dailyNotificationsEnabled {
                 dailyNotificationsSwitch.on = true
             }
@@ -54,7 +54,7 @@ class SettingsTableViewController: UITableViewController {
         weeklyNotificationsSwitch.on = false
         allowWeeklyNotificationsCell.accessoryView = weeklyNotificationsSwitch
         weeklyNotificationsSwitch.addTarget(self, action: Selector("switchChanged:"), forControlEvents: UIControlEvents.ValueChanged)
-        if let weeklyNotificationsEnabled = StorageManager.getValue(StorageManager.StorageKeys.allowWeeklyNotifications) as? Bool {
+        if let weeklyNotificationsEnabled = StorageManager.getValue(StorageManager.StorageKeys.AllowWeeklyNotifications) as? Bool {
             if weeklyNotificationsEnabled {
                 weeklyNotificationsSwitch.on = true
             }
@@ -63,10 +63,10 @@ class SettingsTableViewController: UITableViewController {
     
     func switchChanged(sender: UISwitch) {
         if sender == allowDailyNotificationsCell.accessoryView {
-            StorageManager.setValue(sender.on, forKey: StorageManager.StorageKeys.allowDailyNotifications)
+            StorageManager.setValue(sender.on, forKey: StorageManager.StorageKeys.AllowDailyNotifications)
         }
         if sender == allowWeeklyNotificationsCell.accessoryView {
-            StorageManager.setValue(sender.on, forKey: StorageManager.StorageKeys.allowWeeklyNotifications)
+            StorageManager.setValue(sender.on, forKey: StorageManager.StorageKeys.AllowWeeklyNotifications)
         }
     }
 
@@ -98,7 +98,7 @@ class SettingsTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // If the HealthKit cell is clicked, the app asks for HealthKit authorization.
         if indexPath == tableView.indexPathForCell(authorizationCell) {
-            if let healthKitAuthorized = StorageManager.getValue(StorageManager.StorageKeys.healthKitAuthorized) as? Bool {
+            if let healthKitAuthorized = StorageManager.getValue(StorageManager.StorageKeys.HealthKitAuthorized) as? Bool {
                 if !healthKitAuthorized {
                     authorizeHealthKit()
                 }
@@ -122,7 +122,7 @@ class SettingsTableViewController: UITableViewController {
             if success {
                 self.authorizationCell.accessoryType = UITableViewCellAccessoryType.Checkmark
                 self.authorizationCell.detailTextLabel!.text = "Use the Health app to change HealthKit authorizations."
-                StorageManager.setValue(true, forKey: StorageManager.StorageKeys.healthKitAuthorized)
+                StorageManager.setValue(true, forKey: StorageManager.StorageKeys.HealthKitAuthorized)
             }
         })
     }

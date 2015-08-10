@@ -94,9 +94,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "108"
-            endingLineNumber = "108"
-            landmarkName = "getHKQuantityData(_:timeUnit:dataUnit:startDate:endDate:completion:)"
-            landmarkType = "5">
+            endingLineNumber = "108">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -110,9 +108,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "getHKQuantityDataHolden(_:timeUnit:dataUnit:startDate:endDate:completion:)"
-            landmarkType = "5">
+            endingLineNumber = "41">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
