@@ -20,11 +20,11 @@
 		2B51A96E1B62A8550001AA97 /* PieGraphDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B51A96B1B62A8550001AA97 /* PieGraphDataSet.swift */; };
 		2B51A96F1B62A8550001AA97 /* PieGraphSlice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B51A96C1B62A8550001AA97 /* PieGraphSlice.swift */; };
 		2B51A9701B62A8550001AA97 /* PieGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B51A96D1B62A8550001AA97 /* PieGraphView.swift */; };
-		2B6E28821B794DF70041A9A1 /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6E28811B794DF70041A9A1 /* WeatherManager.swift */; };
 		2B7695281B716F3A001ABB7B /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7695271B716F3A001ABB7B /* ColorManager.swift */; };
 		2B76952A1B717D72001ABB7B /* CardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7695291B717D72001ABB7B /* CardDetailViewController.swift */; };
 		2B9488871B43060E0028B70B /* AnalysisTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9488861B43060E0028B70B /* AnalysisTools.swift */; };
-		2BB8DC9B1B60078E007704B5 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB8DC9A1B60078E007704B5 /* SettingsTableViewController.swift */; };
+		2BA8C1101B7A5117003A71B4 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA8C10F1B7A5117003A71B4 /* SettingsTableViewController.swift */; };
+		2BA8C1121B7A511E003A71B4 /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA8C1111B7A511E003A71B4 /* WeatherManager.swift */; };
 		2BBA0AF21B6936F200F55383 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBA0AF11B6936F200F55383 /* StorageManager.swift */; };
 		2BBA0AF41B693C8500F55383 /* EntrySwitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBA0AF31B693C8500F55383 /* EntrySwitchViewController.swift */; };
 		2BBA0AF71B69403700F55383 /* ReplaceWithoutAnimationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBA0AF61B69403700F55383 /* ReplaceWithoutAnimationSegue.swift */; };
@@ -65,11 +65,11 @@
 		2B51A96B1B62A8550001AA97 /* PieGraphDataSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieGraphDataSet.swift; sourceTree = "<group>"; };
 		2B51A96C1B62A8550001AA97 /* PieGraphSlice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieGraphSlice.swift; sourceTree = "<group>"; };
 		2B51A96D1B62A8550001AA97 /* PieGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieGraphView.swift; sourceTree = "<group>"; };
-		2B6E28811B794DF70041A9A1 /* WeatherManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeatherManager.swift; path = ../WeatherManager.swift; sourceTree = "<group>"; };
 		2B7695271B716F3A001ABB7B /* ColorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
 		2B7695291B717D72001ABB7B /* CardDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDetailViewController.swift; sourceTree = "<group>"; };
 		2B9488861B43060E0028B70B /* AnalysisTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysisTools.swift; sourceTree = "<group>"; };
-		2BB8DC9A1B60078E007704B5 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsTableViewController.swift; path = ../SettingsTableViewController.swift; sourceTree = "<group>"; };
+		2BA8C10F1B7A5117003A71B4 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		2BA8C1111B7A511E003A71B4 /* WeatherManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
 		2BBA0AF11B6936F200F55383 /* StorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		2BBA0AF31B693C8500F55383 /* EntrySwitchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntrySwitchViewController.swift; sourceTree = "<group>"; };
 		2BBA0AF61B69403700F55383 /* ReplaceWithoutAnimationSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReplaceWithoutAnimationSegue.swift; sourceTree = "<group>"; };
@@ -251,9 +251,9 @@
 		71F691451B59B3B4005B990E /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2BB8DC9A1B60078E007704B5 /* SettingsTableViewController.swift */,
 				71F1A71F1B585506006B2D9E /* InfoViewController.swift */,
 				2BBA0AF81B6946B800F55383 /* HealthKitAuthorizationViewController.swift */,
+				2BA8C10F1B7A5117003A71B4 /* SettingsTableViewController.swift */,
 				2BBA0AF31B693C8500F55383 /* EntrySwitchViewController.swift */,
 				2BDCACA51B41A80A002A7F28 /* CardViewController.swift */,
 				2B7695291B717D72001ABB7B /* CardDetailViewController.swift */,
@@ -266,7 +266,7 @@
 			children = (
 				2BDCAC831B41A625002A7F28 /* AppDelegate.swift */,
 				71F4E7C81B59751300F6AE7B /* HKManager.swift */,
-				2B6E28811B794DF70041A9A1 /* WeatherManager.swift */,
+				2BA8C1111B7A511E003A71B4 /* WeatherManager.swift */,
 				2B7695271B716F3A001ABB7B /* ColorManager.swift */,
 				2BBA0AF11B6936F200F55383 /* StorageManager.swift */,
 			);
@@ -395,10 +395,10 @@
 				2BBA0AF91B6946B800F55383 /* HealthKitAuthorizationViewController.swift in Sources */,
 				2B76952A1B717D72001ABB7B /* CardDetailViewController.swift in Sources */,
 				2B24DDA21B6822DF00504255 /* BarGraphView.swift in Sources */,
+				2BA8C1101B7A5117003A71B4 /* SettingsTableViewController.swift in Sources */,
+				2BA8C1121B7A511E003A71B4 /* WeatherManager.swift in Sources */,
 				2B24DDA51B6822DF00504255 /* BarGraphBarSegment.swift in Sources */,
-				2B6E28821B794DF70041A9A1 /* WeatherManager.swift in Sources */,
 				2B51A96E1B62A8550001AA97 /* PieGraphDataSet.swift in Sources */,
-				2BB8DC9B1B60078E007704B5 /* SettingsTableViewController.swift in Sources */,
 				2B51A96F1B62A8550001AA97 /* PieGraphSlice.swift in Sources */,
 				2B43C4381B72811B002C6D68 /* LineGraphView.swift in Sources */,
 				71F1A7201B585506006B2D9E /* InfoViewController.swift in Sources */,
