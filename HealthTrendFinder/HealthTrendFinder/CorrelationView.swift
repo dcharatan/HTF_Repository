@@ -47,7 +47,7 @@ import UIKit
             width: self.bounds.width,
             height: numberSize * 1.25)))
         numberLabel.font = UIFont(name: "Helvetica Neue", size: numberSize)
-        numberLabel.text = "\(r)"
+        numberLabel.text = "\(abs(r) * 100)%"
         numberLabel.sizeToFit()
         numberLabel.textColor = colorForR(r)
         
