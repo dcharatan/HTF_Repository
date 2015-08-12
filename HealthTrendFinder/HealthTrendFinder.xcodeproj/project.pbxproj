@@ -170,7 +170,6 @@
 			isa = PBXGroup;
 			children = (
 				2B24DD971B67EFD200504255 /* QuantitativeDataSet.swift */,
-				2BDCAC831B41A625002A7F28 /* AppDelegate.swift */,
 				2B51A9681B62A6980001AA97 /* CardBuilder.swift */,
 				2B9488861B43060E0028B70B /* AnalysisTools.swift */,
 			);
@@ -262,6 +261,7 @@
 		71F691461B59B419005B990E /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				2BDCAC831B41A625002A7F28 /* AppDelegate.swift */,
 				71F4E7C81B59751300F6AE7B /* HKManager.swift */,
 				2BA8C1111B7A511E003A71B4 /* WeatherManager.swift */,
 				2B7695271B716F3A001ABB7B /* ColorManager.swift */,
