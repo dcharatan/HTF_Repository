@@ -36,7 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var a = AnalysisTools.spearmanRho(data)
         println(a)
         
-        var weatherUpdate: () = WeatherManager().updateWeatherHistory()
+        let wm = WeatherManager.sharedInstance()
+        var weatherUpdate: () = wm.updateWeatherHistory()
         println(weatherUpdate)
 
 

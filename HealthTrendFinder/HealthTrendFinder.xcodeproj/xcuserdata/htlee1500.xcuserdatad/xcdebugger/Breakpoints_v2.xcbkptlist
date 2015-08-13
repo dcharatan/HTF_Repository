@@ -88,11 +88,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HealthTrendFinder/WeatherManager.swift"
-            timestampString = "461180527.121679"
+            timestampString = "461196732.470148"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "updateWeatherHistory()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HealthTrendFinder/WeatherManager.swift"
+            timestampString = "461196732.470148"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "updateWeatherHistory()"
             landmarkType = "5">
          </BreakpointContent>

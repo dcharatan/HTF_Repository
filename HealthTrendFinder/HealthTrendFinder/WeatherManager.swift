@@ -12,16 +12,21 @@ typealias ServiceResponse = (JSON, NSError?) -> Void
 
 class WeatherManager: NSObject {
     
-    var baseURL: String = ""
+    var baseURL: String = "asdf"
     var data: String = ""
-    static let sharedInstance = WeatherManager()
+    private static let _sharedInstance = WeatherManager()
     
+    private override init() { super.init() }
+    
+    static func sharedInstance() -> WeatherManager {
+        return _sharedInstance
+    }
     
     func getRandomUser(onCompletion: (JSON) -> Void) {
         println("Starting getRandomUser")
         let route = self.baseURL
         println(self.baseURL)
-        makeHTTPGetRequest(route, onCompletion: { json, err in
+        self.makeHTTPGetRequest(route, onCompletion: { json, err in
             onCompletion(json as JSON)
         })
     }
@@ -35,17 +40,17 @@ class WeatherManager: NSObject {
             let json:JSON = JSON(data: data)
             onCompletion(json, error)
             if error != nil {
-                println("No Error")
+                println("Error:\(error)")
             } else {
-                println("Error")
+                println("No Error")
             }
         })
         task.resume()
     }
     
     func addData() {
-        WeatherManager.sharedInstance.getRandomUser { json in
-            var jsonData = json["response"]["version"]
+        self.getRandomUser { json in
+            var jsonData = json["history"]//[["dailysummary"][0]]
             self.data = "\(jsonData)"
             dispatch_async(dispatch_get_main_queue(),{
                 let alert = UIAlertView()
@@ -74,13 +79,14 @@ class WeatherManager: NSObject {
         if StorageManager.getValue(StorageManager.StorageKeys.WeatherStartDate) == nil {
             let startDate: NSDate = calendar.startOfDayForDate(NSDate())
             StorageManager.setValue(startDate, forKey: StorageManager.StorageKeys.WeatherStartDate)
-
         }
+        
+        let fakeStartDate: NSDate = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!.dateWithEra(1, year: 2015, month: 8, day: 12, hour: 0, minute: 0, second: 0, nanosecond: 0)!
+        StorageManager.setValue(fakeStartDate, forKey: StorageManager.StorageKeys.WeatherStartDate)
         
         // This adds a data array if it hasn't been created yet.
         if StorageManager.getValue(StorageManager.StorageKeys.WeatherData) == nil {
             StorageManager.setValue([:], forKey: StorageManager.StorageKeys.WeatherData)
-            
         }
         
         var weatherData: [NSDate: NSObject] = StorageManager.getValue(StorageManager.StorageKeys.WeatherData)! as! [NSDate : NSObject]
@@ -108,8 +114,7 @@ class WeatherManager: NSObject {
                 }
                 var dateString = "\(components.year)\(month)\(day)"
                 self.baseURL = "http://api.wunderground.com/api/91e65f0fbb35f122/history_\(dateString)/q/OR/Portland.json"
-                println(self.baseURL)
-                var get: () = WeatherManager.sharedInstance.addData()
+                var get: () = self.addData()
                 println(get)
                 weatherData[dateToBeExamined] = self.data
                 
