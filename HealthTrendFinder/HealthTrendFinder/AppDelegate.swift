@@ -36,27 +36,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var a = AnalysisTools.spearmanRho(data)
         println(a)
         
-        let updateWeather: () = WeatherManager.updateWeatherHistory()
-        println(updateWeather)
-        // This part for debugging only
-        var weatherData = [NSDate: NSObject]()
-        let calendarUnits: NSCalendarUnit = .CalendarUnitDay | .CalendarUnitMonth | .CalendarUnitYear
-        let components = NSCalendar.currentCalendar().components(calendarUnits, fromDate: NSDate())
-        var dateString = "\(components.year)\(components.day)\(components.month)"
-        var api = "http://api.wunderground.com/api/91e65f0fbb35f122/history_\(dateString)/q/OR/Portland.json"
-        var url = NSURL(string: api)
-        var session = NSURLSession.sharedSession()
-        println("We got this far")
-        typealias JSONdic = [String: AnyObject]
+        var weatherUpdate: () = WeatherManager().updateWeatherHistory()
+        println(weatherUpdate)
+
+
         
-        let json: NSObject = api
-        println("Got here too")
-        if let json = json as? JSONdic, history = json["history"] as? JSONdic, temp = history["tempi"] as? Int, hum = history["hum"] as? String, precip = history["precipi"] as? String{
-            println("Temperature:\(temp)")
-            weatherData = [:]
-            weatherData[NSDate()] = temp
-        }
-        println("Done")
         // Override point for customization after application launch.
         return true
     }
