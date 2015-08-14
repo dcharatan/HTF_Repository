@@ -12,8 +12,14 @@ typealias ServiceResponse = (JSON, NSError?) -> Void
 
 class WeatherManager: NSObject {
     
-    var baseURL: String = "asdf"
+    var baseURL: String = "No URL"
     var data: String = ""
+ 
+    var dataChanged = ""
+    var checkData = ""
+    var sum: Int = 0
+    var error: Int = 0
+    var success: Int = 0
     private static let _sharedInstance = WeatherManager()
     
     private override init() { super.init() }
@@ -39,33 +45,28 @@ class WeatherManager: NSObject {
         let task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
             let json:JSON = JSON(data: data)
             onCompletion(json, error)
-            if error != nil {
+            /*if error != nil {
                 println("Error:\(error)")
             } else {
                 println("No Error")
-            }
+            }*/
         })
         task.resume()
     }
     
     func addData() {
         self.getRandomUser { json in
-            var jsonData = json["history"]//[["dailysummary"][0]]
+
+            var jsonData = json["history"]["dailysummary"][0]["maxtempi"]
+            var lowData = json["history"]["dailysummary"][0]["date"]["pretty"]
             self.data = "\(jsonData)"
+            self.checkData = "\(lowData)"
             dispatch_async(dispatch_get_main_queue(),{
-                let alert = UIAlertView()
-                alert.title = "Weather Data Update"
                 if self.data != "null" {
-                    println("Value:\(self.data)")
-                    alert.message = "The weather data was updated successfully."
-                    alert.addButtonWithTitle("OK")
-                    alert.show()
+                    self.success++
                 } else {
+                    self.error++
                     println("Error Reading Data")
-                    println(self.data)
-                    alert.message = "HealthTrendFinder encountered an error while updating data."
-                    alert.addButtonWithTitle("OK")
-                    alert.show()
                 }
             })
         }
@@ -81,7 +82,7 @@ class WeatherManager: NSObject {
             StorageManager.setValue(startDate, forKey: StorageManager.StorageKeys.WeatherStartDate)
         }
         
-        let fakeStartDate: NSDate = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!.dateWithEra(1, year: 2015, month: 8, day: 12, hour: 0, minute: 0, second: 0, nanosecond: 0)!
+        let fakeStartDate: NSDate = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!.dateWithEra(1, year: 2015, month: 8, day: 6, hour: 0, minute: 0, second: 0, nanosecond: 0)!
         StorageManager.setValue(fakeStartDate, forKey: StorageManager.StorageKeys.WeatherStartDate)
         
         // This adds a data array if it hasn't been created yet.
@@ -92,7 +93,7 @@ class WeatherManager: NSObject {
         var weatherData: [NSDate: NSObject] = StorageManager.getValue(StorageManager.StorageKeys.WeatherData)! as! [NSDate : NSObject]
         let startMidnight: NSDate = StorageManager.getValue(StorageManager.StorageKeys.WeatherStartDate) as! NSDate
         let currentMidnight: NSDate = calendar.startOfDayForDate(NSDate())
-        let daysFromStartDate: Int = calendar.components(NSCalendarUnit.CalendarUnitDay, fromDate: startMidnight, toDate: currentMidnight, options: nil).day
+        var daysFromStartDate: Int = calendar.components(NSCalendarUnit.CalendarUnitDay, fromDate: startMidnight, toDate: currentMidnight, options: nil).day
         println("Starting Loop")
         for i: Int in 0..<daysFromStartDate {
             
@@ -112,12 +113,28 @@ class WeatherManager: NSObject {
                 } else {
                     day = "\(components.day)"
                 }
-                var dateString = "\(components.year)\(month)\(day)"
-                self.baseURL = "http://api.wunderground.com/api/91e65f0fbb35f122/history_\(dateString)/q/OR/Portland.json"
+                var apiDateString = "\(components.year)\(month)\(day)"
+                self.baseURL = "http://api.wunderground.com/api/91e65f0fbb35f122/history_\(apiDateString)/q/OR/Portland.json"
                 var get: () = self.addData()
                 println(get)
-                weatherData[dateToBeExamined] = self.data
+                var waiting = true
+                while waiting {
+                    if checkData != "" && checkData != dataChanged {
+                        waiting = false
+                        println(dataChanged)
+                        dataChanged = checkData
+                        println(dataChanged)
+                    } else if self.error != 0 {
+                        waiting = false
+                        daysFromStartDate = i
+                    } else {
+                        
+                    }
+                    
+                }
                 
+                weatherData[dateToBeExamined] = self.data
+                println(weatherData)
                 
                 
                 
@@ -127,6 +144,20 @@ class WeatherManager: NSObject {
             }
         }
         println("Loop has finished or been skipped")
+ 
+        
+        println("Presenting Alert")
+        
+        if error != 0 {
+            let alert = UIAlertView()
+            alert.title = "Weather Data Update"
+            alert.message = "HealthTrendFinder encountered an error while updating data."
+            alert.addButtonWithTitle("OK")
+            alert.addButtonWithTitle("Not OK")
+            alert.show()
+        } else {
+            
+        }
         
     }
     
